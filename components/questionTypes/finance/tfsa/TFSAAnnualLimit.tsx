@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 
-import { MultipleChoiceSentence } from "../questionTypes/MultipleChoiceSentence";
-
 export default function TFSAAnnualLimit(props) {
   const contributionLimits = [
     { year: 2021, limit: 6000 },

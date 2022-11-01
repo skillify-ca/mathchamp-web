@@ -94,11 +94,9 @@ const PostGameLobby = ({
   players.map((it) => scoreArr.push(it.score));
 
   scoreWin = Math.min(...scoreArr);
-
-  if (playerLength != length) {
-    return (
-      <div className="flex flex-col w-screen gap-8 text-center place-items-center">
-        {console.log("playerLength", playerLength)}
+  
+    return (playerLength != length ?
+     <div className="flex flex-col w-screen gap-8 text-center place-items-center">
         <p className="items-center text-xl font-bold text-center text-blue-400 ">
           Waiting for All Players
         </p>
@@ -110,11 +108,8 @@ const PostGameLobby = ({
           </div>
         </div>
       </div>
-    );
-  }
-  return (
-    <div className="flex flex-col items-center gap-16 justify-items-center">
-      {console.log("playerLengthEnd", playerLength)}
+:   
+ <div className="flex flex-col items-center gap-16 justify-items-center">
       <div className="flex flex-row items-center gap-4 text-center justify-items-center">
         {players.map((it) => (
           <ReactCardFlip
@@ -182,10 +177,7 @@ const PostGameLobby = ({
         textColor="white"
         onClick={() => window.location.reload()}
       />
-    </div>
-  );
+  </div>
+  )
 };
 export default PostGameLobby;
-function setQuestionData(questions: any) {
-  throw new Error("Function not implemented.");
-}

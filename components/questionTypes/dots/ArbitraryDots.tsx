@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { randomize } from "../../../pages/api/labs/questionGenerators/binaryQuestionGenerator";
+import { getRandomItemFromArray } from "../../../pages/api/random";
 
 export interface DotProps {
   exists: boolean;
@@ -15,11 +15,9 @@ const Dot = ({ exists = true, visible = true }: DotProps) => {
 
   useEffect(() => {
     const possibleLengths = [3, 4, 5, 6, 7, 8];
-    const randomLengthIndex = randomize(0, possibleLengths.length);
-    setDisplayLength(possibleLengths[randomLengthIndex]);
-    const colourIndex = randomize(0, colourArr.length);
-    setColourDisplay(colourArr[colourIndex]);
-    setMargin(randomize(-4, 3));
+    setDisplayLength(getRandomItemFromArray(possibleLengths));
+    setColourDisplay(getRandomItemFromArray(colourArr));
+    setMargin(getRandomItemFromArray([-4, -3, -2, -1, 0, 1, 2, 3]));
   }, []);
 
   return (

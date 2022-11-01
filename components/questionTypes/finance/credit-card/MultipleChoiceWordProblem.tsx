@@ -1,5 +1,5 @@
 import React from "react";
-import { multiQuestionData } from "../../../pages/api/credit-card/CCDCMultiData";
+import { multiQuestionData } from "../../../../pages/api/games/credit-card/CCDCMultiData";
 import { FinanceMultipleChoice } from "./FinanceMultipleChoice";
 
 interface MultipleChoiceWordProps {
@@ -63,12 +63,12 @@ const MultipleChoiceWordProblem = ({
   ];
   return (
     <div className="">
-      <div className="flex flex-col p-12 justify-center items-center">
-        <h1 className="font-extrabold text-5xl md:text-8xl uppercase text-yellow-400">
+      <div className="flex flex-col items-center justify-center p-12">
+        <h1 className="text-5xl font-extrabold text-yellow-400 uppercase md:text-8xl">
           <span className="text-purple-500">Credit</span> &{" "}
           <span className="text-green-500">Debit</span>
         </h1>
-        <h2 className="text-3xl md:text-4xl mb-1">Click on your answer</h2>
+        <h2 className="mb-1 text-3xl md:text-4xl">Click on your answer</h2>
       </div>
       <div className="grid grid-none md:grid-cols-2">
         <FinanceMultipleChoice

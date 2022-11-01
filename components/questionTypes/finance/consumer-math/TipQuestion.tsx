@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { GuessData } from "../../../../pages/api/guessData";
-import { Question } from "../../../../pages/api/question";
+import { FinanceTipQuestion, Question } from "../../../../pages/api/question";
 import { Button } from "../../../ui/Button";
 
 export interface TipQuestionProps {
   answer: string;
-  question: Question;
+  question: FinanceTipQuestion;
   submitGuess: (guess: GuessData) => void;
 }
 
@@ -27,7 +27,7 @@ const TipQuestion: React.FC<TipQuestionProps> = ({
   }, []);
 
   return (
-    <div className="flex flex-col max-h-96 py-4 overflow-y-hidden gap-4">
+    <div className="flex flex-col gap-4 py-4 overflow-y-hidden max-h-96">
       <p>
         Estimate the amount of tip by rounding the bill to the nearest dollar{" "}
         <span className="italic">after</span> calculating.
@@ -46,7 +46,7 @@ const TipQuestion: React.FC<TipQuestionProps> = ({
             id="input"
             type="number"
             value={guess}
-            className="border-2 border-gray-300 w-20 text-right font-bold"
+            className="w-20 font-bold text-right border-2 border-gray-300"
             onChange={(e) => setGuess(e.target.value)}
           ></input>
           .

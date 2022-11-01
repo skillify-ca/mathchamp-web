@@ -1,7 +1,10 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react";
 import { CoinType } from "./Coin";
-import { CountCoinsProps, CountCoinsQuestion } from "./CountCoinsQuestion";
+import {
+  CountCoinsQuestion,
+  CountCoinsQuestionProps,
+} from "./CountCoinsQuestion";
 
 export default {
   title: "finance/Count Coins Question",
@@ -9,7 +12,7 @@ export default {
   argTypes: {},
 } as Meta;
 
-const Template: Story<CountCoinsProps> = (args) => (
+const Template: Story<CountCoinsQuestionProps> = (args) => (
   <CountCoinsQuestion {...args} />
 );
 

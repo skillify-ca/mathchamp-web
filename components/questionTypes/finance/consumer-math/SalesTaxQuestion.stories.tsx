@@ -1,7 +1,5 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react";
-import { QuestionType } from "../../pages/api/questionTypes";
-import { Question } from "../../redux/quizSlice";
 import SalesTaxQuestion, { SalesTaxQuestionProps } from "./SalesTaxQuestion";
 
 export default {

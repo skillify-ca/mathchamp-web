@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { GuessData } from "../../../pages/api/guessData";
-import { WordProblemQuestion } from "../../../pages/api/labs/questionGenerators/wordProblemQuestion";
+import { WordProblemQuestion } from "../../../pages/api/questionGenerators/wordProblemQuestion";
 import {
   ItemContainerObj,
   Noun,

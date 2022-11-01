@@ -3,7 +3,7 @@ import {
   ItemCostModel,
 } from "../../components/questionTypes/finance/budget/BalanceBudgetData";
 import { CoinType } from "../../components/questionTypes/finance/money/Coin";
-import { AlgebraSolveQuestion } from "./questionGenerators/algebraQuestionGenerator";
+import { AlgebraWordProblem } from "./questionGenerators/algebraQuestionGenerator";
 import { HorizontalEquationQuestion } from "./questionGenerators/horizontalEquationQuestion";
 import { LongDivisionQuestion } from "./questionGenerators/longDivisionQuestion";
 import { TrueOrFalseQuestion } from "./questionGenerators/trueOrFalseQuestion";
@@ -11,6 +11,26 @@ import { VerticalEquationQuestion } from "./questionGenerators/verticalEquationQ
 import { VisualDotsQuestion } from "./questionGenerators/visualDotsQuestion";
 import { WordProblemQuestion } from "./questionGenerators/wordProblemQuestion";
 import { QuestionType } from "./questionTypes";
+
+export type BudgetBalanceQuestion = {
+  questionType: QuestionType.FINANCE_BALANCE_BUDGET_PROBLEM;
+  personDataModel: PersonData;
+  answer: string;
+};
+
+export type BudgetTableQuestion = {
+  questionType: QuestionType.FINANCE_BUDGET_TABLE_PROBLEM;
+  budgetCostModel: Array<ItemCostModel>;
+  answer: string;
+  text: string;
+};
+
+export type FinanceTipQuestion = {
+  questionType: QuestionType.FINANCE_TIP_PROBLEM;
+  displayNum: number;
+  answer: string;
+  text: string;
+};
 
 export type Question =
   | VerticalEquationQuestion
@@ -49,30 +69,16 @@ export type Question =
       answer: string;
       colour: 0 | 1 | 2 | 3;
     }
-  | {
-      questionType: QuestionType.FINANCE_TIP_PROBLEM;
-      displayNum: number;
-      answer: string;
-      text: string;
-    }
-  | {
-      questionType: QuestionType.FINANCE_BALANCE_BUDGET_PROBLEM;
-      personDataModel: PersonData;
-      answer: string;
-    }
-  | {
-      questionType: QuestionType.FINANCE_BUDGET_TABLE_PROBLEM;
-      budgetCostModel: Array<ItemCostModel>;
-      answer: string;
-      text: string;
-    }
+  | FinanceTipQuestion
+  | BudgetBalanceQuestion
+  | BudgetTableQuestion
   | {
       questionType: QuestionType.FINANCE_UNIT_PRICE_PROBLEM;
       unitPriceModel: UnitPriceModel;
       answer: string;
       text: string;
     }
-  | AlgebraSolveQuestion
+  | AlgebraWordProblem
   | {
       questionType: QuestionType.FINANCE_SALES_TAX_PROBLEM;
       salesTaxModel: SalesTaxModel;
