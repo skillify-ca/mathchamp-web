@@ -24,7 +24,7 @@ export default function PracticePreview({ skills, courseId }) {
     { title: "real estate", image: "" },
   ];
 
-  const units = courseId === "finance" ? financeUnits : mathUnits;
+  const units = [...financeUnits, ...mathUnits];
 
   return (
     <div className="flex justify-center">
@@ -50,10 +50,10 @@ export default function PracticePreview({ skills, courseId }) {
                 .length > 0 ? (
                 <>
                   <div className="flex items-center w-full p-8 font-bold text-white shadow-lg bg-slate-500">
-                    {/* <img
+                    <img
                       className="w-24 mr-8 hover:animate-shake"
                       src={unit.image}
-                    /> */}
+                    />
                     <p>{unit.title}</p>
                   </div>
                   <div className="grid grid-cols-1 p-8 sm:grid-cols-4">

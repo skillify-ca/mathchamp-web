@@ -5,7 +5,7 @@ export default function SkillCard({ skill, courseId }) {
   const [isSelected, setIsSelected] = useState(false);
 
   return (
-    <Link href={`/studentPortal/labs/${courseId}/practice/${skill.id}`}>
+    <Link href={`/math1/practice/${skill.id}`}>
       <div
         onMouseEnter={() => setIsSelected(true)}
         onMouseLeave={() => setIsSelected(false)}
