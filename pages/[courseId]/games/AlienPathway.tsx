@@ -112,7 +112,7 @@ const Index: FC<IndexProps> = ({ submitGuess, answer }) => {
 
   console.log(roll1Number);
   return (
-    <div className="">
+    <div className="bg-slate-800">
       {/* <p>{roll1Number}</p> */}
       <Button label="New Game" onClick={() => newGameButton()}></Button>
       <div className="grid grid-cols-2 place-content-center">
@@ -128,9 +128,9 @@ const Index: FC<IndexProps> = ({ submitGuess, answer }) => {
         />
       </div>
       <div className="grid grid-rows-2 gap-8 px-20 pb-10">
-        <div className="grid grid-cols-7 border-2 text-white text-2xl">
+        <div className="grid grid-cols-7 text-2xl text-white border-2">
           {grid.map((gridData) => (
-            <div className="border-r-2 border-b-2 md:h-8 sm:h-8 h-8">
+            <div className="h-8 border-b-2 border-r-2 md:h-8 sm:h-8">
               <BlockComponent
                 index={indexNumber1}
                 // update current roll, just grab number roll from diceOutput obj
@@ -144,9 +144,9 @@ const Index: FC<IndexProps> = ({ submitGuess, answer }) => {
             </div>
           ))}
         </div>
-        <div className="grid grid-cols-7 border-2 text-white text-2xl">
+        <div className="grid grid-cols-7 text-2xl text-white border-2">
           {grid.map((gridData) => (
-            <div className="border-r-2 border-b-2 md:h-8 sm:h-8 h-8">
+            <div className="h-8 border-b-2 border-r-2 md:h-8 sm:h-8">
               <BlockComponent
                 rollDisplay={roll2Display}
                 index={indexNumber2}

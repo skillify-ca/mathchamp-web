@@ -29,7 +29,7 @@
     "react-pageflip": "^2.0.3",
     "react-redux": "^8.0.4",
     "react-use-firework": "^1.0.2",
-    "tailwindcss-hero-patterns": "^0.0.1"
+    "tailwindcss-hero-patterns": "0.0.1"
   },
   "devDependencies": {
     "@tailwindcss/aspect-ratio": "^0.4.2",
