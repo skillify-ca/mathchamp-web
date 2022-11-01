@@ -1,11 +1,11 @@
 import React from "react";
 import { GuessData } from "../../../../pages/api/guessData";
-import { Question } from "../../../../pages/api/question";
+import { BudgetTableQuestion, Question } from "../../../../pages/api/question";
 import { Button } from "../../../ui/Button";
 
 export interface BudgetItemProps {
   answer: string;
-  question: Question;
+  question: BudgetTableQuestion;
   submitGuess: (guess: GuessData) => void;
 }
 
@@ -22,19 +22,19 @@ const BudgetTable: React.FC<BudgetItemProps> = ({
   };
 
   return (
-    <div className="flex flex-col max-h-96 py-4 overflow-y-hidden">
+    <div className="flex flex-col py-4 overflow-y-hidden max-h-96">
       <h3 className="font-bold">Question:</h3>
       <p>
         Cassie has ${question.text}. Does she have enough to buy a roll of
         electrical tape and a light bulb?
       </p>
-      <p className="italic mb-4">Do not round.</p>
+      <p className="mb-4 italic">Do not round.</p>
 
-      <div className="bg-green-300 mb-4">
+      <div className="mb-4 bg-green-300">
         {question.budgetCostModel.map((item, index) => (
           <div key={index} className="grid grid-cols-2 odd:bg-green-200">
             <div className="pl-4">{item.title}</div>
-            <div className="text-right pr-4">${item.cost}</div>
+            <div className="pr-4 text-right">${item.cost}</div>
           </div>
         ))}
       </div>

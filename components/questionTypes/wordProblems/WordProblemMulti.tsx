@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { GuessData } from "../../../pages/api/guessData";
 import { Question } from "../../../pages/api/question";
+import { WordProblemQuestion } from "../../../pages/api/questionGenerators/wordProblemQuestion";
 import {
   ItemContainerObj,
   Noun,
@@ -10,7 +11,7 @@ import { Input } from "../../ui/Input";
 
 export interface WordProblemMultiProp {
   submitGuess: (guess: GuessData) => void;
-  question: Question;
+  question: WordProblemQuestion;
   isReadOnly?: boolean;
 }
 
@@ -38,7 +39,10 @@ export const WordProblemMulti: React.FC<WordProblemMultiProp> = ({
   };
   const onSubmit = () => {
     setGuess("");
-    submitGuess({ guess: guess, isCorrect: guess === question.answer });
+    submitGuess({
+      guess: guess,
+      isCorrect: guess === question.answer.toString(),
+    });
   };
   const parse = () => {
     const parts = question.text.split(" ");

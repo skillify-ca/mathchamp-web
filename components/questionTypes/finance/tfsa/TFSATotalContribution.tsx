@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ReactCardFlip from "react-card-flip";
-import { GuessData } from "../../pages/api/guessData";
-
-import { MultipleChoiceSentence } from "../questionTypes/MultipleChoiceSentence";
+import { GuessData } from "../../../../pages/api/guessData";
+import { MultipleChoiceSentence } from "../../MultipleChoiceSentence";
 
 export default function TFSATotalContribution(props) {
   const contributionLimits = [
@@ -39,7 +38,7 @@ export default function TFSATotalContribution(props) {
         <h1 className="text-xl font-bold">
           How much can I contribute to my TFSA in total?
         </h1>
-        <div className="grid grid-cols-1 sm:grid-cols-2 bg-gray-100 p-8 shadow-lg rounded-xl gap-8">
+        <div className="grid grid-cols-1 gap-8 p-8 bg-gray-100 shadow-lg sm:grid-cols-2 rounded-xl">
           <div className="flex flex-col gap-8">
             <div className="flex flex-col">
               <p>What year were your born in?</p>
@@ -81,14 +80,14 @@ export default function TFSATotalContribution(props) {
           </div>
 
           <div className="flex flex-col gap-4">
-            <p className="font-bold text-lg">
+            <p className="text-lg font-bold">
               Contribution Limit Table by Year
             </p>
             <div className="grid grid-cols-2">
-              <p className="bg-yellow-400 font-bold border-b-2 border-black py-4 px-2">
+              <p className="px-2 py-4 font-bold bg-yellow-400 border-b-2 border-black">
                 {"Year"}
               </p>
-              <p className="bg-yellow-400 font-bold border-b-2 border-black py-4 px-2">
+              <p className="px-2 py-4 font-bold bg-yellow-400 border-b-2 border-black">
                 {"Annual Limit"}
               </p>
               {contributionLimits.map((row) => (
@@ -140,7 +139,7 @@ export default function TFSATotalContribution(props) {
             />
           </div>
           <div
-            className="bg-gray-100 shadow-lg rounded-xl p-8 m-8 h-108"
+            className="p-8 m-8 bg-gray-100 shadow-lg rounded-xl h-108"
             onClick={(e) => setIsFlipped(false)}
           >
             CORRECT

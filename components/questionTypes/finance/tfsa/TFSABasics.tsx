@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ReactCardFlip from "react-card-flip";
-import { GuessData } from "../../pages/api/guessData";
-
-import { MultipleChoiceSentence } from "../questionTypes/MultipleChoiceSentence";
+import { GuessData } from "../../../../pages/api/guessData";
+import { MultipleChoiceSentence } from "../../MultipleChoiceSentence";
 
 export default function TFSABasics(props) {
   const [isShaking, setIsShaking] = useState(false);
@@ -65,7 +64,7 @@ export default function TFSABasics(props) {
               />
             </div>
             <div
-              className="bg-gray-100 shadow-lg rounded-xl p-8 m-8 h-108"
+              className="p-8 m-8 bg-gray-100 shadow-lg rounded-xl h-108"
               onClick={(e) => setIsFlipped(false)}
             >
               CORRECT
@@ -75,7 +74,7 @@ export default function TFSABasics(props) {
 
         <div className="flex flex-col">
           <p className="text-lg">What do I have to watch out for?</p>
-          <ul className="list-inside list-disc">
+          <ul className="list-disc list-inside">
             <li>
               Don't over contribute more than the limit. If you go over the
               government will charge you a penalty for doing that.

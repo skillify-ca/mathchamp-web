@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import { GuessData } from "../../../../pages/api/guessData";
-import { Question } from "../../../../pages/api/question";
+import {
+  BudgetBalanceQuestion,
+  Question,
+} from "../../../../pages/api/question";
 import { Button } from "../../../ui/Button";
 
 export interface BalanceBudgetProps {
   answer: string;
-  question: Question;
+  question: BudgetBalanceQuestion;
   submitGuess: (guess: GuessData) => void;
 }
 
@@ -24,13 +27,13 @@ const BalanceBudget: React.FC<BalanceBudgetProps> = ({
   const [guess, setGuess] = useState("");
 
   return (
-    <div className="flex flex-col max-h-96 py-4 overflow-y-hidden">
+    <div className="flex flex-col py-4 overflow-y-hidden max-h-96">
       <p className="mb-4">
         How much money does {question.personDataModel.name} need to earn to
         balance her budget? Complete the table.
       </p>
 
-      <div className="grid bg-blue-600 text-white">
+      <div className="grid text-white bg-blue-600">
         <div className="flex justify-self-center">
           <span className="">
             {question.personDataModel.name}'s {question.personDataModel.month}{" "}
@@ -38,7 +41,7 @@ const BalanceBudget: React.FC<BalanceBudgetProps> = ({
           </span>
         </div>
       </div>
-      <div className="grid grid-cols-2 bg-blue-300 text-white">
+      <div className="grid grid-cols-2 text-white bg-blue-300">
         <div className="border-r border-grey-500">
           <div className="flex justify-center">
             <span className="">Income</span>
@@ -55,7 +58,7 @@ const BalanceBudget: React.FC<BalanceBudgetProps> = ({
               <div key={index}>
                 {income.title}: $
                 <input
-                  className="border-2 border-grey-500 text-black font-bold w-14 text-right overflow-hidden"
+                  className="overflow-hidden font-bold text-right text-black border-2 border-grey-500 w-14"
                   value={guess}
                   type="number"
                   placeholder="0"

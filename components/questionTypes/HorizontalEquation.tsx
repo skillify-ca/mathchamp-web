@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { GuessData } from "../../pages/api/guessData";
-import { Question } from "../../pages/api/question";
+import { HorizontalEquationQuestion } from "../../pages/api/questionGenerators/horizontalEquationQuestion";
 import { Button } from "../ui/Button";
 import { Input } from "../ui/Input";
 
 export interface HorizontalEquationProp {
-  question: Question;
+  question: HorizontalEquationQuestion;
   submitGuess: (guess: GuessData) => void;
   isReadOnly?: boolean;
 }

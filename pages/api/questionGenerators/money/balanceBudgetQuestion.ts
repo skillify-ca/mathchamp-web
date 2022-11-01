@@ -21,7 +21,6 @@ export function getBalanceBudgetQuestion(person: PersonData): Question {
   answer = person.totalExpenses - person.totalIncome;
 
   return {
-    text: person.name,
     answer: answer.toString(),
     questionType: QuestionType.FINANCE_BALANCE_BUDGET_PROBLEM,
     personDataModel: person,

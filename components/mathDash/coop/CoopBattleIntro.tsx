@@ -1,13 +1,5 @@
 import React, { useCallback, useRef, useState } from "react";
 import * as Colyseus from "colyseus.js";
-import QuestionSet from "../../stories/QuestionSet";
-import { Question } from "../../../../pages/api/question";
-import { getEmoji } from "../../../../pages/api/skill";
-import { GuessData } from "../../../../pages/api/guessData";
-import ProgressRing from "../../../ui/ProgressRing";
-import Card from "../../../ui/Card";
-import CoopBattleComponent from "./CoopBattleComponent";
-import HTMLFlipBook from "react-pageflip";
 
 export interface CoopBattleIntroComponentProps {
   startGame: () => void;
@@ -30,11 +22,11 @@ const CoopBattleIntroComponent = ({
   });
   let timer = function (time: number) {
     if (time / 1000.0 <= 1) {
-      return <ProgressRing percentage={3} radius={24} unit={""} />;
+      return <progress value={3} />;
     } else if (time / 1000.0 <= 2) {
-      return <ProgressRing percentage={2} radius={24} unit={""} />;
+      return <progress value={2} />;
     } else if (time / 1000.0 <= 3) {
-      return <ProgressRing percentage={1} radius={24} unit={""} />;
+      return <progress value={1} />;
     } else {
       startGame();
     }

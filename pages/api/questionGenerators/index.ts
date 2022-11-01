@@ -215,6 +215,7 @@ export const generateQuestionForMath1Skill = (skill: Skill): Question => {
         },
       };
     case Skill.FINANCE_SALES_TAX:
+      // TODO fix the bug in this question
       const noun2 = getRandomItemFromMap(animalsMap);
       let randomNumber = randomize(2, 20);
       let taxRate = Math.floor(Math.random() * 19) + 1;
@@ -231,7 +232,8 @@ export const generateQuestionForMath1Skill = (skill: Skill): Question => {
         salesTaxModel: {
           numberOfToys: randomNumber,
           taxRate: taxRate,
-          price: price.toFixed(2),
+          price: price,
+          number: price,
           personName: personName,
           multipleAnimals: multipleAnimals,
           image1: image1,

@@ -1,19 +1,19 @@
 import React from "react";
-
 import {
   makeArray,
   bankArray,
   moneyArray,
   deductedArray,
+  checkingArray,
   bankArray2,
+  bankArray3,
   limitedArray,
   overdraftArray,
   protectionArray,
   pinArray,
   atmArray,
-  checkingArray,
-  bankArray3,
-} from "../../../pages/api/credit-card/DebitCardWordProblemData";
+} from "../../../../pages/api/games/credit-card/DebitCardWordProblemData";
+
 import { DropDownMenu } from "./DropDownMenu";
 
 interface DebitCardWordProps {
@@ -169,7 +169,7 @@ const DebitCardWordProblem = ({
     <div className="flex flex-col p-12">
       <div className="mb-12">
         <div className="flex justify-center mb-12">
-          <h1 className="text-green-500 font-bold text-5xl md:text-7xl uppercase">
+          <h1 className="text-5xl font-bold text-green-500 uppercase md:text-7xl">
             Debit Cards
           </h1>
         </div>
@@ -189,12 +189,12 @@ const DebitCardWordProblem = ({
             a purchase to your debit card
           </span>
         </div>
-        <div className="flex flex-col justify-center items-center">
+        <div className="flex flex-col items-center justify-center">
           <div className="px-12">
             <img className="" src="/images/credit-card/debit-piggybank.svg" />
           </div>
           <div className="text-2xl">
-            <div className="flex justify-center p-8 bg-green-200 rounded-2xl mx-12">
+            <div className="flex justify-center p-8 mx-12 bg-green-200 rounded-2xl">
               <span>
                 The{" "}
                 <DropDownMenu
@@ -221,7 +221,7 @@ const DebitCardWordProblem = ({
                 to the store
               </span>
             </div>
-            <div className="flex justify-center p-8 bg-green-300 rounded-2xl mx-12 my-4">
+            <div className="flex justify-center p-8 mx-12 my-4 bg-green-300 rounded-2xl">
               <span>
                 Money is{" "}
                 <DropDownMenu
@@ -251,7 +251,7 @@ const DebitCardWordProblem = ({
           </div>
         </div>
       </div>
-      <div className="flex flex-col-reverse gap-12 items-center">
+      <div className="flex flex-col-reverse items-center gap-12">
         <img
           className="max-w-sm p-4"
           src="/images/credit-card/debit-wallet.svg"

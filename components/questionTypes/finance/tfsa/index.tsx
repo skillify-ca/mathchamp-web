@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { SidebarItem } from "../../components/finance/SidebarItem";
-import TFSAAnnualLimit from "../../components/finance/TFSAAnnualLimit";
-import TFSABasics from "../../components/finance/TFSABasics";
-import TFSACalculator from "../../components/finance/TFSABasics";
-import TFSATotalContribution from "../../components/finance/TFSATotalContribution";
+import { SidebarItem } from "./SidebarItem";
+import TFSAAnnualLimit from "./TFSAAnnualLimit";
+import TFSABasics from "./TFSABasics";
+import TFSATotalContribution from "./TFSATotalContribution";
 
 export default function TFSA(props) {
   enum SECTION {
@@ -29,7 +28,7 @@ export default function TFSA(props) {
           How much can I contribute to my TFSA in total?
         </SidebarItem>
       </div>
-      <div className="col-span-12 sm:col-span-8 bg-white min-h-screen">
+      <div className="min-h-screen col-span-12 bg-white sm:col-span-8">
         {selectedSection === SECTION.BASICS ? (
           <TFSABasics />
         ) : selectedSection === SECTION.ANNUAL_LIMIT ? (
