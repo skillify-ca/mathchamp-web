@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import * as Colyseus from "colyseus.js";
-import { Question } from "../../../pages/api/question";
-import Card from "../../ui/Card";
 import ReactCardFlip from "react-card-flip";
-import { Button } from "../../ui/Button";
-import { QuestionType } from "../../../pages/api/questionTypes";
-import { Skill } from "../../../pages/api/skill";
-import { generateMath1Questions } from "../../../pages/api/practice/practiceQuestionGenerator";
+import { Question } from "../../pages/api/question";
+import { generateMath1Questions } from "../../pages/api/questionGenerators";
+import { QuestionType } from "../../pages/api/questionTypes";
+import { Skill } from "../../pages/api/skills";
+import { Button } from "../ui/Button";
+import Card from "../ui/Card";
 
 export interface CreateRoomProps {
   room: Colyseus.Room;
@@ -34,7 +34,7 @@ const PostGameLobby = ({
       text: "",
       answer: "",
       questionType: QuestionType.HORIZONTAL_EQUATION,
-      skill: Skill.ADDITION_SINGLE,
+      operator: "+",
     },
   ]);
 
@@ -133,13 +133,13 @@ const PostGameLobby = ({
                     {it.name}
                     {it.score == scoreWin ? (
                       <img
-                        src="/images/goldMedal.svg"
+                        src="/images/mathDash/goldMedal.svg"
                         width="200"
                         height="200"
                       />
                     ) : (
                       <img
-                        src="/images/silverMedal.svg"
+                        src="/images/mathDash/silverMedal.svg"
                         width="200"
                         height="200"
                       />

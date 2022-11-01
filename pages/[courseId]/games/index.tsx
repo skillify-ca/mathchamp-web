@@ -55,8 +55,8 @@ export async function getServerSideProps({ params }) {
           "https://images.unsplash.com/photo-1502214380024-fec72aa40e76?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1548&q=80",
       },
       {
-        title: "Math Battle",
-        link: "/math1/games/ConnectFour",
+        title: "Math Dash",
+        link: "/math1/games/mathDash",
         image:
           "https://images.unsplash.com/photo-1611996575749-79a3a250f948?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80",
       },

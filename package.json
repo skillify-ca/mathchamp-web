@@ -12,6 +12,7 @@
     "@apollo/client": "^3.7.1",
     "@firebase/auth": "^0.20.11",
     "@reduxjs/toolkit": "^1.8.6",
+    "colyseus.js": "^0.14.13",
     "firebase": "^9.13.0",
     "graphql": "^16.6.0",
     "lodash": "^4.17.21",
@@ -20,6 +21,7 @@
     "react-card-flip": "^1.1.6",
     "react-dom": "18.2.0",
     "react-minimal-pie-chart": "^8.4.0",
+    "react-pageflip": "^2.0.3",
     "react-redux": "^8.0.4",
     "react-use-firework": "^1.0.2"
   },

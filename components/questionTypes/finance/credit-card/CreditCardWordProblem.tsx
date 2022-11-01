@@ -1,22 +1,22 @@
 import React from "react";
-import { DropDownMenu } from "./DropDownMenu";
 import {
-  applyArray,
-  approvedArray,
-  billArray,
-  buildArray,
-  bill2Array,
   chargeArray,
   creditCardArray,
-  creditLimitArray,
+  billArray,
+  payArray,
+  bill2Array,
   doesntArray,
   interestArray,
-  lateFeeArray,
-  minimumArray,
-  payArray,
-  responsibleArray,
   unpaidArray,
-} from "../../../pages/api/credit-card/CreditCardWordProblemData";
+  minimumArray,
+  lateFeeArray,
+  creditLimitArray,
+  applyArray,
+  approvedArray,
+  buildArray,
+  responsibleArray,
+} from "../../../../pages/api/games/credit-card/CreditCardWordProblemData";
+import { DropDownMenu } from "./DropDownMenu";
 
 interface CreditCardWordProps {
   creditQ1: string;

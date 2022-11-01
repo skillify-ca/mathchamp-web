@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import * as Colyseus from "colyseus.js";
-import { Button } from "../../../ui/Button";
+import { Button } from "../../ui/Button";
 
 export interface CoopGameOverProps {
   room: Colyseus.Room;

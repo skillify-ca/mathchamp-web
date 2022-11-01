@@ -1,6 +1,6 @@
 import React, { useCallback, useRef, useState } from "react";
 import HTMLFlipBook from "react-pageflip";
-import { Button } from "../../../ui/Button";
+import { Button } from "../../ui/Button";
 
 export interface CoopStoryComponentProps {
   close: () => void;

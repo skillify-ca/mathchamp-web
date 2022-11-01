@@ -1,10 +1,11 @@
 import React, { useRef, useState } from "react";
 import * as Colyseus from "colyseus.js";
-import QuestionSet from "../stories/QuestionSet";
-import { Question } from "../../../pages/api/question";
-import { GuessData } from "../../../pages/api/guessData";
+
 import BattleProgressBar from "./BattleProgressBar";
-import { Player } from "../../../pages/games";
+import { GuessData } from "../../pages/api/guessData";
+import { Question } from "../../pages/api/question";
+import { Player } from "../../pages/[courseId]/games/mathDash";
+import QuestionSet from "../QuestionSet";
 
 export interface BattleComponentProps {
   questions: Question[];
@@ -98,12 +99,9 @@ const BattleComponent = ({
   return (
     <div className="flex flex-col items-center justify-center">
       <QuestionSet
-        title={"Battle"}
         questionData={questions}
         index={index}
-        inputElement={inputElement}
         submitGuess={submitGuess}
-        score={correctGuesses}
       />
 
       <div className="flex flex-row">

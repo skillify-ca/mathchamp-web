@@ -122,11 +122,11 @@ export const gameWinsMetaData: Record<WinnerOutcomes, WinnerData> = {
   },
   COMPUTER: {
     message: "This round goes to Computer the Great...",
-    image: "/images/math1/longestStreak/playerTwoWinner.jpg",
+    image: "/images/longestStreak/playerTwoWinner.jpg",
   },
   DRAW: {
     message: "This mission has resulted in a Draw!",
-    image: "/images/math1/longestStreak/drawWinner.png",
+    image: "/images/longestStreak/drawWinner.png",
   },
 };
 export type WinnerData = {

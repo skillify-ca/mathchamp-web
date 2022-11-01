@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Player } from "../../../pages/games";
-import { Button } from "../../ui/Button";
+import { Player } from "../../pages/[courseId]/games/mathDash";
+import { Button } from "../ui/Button";
 import CoopNarrative from "./coop/CoopNarrative";
 
 export interface CreateRoomProps {
@@ -46,7 +46,7 @@ const CreateRoom = ({
         <div className="flex flex-col items-center gap-8 p-8 bg-white rounded-lg shadow-lg text-murkrow">
           <div className="flex flex-wrap items-center gap-8">
             <img
-              src="/images/PVPIconBackground.png"
+              src="/images/mathDash/PVPIconBackground.png"
               className="w-24 h-24"
               width="300"
               height="300"
@@ -78,7 +78,7 @@ const CreateRoom = ({
           <div className="flex flex-col items-center justify-center gap-8 p-8 bg-white rounded-lg shadow-lg">
             <div className="items-center content-around">
               <img
-                src="/images/PVPIconBackground.png"
+                src="/images/mathDash/PVPIconBackground.png"
                 className="w-24 h-24"
                 width="300"
                 height="300"
@@ -116,7 +116,7 @@ const CreateRoom = ({
         <div className="flex flex-col items-center col-span-1 gap-8 p-8 bg-white rounded-lg shadow-lg">
           <div className="flex items-center gap-8">
             <img
-              src="/images/PVPIconBackground.png"
+              src="/images/mathDash/PVPIconBackground.png"
               className="w-24 h-24"
               width="300"
               height="300"

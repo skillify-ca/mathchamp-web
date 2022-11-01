@@ -1,5 +1,5 @@
 import React from "react";
-import { CardColorProblemData } from "../../../pages/api/credit-card/CardColorProblemData";
+import { CardColorProblemData } from "../../../../pages/api/games/credit-card/CardColorProblemData";
 import FinanceCard from "./FinanceCard";
 
 interface CardColorProps {

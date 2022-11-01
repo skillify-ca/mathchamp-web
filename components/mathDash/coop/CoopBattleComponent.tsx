@@ -1,9 +1,8 @@
 import React, { useRef, useState } from "react";
 import * as Colyseus from "colyseus.js";
-import QuestionSet from "../../stories/QuestionSet";
-import { Question } from "../../../../pages/api/question";
-import { GuessData } from "../../../../pages/api/guessData";
-import ProgressRing from "../../../ui/ProgressRing";
+import { GuessData } from "../../../pages/api/guessData";
+import { Question } from "../../../pages/api/question";
+import QuestionSet from "../../QuestionSet";
 
 export interface CoopBattleComponentProps {
   questions: Question[];
@@ -60,7 +59,7 @@ const CoopBattleComponent = ({
           onAnimationEnd={() => setPunchingAnimationVisibility(true)}
         >
           <div className="flex flex-col items-center gap-4 bg-white rounded-xl shadow-xl p-8">
-            <ProgressRing percentage={health} radius={24} unit={""} />
+            <progress value={health} className="" />
             <p className="text-xl font-bold mb-8">Health</p>
           </div>
         </div>
@@ -75,13 +74,9 @@ const CoopBattleComponent = ({
       </div>
       <div className="col-span-1">
         <QuestionSet
-          title={"Battle"}
-          HUDEnabled={false}
           questionData={questions}
           index={index}
-          inputElement={inputElement}
           submitGuess={submitGuess}
-          score={1}
         />
       </div>
     </div>
