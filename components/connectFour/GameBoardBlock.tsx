@@ -3,13 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   SelectedBy,
   WinType,
-} from "../../pages/api/games/multiplication-connect/gameLogic";
+} from "../../pages/api/games/connectFour/gameLogic";
 import {
   multiplicationConnectSelector,
   Stage,
   blockClick,
   togglePlayer,
-} from "../../redux/multiplicationConnectSlice";
+} from "../../redux/connectFour/connectFourSlice";
 
 interface GameBoardBlock {
   id: number;

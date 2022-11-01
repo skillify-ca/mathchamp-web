@@ -1,12 +1,12 @@
 import { createSlice, current, PayloadAction, Slice } from "@reduxjs/toolkit";
-import GameBoardBlock from "../components/multiplicationConnect/GameBoardBlock";
+import GameBoardBlock from "../../components/connectFour/GameBoardBlock";
 import {
   calculateWinner,
   createGrid,
   SelectedBy,
   WinType,
-} from "../pages/api/games/multiplication-connect/gameLogic";
-import { RootState } from "./rootReducer";
+} from "../../pages/api/games/connectFour/gameLogic";
+import { RootState } from "../rootReducer";
 
 export enum Stage {
   WELCOME = "WELCOME",
@@ -16,7 +16,7 @@ export enum Stage {
   GAME_OVER = "GAME_OVER",
 }
 
-export interface MultiplicationConnectState {
+export interface ConnectFourState {
   isPlayerOne: boolean;
   grid: GameBoardBlock[];
   stage: Stage;
@@ -24,7 +24,7 @@ export interface MultiplicationConnectState {
   hasWinner: null | WinType;
 }
 
-const initialState: MultiplicationConnectState = {
+const initialState: ConnectFourState = {
   isPlayerOne: true,
   grid: createGrid(),
   stage: Stage.WELCOME,
@@ -32,15 +32,15 @@ const initialState: MultiplicationConnectState = {
   hasWinner: null,
 };
 
-export const multiplicationConnectSlice: Slice = createSlice({
+export const connectFourSlice: Slice = createSlice({
   name: "MultiplicationConnectGame",
   initialState,
   reducers: {
-    reloadGrid: (state: MultiplicationConnectState) => {
+    reloadGrid: (state: ConnectFourState) => {
       state.grid = createGrid();
     },
     blockClick: (
-      state: MultiplicationConnectState,
+      state: ConnectFourState,
       action: PayloadAction<GameBoardBlock>
     ) => {
       const block = action.payload as GameBoardBlock;
@@ -65,17 +65,14 @@ export const multiplicationConnectSlice: Slice = createSlice({
         state.stage = Stage.GAME_OVER;
       }
     },
-    togglePlayer: (state: MultiplicationConnectState) => {
+    togglePlayer: (state: ConnectFourState) => {
       state.isPlayerOne = !state.isPlayerOne;
     },
-    setStage: (
-      state: MultiplicationConnectState,
-      action: PayloadAction<Stage>
-    ) => {
+    setStage: (state: ConnectFourState, action: PayloadAction<Stage>) => {
       const gameStage = action.payload as Stage;
       state.stage = gameStage;
     },
-    setNewGame: (state: MultiplicationConnectState) => {
+    setNewGame: (state: ConnectFourState) => {
       state.newGame++;
       state.stage = Stage.GAME_PLAY;
     },
@@ -89,7 +86,9 @@ export const {
   setStage,
   setNewGame,
   setGameWin,
-} = multiplicationConnectSlice.actions;
+} = connectFourSlice.actions;
 
 export const multiplicationConnectSelector = (state: RootState) =>
   state.multiplicationConnect;
+
+export const connectFourReducer = connectFourSlice.reducer;

@@ -1,13 +1,12 @@
 import { createSlice, PayloadAction, Slice } from "@reduxjs/toolkit";
-import { getRandomItemFromArray } from "../pages/api/random";
+import { getRandomItemFromArray } from "../../pages/api/random";
 
-import { min } from "lodash";
-import { BlockState } from "../components/longestStreak/MultiplicationBlock";
-import { RootState } from "./rootReducer";
+import { BlockState } from "../../components/longestStreak/MultiplicationBlock";
+import { RootState } from "../rootReducer";
 import {
   GameBlockState,
   initializeGameState,
-} from "../pages/api/games/longestStreak";
+} from "../../pages/api/games/longestStreak";
 
 export interface LongestStreakState {
   stage: STAGE;
@@ -192,4 +191,4 @@ export const {
 export const longestStreakSelector = (state: RootState) =>
   state.longestStreakState;
 
-export default longestStreakSlice.reducer;
+export const longestStreakReducer = longestStreakSlice.reducer;

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   multiplicationConnectSelector,
   setNewGame,
-} from "../../redux/multiplicationConnectSlice";
+} from "../../redux/connectFour/connectFourSlice";
 
 const Settings = () => {
   const [isOpen, setIsOpen] = useState(false);

@@ -1,21 +1,22 @@
-import { combineReducers } from "@reduxjs/toolkit";
-import longestStreakSlice, { LongestStreakState } from "./longestStreakSlice";
+import { combineReducers, Slice } from "@reduxjs/toolkit";
 import {
-  multiplicationConnectSlice,
-  MultiplicationConnectState,
-} from "./multiplicationConnectSlice";
+  connectFourReducer,
+  ConnectFourState,
+} from "./connectFour/connectFourSlice";
+import {
+  longestStreakReducer,
+  LongestStreakState,
+} from "./longestStreak/longestStreakSlice";
 
 type State = {
   [x: string]: any;
   longestStreakState: LongestStreakState;
-  multiplicationConnect: MultiplicationConnectState;
+  multiplicationConnect: ConnectFourState;
 };
-const longestStreakReducer = longestStreakSlice;
-const multiplicationConnectReducer = multiplicationConnectSlice.reducer;
 
 const rootReducer = combineReducers({
   longestStreakState: longestStreakReducer,
-  multiplicationConnect: multiplicationConnectReducer,
+  multiplicationConnect: connectFourReducer,
 });
 
 export type RootState = State;

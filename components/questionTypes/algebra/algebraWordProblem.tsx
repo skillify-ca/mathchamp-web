@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { GuessData } from "../../../pages/api/guessData";
 import { Button } from "../../ui/Button";
 
-export interface AlgebraSolveVariableProps {
+export interface AlgebraWordProblem {
   variableLetter: string;
   variableProblem: string;
   submitGuess: (guess: GuessData) => void;
@@ -11,7 +11,7 @@ export interface AlgebraSolveVariableProps {
   personName: string;
 }
 
-const AlgebraSolveVariable: React.FC<AlgebraSolveVariableProps> = ({
+const AlgebraWordProblem: React.FC<AlgebraWordProblem> = ({
   variableLetter,
   variableProblem,
   submitGuess,
@@ -69,4 +69,4 @@ const AlgebraSolveVariable: React.FC<AlgebraSolveVariableProps> = ({
   );
 };
 
-export default AlgebraSolveVariable;
+export default AlgebraWordProblem;

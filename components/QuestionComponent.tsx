@@ -2,7 +2,7 @@ import React from "react";
 import { GuessData } from "../pages/api/guessData";
 import { Question } from "../pages/api/question";
 import { QuestionType } from "../pages/api/questionTypes";
-import AlgebraSolveVariable from "./questionTypes/algebra/algebrasolvevariable";
+import AlgebraWordProblem from "./questionTypes/algebra/algebraWordProblem";
 import BalanceBudget from "./questionTypes/finance/budget/BalanceBudgetTable";
 import BudgetTable from "./questionTypes/finance/budget/BudgetTable";
 import CommissionQuestion from "./questionTypes/finance/consumer-math/CommissionQuestion";
@@ -135,13 +135,13 @@ const QuestionComponent = ({ questionData, submitGuess }: QuestionProps) => {
       image={questionData.unitPriceModel.image}
     />
   ) : questionData.questionType === QuestionType.ALGEBRA_SOLVE_VARIABLE ? (
-    <AlgebraSolveVariable
-      variableLetter={questionData.algebraSolveModel.variableLetter}
-      variableProblem={questionData.algebraSolveModel.variableProblem}
+    <AlgebraWordProblem
+      variableLetter={questionData.algebraWordProblemModel.variableLetter}
+      variableProblem={questionData.algebraWordProblemModel.variableProblem}
       submitGuess={submitGuess}
       text={""}
       answer={questionData.answer}
-      personName={questionData.algebraSolveModel.personName}
+      personName={questionData.algebraWordProblemModel.personName}
     />
   ) : questionData.questionType === QuestionType.FINANCE_SALES_TAX_PROBLEM ? (
     <SalesTaxQuestion

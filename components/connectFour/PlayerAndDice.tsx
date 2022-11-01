@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import {
   multiplicationConnectSelector,
   Stage,
-} from "../../redux/multiplicationConnectSlice";
+} from "../../redux/connectFour/connectFourSlice";
 import { Button } from "../ui/Button";
 
 const diceRoll = () => {

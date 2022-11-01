@@ -7,7 +7,7 @@ import { useAuth } from "../../lib/authContext";
 import {
   multiplicationConnectSelector,
   setNewGame,
-} from "../../redux/multiplicationConnectSlice";
+} from "../../redux/connectFour/connectFourSlice";
 
 interface ModalProps {
   type: "rules" | "fullscreen-welcome" | "game-alert" | "game-over-prompt";

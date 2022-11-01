@@ -1,6 +1,6 @@
 import { shuffle } from "lodash";
 import { BlockState } from "../../../components/longestStreak/MultiplicationBlock";
-import { GameLevel } from "../../../redux/longestStreakSlice";
+import { GameLevel } from "../../../redux/longestStreak/longestStreakSlice";
 import { getRndInteger } from "../random";
 
 export type GameBlockState = {

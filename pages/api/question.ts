@@ -1,14 +1,16 @@
+import {
+  PersonData,
+  ItemCostModel,
+} from "../../components/questionTypes/finance/budget/BalanceBudgetData";
+import { CoinType } from "../../components/questionTypes/finance/money/Coin";
+import { AlgebraSolveQuestion } from "./questionGenerators/algebraQuestionGenerator";
+import { HorizontalEquationQuestion } from "./questionGenerators/horizontalEquationQuestion";
+import { LongDivisionQuestion } from "./questionGenerators/longDivisionQuestion";
+import { TrueOrFalseQuestion } from "./questionGenerators/trueOrFalseQuestion";
+import { VerticalEquationQuestion } from "./questionGenerators/verticalEquationQuestion";
+import { VisualDotsQuestion } from "./questionGenerators/visualDotsQuestion";
+import { WordProblemQuestion } from "./questionGenerators/wordProblemQuestion";
 import { QuestionType } from "./questionTypes";
-import { HorizontalEquationQuestion } from "./labs/questionGenerators/horizontalEquationQuestion";
-import { TrueOrFalseQuestion } from "./labs/questionGenerators/trueOrFalseQuestion";
-import { VerticalEquationQuestion } from "./labs/questionGenerators/verticalEquationQuestion";
-import { VisualDotsQuestion } from "./labs/questionGenerators/visualDotsQuestion";
-import { WordProblemQuestion } from "./labs/questionGenerators/wordProblemQuestion";
-import { LongDivisionQuestion } from "./labs/questionGenerators/longDivisionQuestion";
-import { ItemCostModel } from "./labs/finance/money/itemCostModel";
-import { PersonData } from "./labs/finance/money/personData";
-import { Coin, CoinType } from "../../components/questionTypes/finance/Coin";
-import { AlgebraSolveQuestion } from "./labs/questionGenerators/algebraQuestionGenerator";
 
 export type Question =
   | VerticalEquationQuestion
@@ -139,5 +141,4 @@ export type InterestModel = {
 
 export type CountingModel = {
   coins: CoinType[];
-   
-}
+};

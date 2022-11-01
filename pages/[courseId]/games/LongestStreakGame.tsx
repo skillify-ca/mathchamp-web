@@ -14,7 +14,7 @@ import {
   setStage,
   STAGE,
   reset,
-} from "../../../redux/longestStreakSlice";
+} from "../../../redux/longestStreak/longestStreakSlice";
 
 import { DOWNGRADE_GAME_LEVEL } from "../../../graphql/longestStreak/downGradeGameLevel";
 import {

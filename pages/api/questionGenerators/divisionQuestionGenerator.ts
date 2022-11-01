@@ -1,14 +1,10 @@
-import { generateHorizontalEquationQuestion } from "../../labs/questionGenerators/horizontalEquationQuestion";
-import { generateLongDivisionQuestion } from "../../labs/questionGenerators/longDivisionQuestion";
-import { generateWordProblemQuestion } from "../../labs/questionGenerators/wordProblemQuestion";
-import { Question } from "../../question";
-import { QuestionType } from "../../questionTypes";
-import {
-  getRandomItemFromArray,
-  getRndInteger,
-  getRndTenthsDecimal,
-} from "../../random";
-import { Skill } from "../../skill";
+import { Question } from "../question";
+import { QuestionType } from "../questionTypes";
+import { getRndInteger, getRandomItemFromArray } from "../random";
+import { Skill } from "../skills";
+import { generateHorizontalEquationQuestion } from "./horizontalEquationQuestion";
+import { generateLongDivisionQuestion } from "./longDivisionQuestion";
+import { generateWordProblemQuestion } from "./wordProblemQuestion";
 
 export function getRandomDivisionQuestion(
   min: number,

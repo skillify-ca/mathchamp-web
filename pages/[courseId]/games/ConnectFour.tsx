@@ -7,15 +7,15 @@ import {
   Stage,
   togglePlayer,
   setNewGame,
-} from "../../../redux/multiplicationConnectSlice";
+} from "../../../redux/connectFour/connectFourSlice";
 
 import { useAuth } from "../../../lib/authContext";
 import { useMutation, useQuery } from "@apollo/client";
-import GameBoard from "../../../components/multiplicationConnect/GameBoard";
-import Modal from "../../../components/multiplicationConnect/Modal";
-import PlayerAndDice from "../../../components/multiplicationConnect/PlayerAndDice";
-import Settings from "../../../components/multiplicationConnect/Settings";
-import { WinType } from "../../api/games/multiplication-connect/gameLogic";
+import GameBoard from "../../../components/connectFour/GameBoard";
+import Modal from "../../../components/connectFour/Modal";
+import PlayerAndDice from "../../../components/connectFour/PlayerAndDice";
+import Settings from "../../../components/connectFour/Settings";
+import { WinType } from "../../api/games/connectFour/gameLogic";
 import {
   FetchUserMCDataRes,
   FETCH_USER_MC_DATA,

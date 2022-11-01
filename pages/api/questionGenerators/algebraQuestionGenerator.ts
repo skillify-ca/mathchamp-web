@@ -2,12 +2,12 @@ import { name } from "../names";
 import { QuestionType } from "../questionTypes";
 import { getRandomItemFromArray, getRndInteger } from "../random";
 
-export type AlgebraSolveQuestion = {
+export type AlgebraWordProblem = {
   questionType: QuestionType.ALGEBRA_SOLVE_VARIABLE;
-  algebraSolveModel: AlgebraSolveModel;
+  algebraWordProblemModel: AlgebraWordProblemModel;
   answer: string;
 };
-export type AlgebraSolveModel = {
+export type AlgebraWordProblemModel = {
   variableLetter: string;
   variableProblem: string;
   answer: string;
@@ -58,11 +58,11 @@ export function algebraHelper(): AlgebraObject {
   }
 }
 
-export function generateAlgebraQuestion(): AlgebraSolveQuestion {
+export function generateAlgebraQuestion(): AlgebraWordProblem {
   let algebraproblem = algebraHelper();
   return {
     questionType: QuestionType.ALGEBRA_SOLVE_VARIABLE,
-    algebraSolveModel: {
+    algebraWordProblemModel: {
       variableLetter: getRandomItemFromArray([
         "a",
         "b",

@@ -1,4 +1,4 @@
-import GameBoardBlock from "../../../../components/multiplicationConnect/GameBoardBlock";
+import GameBoardBlock from "../../../../components/connectFour/GameBoardBlock";
 import { getRandomItemFromArray } from "../../random";
 
 export enum SelectedBy {

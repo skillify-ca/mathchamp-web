@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import { useSelector } from "react-redux";
-import { multiplicationConnectSelector } from "../../redux/multiplicationConnectSlice";
+import { multiplicationConnectSelector } from "../../redux/connectFour/connectFourSlice";
 import GameBoardBlock from "./GameBoardBlock";
 
 const GameBoard: FC = () => {
