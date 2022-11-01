@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Button } from "../../ui/Button";
+import React from "react";
+import { Button } from "../ui/Button";
 
 export interface SetRulesProps {
   text: string;
