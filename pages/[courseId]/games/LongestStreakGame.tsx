@@ -1,37 +1,36 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Winner from "../../../../components/math/longestStreak/Winner";
-import MultiplicationBlock from "../../../../components/math/longestStreak/MultiplicationBlock";
-import Rules from "../../../../components/math/longestStreak/Rules";
 
-import { Button } from "../../../../components/ui/Button";
+import { useMutation, useQuery } from "@apollo/client";
+import MultiplicationBlock from "../../../components/longestStreak/MultiplicationBlock";
+import Rules from "../../../components/longestStreak/Rules";
+import UserTableStats from "../../../components/longestStreak/userTableStats";
+import Winner from "../../../components/longestStreak/Winner";
+import { Button } from "../../../components/ui/Button";
 import {
+  longestStreakSelector,
   handlePlayerSelect,
   initializeGame,
-  longestStreakSelector,
-  reset,
   setStage,
   STAGE,
-} from "../../../../redux/longestStreakSlice";
-import {
-  calculatePlayerScore,
-  calculateWin,
-  checkNumberNotSelected,
-} from "../../../api/longestStreak";
-import { useMutation, useQuery } from "@apollo/client";
+  reset,
+} from "../../../redux/longestStreakSlice";
 
-import { useAuth } from "../../../../lib/authContext";
-
-import { DOWNGRADE_GAME_LEVEL } from "../../../../graphql/longestStreak/downGradeGameLevel";
+import { DOWNGRADE_GAME_LEVEL } from "../../../graphql/longestStreak/downGradeGameLevel";
 import {
   FetchGameLevelResponse,
   FETCH_GAME_LEVEL,
-} from "../../../../graphql/longestStreak/fetchGameLevel";
+} from "../../../graphql/longestStreak/fetchGameLevel";
+import { RESET_GAME_LEVEL } from "../../../graphql/longestStreak/resetGameLevel";
+import { UPDATE_GAME_LEVEL } from "../../../graphql/longestStreak/updateGameLevel";
+import { UPSERT_GAME_LEVEL } from "../../../graphql/longestStreak/upsertGameLevel";
 
-import { RESET_GAME_LEVEL } from "../../../../graphql/longestStreak/resetGameLevel";
-import { UPDATE_GAME_LEVEL } from "../../../../graphql/longestStreak/updateGameLevel";
-import { UPSERT_GAME_LEVEL } from "../../../../graphql/longestStreak/upsertGameLevel";
-import UserTableStats from "../../../../components/math/longestStreak/userTableStats";
+import { useAuth } from "../../../lib/authContext";
+import {
+  calculatePlayerScore,
+  checkNumberNotSelected,
+  calculateWin,
+} from "../../api/games/longestStreak";
 
 export type LongestStreakGameProps = {
   user: any;

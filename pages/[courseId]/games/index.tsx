@@ -38,13 +38,13 @@ export async function getServerSideProps({ params }) {
     math1: [
       {
         title: "Longest Streak",
-        link: "/games/LongestStreakGame",
+        link: "/math1/games/LongestStreakGame",
         image:
           "https://images.unsplash.com/photo-1502214380024-fec72aa40e76?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1548&q=80",
       },
       {
         title: "Multiplication Connect Four",
-        link: "/games/multiplication-connect/Index",
+        link: "/math1/games/ConnectFour",
         image:
           "https://images.unsplash.com/photo-1611996575749-79a3a250f948?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80",
       },
