@@ -3,8 +3,15 @@ import { ApolloClient, InMemoryCache, useQuery } from "@apollo/client";
 import CourseNavbar from "../../components/CourseNavbar";
 import PracticePreview from "../../components/PracticePreview";
 import { FETCH_SKILLS_FOR_COURSE } from "../../graphql/fetchSkillsForCourse";
+import { useAuth } from "../../lib/authContext";
 
 export default function MathHomePage({ courseId, skillData }) {
+  const { signOut, signIn } = useAuth();
+
+  function handleSignOutClick() {
+    console.log("signout");
+    signOut();
+  }
   return (
     <div className="flex flex-col justify-center overflow-auto bg-scroll bg-blue-100 ">
       <CourseNavbar
@@ -12,6 +19,8 @@ export default function MathHomePage({ courseId, skillData }) {
           { name: "Practice", href: `/${courseId}` },
           { name: "Games", href: `/${courseId}/games` },
           { name: "Stats", href: `/${courseId}/stats` },
+          { name: "Log In", onClick: signIn },
+          { name: "Log Out", onClick: handleSignOutClick },
         ]}
       />
       <div className="flex flex-col p-4 space-y-8">
@@ -44,3 +53,5 @@ export async function getServerSideProps({ params }) {
 
   return { props: { skillData: data, courseId: "math1" } };
 }
+
+MathHomePage.auth = true;
