@@ -5,43 +5,12 @@ import DiceButtonComponent from "../../../components/alienPathway/DiceButton";
 import { Button } from "../../../components/ui/Button";
 import { GuessData } from "../../api/guessData";
 import { getRandomItemFromArray } from "../../api/random";
-export interface ButtonProps {
-  /**
-   * What background color to use
-   */
-  backgroundColor?:
-    | "blue"
-    | "green"
-    | "red"
-    | "purple"
-    | "pink"
-    | "yellow"
-    | "orange"
-    | "white";
-  /**
-   * What text color to use
-   * Can be white, black, gray-500, blue-200, blue-900, red-500, etc..
-   */
-  textColor?: string;
-  /**
-   * Button contents
-   */
-  label: string;
-  disabled?: boolean;
-  /**
-   * Optional click handler
-   */
-  onClick?: (e) => void;
-  size?: "small" | "medium" | "large";
-}
 
-// create diceOutput object to return both integer roll and display string
 type diceOutput = {
   diceNumber: number;
   diceDisplay: string;
 };
 
-// use parseint as a working solution -- find optimal way to convert
 const diceRoll = () => {
   const diceDisp = getRandomItemFromArray([
     "⚀ 1 ⚀",
@@ -64,8 +33,6 @@ export interface IndexProps {
   answer: string;
 }
 
-// need two separate rolls for a player, one for diceNumb, another for diceDisplay
-// how to think about the separate rolls?
 const Index: FC<IndexProps> = ({ submitGuess, answer }) => {
   const [grid, setGrid] = useState([]);
   const [newGame, setNewGame] = useState(0);
@@ -101,6 +68,8 @@ const Index: FC<IndexProps> = ({ submitGuess, answer }) => {
     setIndexNumber1(counter1);
     let counter2 = (roll2Number - 1) * 7;
     setIndexNumber2(counter2);
+    console.log("index1", indexNumber1);
+    console.log("index2", indexNumber2);
   });
   useEffect(() => {
     setGrid(createGrid);
@@ -108,12 +77,11 @@ const Index: FC<IndexProps> = ({ submitGuess, answer }) => {
   const newGameButton = () => {
     setNewGame(newGame + 1);
   };
-  // does this function need to use an object if there is only one output?
 
-  console.log(roll1Number);
+  console.log("roll number1", roll1Number);
+  console.log("roll number2", roll2Number);
   return (
     <div className="bg-slate-800">
-      {/* <p>{roll1Number}</p> */}
       <Button label="New Game" onClick={() => newGameButton()}></Button>
       <div className="grid grid-cols-2 place-content-center">
         <DiceButtonComponent
@@ -133,13 +101,11 @@ const Index: FC<IndexProps> = ({ submitGuess, answer }) => {
             <div className="h-8 border-b-2 border-r-2 md:h-8 sm:h-8">
               <BlockComponent
                 index={indexNumber1}
-                // update current roll, just grab number roll from diceOutput obj
                 rollDisplay={roll1Display}
                 currentRoll={roll1Number}
                 blockNumber={gridData.id}
                 newGame={0}
                 answer={""}
-                // submitGuess={{"", false}}
               />
             </div>
           ))}
@@ -154,7 +120,6 @@ const Index: FC<IndexProps> = ({ submitGuess, answer }) => {
                 blockNumber={gridData.id}
                 newGame={0}
                 answer={""}
-                // submitGuess={""}
               />
             </div>
           ))}
