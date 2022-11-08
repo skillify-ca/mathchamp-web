@@ -72,6 +72,12 @@ export async function getServerSideProps({ params }) {
         image:
           "https://images.unsplash.com/photo-1611996575749-79a3a250f948?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80",
       },
+      {
+        title: "Alien Pathway",
+        link: "/math1/games/AlienPathway",
+        image:
+          "https://images.unsplash.com/photo-1610296669228-602fa827fc1f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=775&q=80",
+      },
     ],
   };
   return {
