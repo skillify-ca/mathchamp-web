@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import * as Colyseus from "colyseus.js";
-import BattleComponent from "../../../../components/mathDash/BattleComponent";
-import CoopBattleComponent from "../../../../components/mathDash/coop/CoopBattleComponent";
-import CoopGameOver from "../../../../components/mathDash/coop/CoopGameOver";
-import CreateRoom from "../../../../components/mathDash/CreateRooms";
-import Lobby from "../../../../components/mathDash/PlayerLobby";
-import PostGameLobby from "../../../../components/mathDash/PostGameLobby";
-import { Question } from "../../../api/question";
-import { generateMath1Questions } from "../../../api/questionGenerators";
-import { QuestionType } from "../../../api/questionTypes";
+import BattleComponent from "../../../components/mathDash/BattleComponent";
+import CoopBattleComponent from "../../../components/mathDash/coop/CoopBattleComponent";
+import CoopGameOver from "../../../components/mathDash/coop/CoopGameOver";
+import CreateRoom from "../../../components/mathDash/CreateRooms";
+import Lobby from "../../../components/mathDash/PlayerLobby";
+import PostGameLobby from "../../../components/mathDash/PostGameLobby";
+import { Question } from "../../api/question";
+import { generateMath1Questions } from "../../api/questionGenerators";
+import { QuestionType } from "../../api/questionTypes";
 
 export type Player = {
   seat: number;

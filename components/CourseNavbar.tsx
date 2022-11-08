@@ -6,27 +6,28 @@ export type NavbarLink = {
   onClick?: () => void;
 };
 
-type CourseNavbarProps = {
-  navbarLinks: NavbarLink[];
-};
-export default function CourseNavbar({ navbarLinks }: CourseNavbarProps) {
-  const { user } = useAuth();
+export default function CourseNavbar() {
+  const { signIn, signOut } = useAuth();
 
+  const navbarLinks = [
+    { name: "Practice", href: `/` },
+    { name: "Games", href: `games` },
+    { name: "Stats", href: `stats` },
+    { name: "Log In", onClick: signIn },
+    { name: "Log Out", onClick: signOut },
+  ];
   return (
-    <header className="bg-white">
-      <nav className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8" aria-label="Top">
-        <div className="flex items-center justify-end w-full py-6 border-b border-slate-800 lg:border-none">
-          <p>{`Welcome ${user.displayName}!`}</p>
-          <div className="flex items-center">
-            <div className="hidden ml-10 space-x-8 lg:block">
+    <header className="bg-slate-400">
+      <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8" aria-label="Top">
+        <div className="flex items-center justify-between w-full">
+          <div className="flex flex-wrap items-center">
+            <div className="hidden w-full lg:flex">
               {navbarLinks.map((link) => (
-                <div onClick={link.onClick}>
-                  <a
-                    key={link.name}
-                    href={link.href}
-                    className="text-base font-medium text-slate-800 hover:text-slate-500"
-                  >
-                    {link.name}
+                <div onClick={link.onClick} className="cursor-pointer">
+                  <a key={link.name} href={link.href} className="">
+                    <div className="p-6 text-base font-medium text-slate-800 hover:text-slate-500 hover:bg-slate-700 hover:text-charmander">
+                      {link.name}
+                    </div>
                   </a>
                 </div>
               ))}
@@ -44,7 +45,7 @@ export default function CourseNavbar({ navbarLinks }: CourseNavbarProps) {
             </a>
           ))}
         </div>
-      </nav>
+      </div>
     </header>
   );
 }

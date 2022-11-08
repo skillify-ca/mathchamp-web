@@ -12,18 +12,37 @@ export default function MathHomePage({ courseId, skillData }) {
     console.log("signout");
     signOut();
   }
+
+  const strands = [
+    { name: "Addition and Subtraction", link: "addition-subtraction" },
+    { name: "Multiplication and Division", link: "multiplication-division" },
+    { name: "Fractions", link: "fractions" },
+    { name: "Decimals", link: "decimals" },
+    {
+      name: "Percent, Ratio, and Proportion",
+      link: "percent-ratio-proportion",
+    },
+    { name: "Measuring and Geometry", link: "measuring-geometry" },
+    {
+      name: "Statistics, data analysis, and probability",
+      link: "stats-data-probability",
+    },
+    { name: "Financial Literacy", link: "financial-literacy" },
+  ];
+
   return (
     <div className="flex flex-col justify-center overflow-auto bg-scroll bg-blue-100 ">
-      <CourseNavbar
-        navbarLinks={[
-          { name: "Practice", href: `/${courseId}` },
-          { name: "Games", href: `/${courseId}/games` },
-          { name: "Stats", href: `/${courseId}/stats` },
-          { name: "Log In", onClick: signIn },
-          { name: "Log Out", onClick: handleSignOutClick },
-        ]}
-      />
+      <CourseNavbar />
       <div className="flex flex-col p-4 space-y-8">
+        {strands.map((strand) => (
+          <a href={`/strands/${strand.link}`}>
+            <div
+              className={`bg-gradient-to-b from-orange-400 cursor-pointer hover:scale-110 hover:bg-orange-300 transition-all transform to-orange-500 h-36 w-48 m-4 rounded-xl flex justify-center text-center items-center p-4`}
+            >
+              <p>{strand.name}</p>
+            </div>
+          </a>
+        ))}
         {skillData && (
           <PracticePreview skills={skillData.skills} courseId={courseId} />
         )}

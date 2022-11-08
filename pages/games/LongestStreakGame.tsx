@@ -2,11 +2,11 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { useMutation, useQuery } from "@apollo/client";
-import MultiplicationBlock from "../../../components/longestStreak/MultiplicationBlock";
-import Rules from "../../../components/longestStreak/Rules";
-import UserTableStats from "../../../components/longestStreak/userTableStats";
-import Winner from "../../../components/longestStreak/Winner";
-import { Button } from "../../../components/ui/Button";
+import MultiplicationBlock from "../../components/longestStreak/MultiplicationBlock";
+import Rules from "../../components/longestStreak/Rules";
+import UserTableStats from "../../components/longestStreak/userTableStats";
+import Winner from "../../components/longestStreak/Winner";
+import { Button } from "../../components/ui/Button";
 import {
   longestStreakSelector,
   handlePlayerSelect,
@@ -14,23 +14,23 @@ import {
   setStage,
   STAGE,
   reset,
-} from "../../../redux/longestStreak/longestStreakSlice";
+} from "../../redux/longestStreak/longestStreakSlice";
 
-import { DOWNGRADE_GAME_LEVEL } from "../../../graphql/longestStreak/downGradeGameLevel";
+import { DOWNGRADE_GAME_LEVEL } from "../../graphql/longestStreak/downGradeGameLevel";
 import {
   FetchGameLevelResponse,
   FETCH_GAME_LEVEL,
-} from "../../../graphql/longestStreak/fetchGameLevel";
-import { RESET_GAME_LEVEL } from "../../../graphql/longestStreak/resetGameLevel";
-import { UPDATE_GAME_LEVEL } from "../../../graphql/longestStreak/updateGameLevel";
-import { UPSERT_GAME_LEVEL } from "../../../graphql/longestStreak/upsertGameLevel";
+} from "../../graphql/longestStreak/fetchGameLevel";
+import { RESET_GAME_LEVEL } from "../../graphql/longestStreak/resetGameLevel";
+import { UPDATE_GAME_LEVEL } from "../../graphql/longestStreak/updateGameLevel";
+import { UPSERT_GAME_LEVEL } from "../../graphql/longestStreak/upsertGameLevel";
 
-import { useAuth } from "../../../lib/authContext";
+import { useAuth } from "../../lib/authContext";
 import {
   calculatePlayerScore,
   checkNumberNotSelected,
   calculateWin,
-} from "../../api/games/longestStreak";
+} from "../api/games/longestStreak";
 
 export type LongestStreakGameProps = {
   user: any;
@@ -205,7 +205,7 @@ export default function LongestStreakGame() {
                     </ul>
                   </h1>
                   <div className="flex md:flex">
-                    <div className="xs:flex xs:px-10 xs:space-x-2 py-4 md:pl-20 md:p-8 md:space-y-8">
+                    <div className="py-4 xs:flex xs:px-10 xs:space-x-2 md:pl-20 md:p-8 md:space-y-8">
                       <Button
                         backgroundColor="purple"
                         label={"Rules"}

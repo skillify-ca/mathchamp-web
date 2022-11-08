@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import * as Colyseus from "colyseus.js";
-import { Player } from "../../pages/[courseId]/games/mathDash";
+import { Player } from "../../pages/games/mathDash";
 import { Button } from "../ui/Button";
 
 export interface CreateRoomProps {

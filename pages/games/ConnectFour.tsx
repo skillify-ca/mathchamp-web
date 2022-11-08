@@ -7,22 +7,22 @@ import {
   Stage,
   togglePlayer,
   setNewGame,
-} from "../../../redux/connectFour/connectFourSlice";
+} from "../../redux/connectFour/connectFourSlice";
 
-import { useAuth } from "../../../lib/authContext";
+import { useAuth } from "../../lib/authContext";
 import { useMutation, useQuery } from "@apollo/client";
-import GameBoard from "../../../components/connectFour/GameBoard";
-import Modal from "../../../components/connectFour/Modal";
-import PlayerAndDice from "../../../components/connectFour/PlayerAndDice";
-import Settings from "../../../components/connectFour/Settings";
-import { WinType } from "../../api/games/connectFour/gameLogic";
+import GameBoard from "../../components/connectFour/GameBoard";
+import Modal from "../../components/connectFour/Modal";
+import PlayerAndDice from "../../components/connectFour/PlayerAndDice";
+import Settings from "../../components/connectFour/Settings";
+import { WinType } from "../api/games/connectFour/gameLogic";
 import {
   FetchUserMCDataRes,
   FETCH_USER_MC_DATA,
   UserMCData,
-} from "../../../graphql/connectFour/fetchUserData";
-import { CREATE_USER_MC_DATA } from "../../../graphql/connectFour/createUserData";
-import { UPDATE_USER_GAMES_PLAYED_MCDATA } from "../../../graphql/connectFour/updateUserGamesPlayed";
+} from "../../graphql/connectFour/fetchUserData";
+import { CREATE_USER_MC_DATA } from "../../graphql/connectFour/createUserData";
+import { UPDATE_USER_GAMES_PLAYED_MCDATA } from "../../graphql/connectFour/updateUserGamesPlayed";
 
 export default function ConnectFour() {
   const [normalMode, setIsNormalMode] = useState(true);

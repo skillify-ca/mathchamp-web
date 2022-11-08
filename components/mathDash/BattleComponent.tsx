@@ -4,7 +4,7 @@ import * as Colyseus from "colyseus.js";
 import BattleProgressBar from "./BattleProgressBar";
 import { GuessData } from "../../pages/api/guessData";
 import { Question } from "../../pages/api/question";
-import { Player } from "../../pages/[courseId]/games/mathDash";
+import { Player } from "../../pages/games/mathDash";
 import QuestionSet from "../QuestionSet";
 
 export interface BattleComponentProps {
