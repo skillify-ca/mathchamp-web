@@ -11,13 +11,13 @@ export default function CourseNavbar() {
 
   const navbarLinks = [
     { name: "Practice", href: `/` },
-    { name: "Games", href: `games` },
-    { name: "Stats", href: `stats` },
+    { name: "Games", href: `/games` },
+    { name: "Stats", href: `/stats` },
     { name: "Log In", onClick: signIn },
     { name: "Log Out", onClick: signOut },
   ];
   return (
-    <header className="bg-slate-400">
+    <header className="bg-slate-800">
       <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8" aria-label="Top">
         <div className="flex items-center justify-between w-full">
           <div className="flex flex-wrap items-center">
@@ -25,7 +25,7 @@ export default function CourseNavbar() {
               {navbarLinks.map((link) => (
                 <div onClick={link.onClick} className="cursor-pointer">
                   <a key={link.name} href={link.href} className="">
-                    <div className="p-6 text-base font-medium text-slate-800 hover:text-slate-500 hover:bg-slate-700 hover:text-charmander">
+                    <div className="p-6 text-base font-medium text-white transition-all transform border-b-4 hover:text-slate-500 hover:border-charmander border-slate-800 hover:text-charmander">
                       {link.name}
                     </div>
                   </a>

@@ -75,7 +75,7 @@ export default function MathHomePage({ courseId, skillData }) {
         {strands.map((strand) => (
           <a href={`/strands/${strand.link}`}>
             <div
-              className={`bg-gradient-to-b from-orange-400 cursor-pointer hover:scale-110 hover:bg-orange-300 transition-all transform to-orange-500 h-36 w-48 m-4 rounded-xl flex justify-center text-center items-center p-4 flex-col`}
+              className={`bg-slate-800 text-white hover:text-charmander hover:font-bold cursor-pointer hover:scale-110 transition-all transform  h-36 w-48 m-4 rounded-xl flex justify-center text-center items-center p-4 flex-col`}
             >
               <img
                 className="w-16 h-16 transition-all transform rounded-full hover:rotate-12"

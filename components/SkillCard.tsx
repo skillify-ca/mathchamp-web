@@ -1,18 +1,18 @@
 import { useState } from "react";
 import Link from "next/link";
 
-export default function SkillCard({ skill, courseId }) {
+export default function SkillCard({ skill }) {
   const [isSelected, setIsSelected] = useState(false);
 
   return (
-    <Link href={`/math1/practice/${skill.id}`}>
+    <Link href={`/practice/${skill.id}`}>
       <div
         onMouseEnter={() => setIsSelected(true)}
         onMouseLeave={() => setIsSelected(false)}
-        className={`${"cursor-pointer transform transition duration-200 hover:bg-gray-200"} bg-gray-100 w-full mb-4 flex flex-row sm:flex-col items-center h-full rounded-xl shadow-lg`}
+        className={`${"cursor-pointer transform transition-all duration-200 hover:bg-slate-700"} bg-slate-800 w-full mb-4 flex flex-row sm:flex-col items-center h-full rounded-xl shadow-lg`}
       >
         <div className="h-full col-span-10">
-          <p className="flex items-center justify-start h-full col-span-8 p-4 text-center text-murkrow">
+          <p className="flex items-center justify-start h-full col-span-8 p-4 text-center text-white">
             {`I can ${skill.description}`}
           </p>
         </div>

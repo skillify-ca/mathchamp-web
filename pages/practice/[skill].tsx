@@ -3,25 +3,24 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect, useRef, useState } from "react";
 import ReactCardFlip from "react-card-flip";
-import QuestionSet from "../../../components/QuestionSet";
-import { Button } from "../../../components/ui/Button";
-import Card from "../../../components/ui/Card";
-import EmojiSlider from "../../../components/ui/EmojiSlider";
-import { FETCH_SKILLS } from "../../../graphql/fetchSkills";
-import { FETCH_USER_EMOJIS } from "../../../graphql/fetchUserEmojis";
-import { UPDATE_USER_SKILL_EMOJI } from "../../../graphql/updateUserEmoji";
-import { GuessData } from "../../api/guessData";
-import { Question } from "../../api/question";
-import { generateMath1Questions } from "../../api/questionGenerators";
-import { QuestionType } from "../../api/questionTypes";
+import QuestionSet from "../../components/QuestionSet";
+import { Button } from "../../components/ui/Button";
+import Card from "../../components/ui/Card";
+import EmojiSlider from "../../components/ui/EmojiSlider";
+import { FETCH_SKILLS } from "../../graphql/fetchSkills";
+import { FETCH_USER_EMOJIS } from "../../graphql/fetchUserEmojis";
+import { UPDATE_USER_SKILL_EMOJI } from "../../graphql/updateUserEmoji";
+import { GuessData } from "../api/guessData";
+import { Question } from "../api/question";
+import { generateMath1Questions } from "../api/questionGenerators";
+import { QuestionType } from "../api/questionTypes";
 
-const PracticeQuiz = ({ skill, courseId }) => {
+const PracticeQuiz = ({ skill }) => {
   enum STAGE {
     QUESTION,
     EMOJI,
     SESSION_END,
   }
-  const router = useRouter();
 
   const [isFlipped, setIsFlipped] = useState(false); // is the front of the card showing or is the back showing
   const [index, setIndex] = useState(0); // which question are we on in the question set
@@ -69,9 +68,7 @@ const PracticeQuiz = ({ skill, courseId }) => {
   };
 
   useEffect(() => {
-    if (courseId === "math1") {
-      setQuestionData(generateMath1Questions(Number.parseInt(skill)));
-    }
+    setQuestionData(generateMath1Questions(Number.parseInt(skill)));
 
     setCorrectGuess(0);
     setIndex(0);
@@ -202,7 +199,7 @@ const PracticeQuiz = ({ skill, courseId }) => {
                   <img src="/images/goodWork.png" className="mt-12 w-80"></img>
 
                   <div className="flex flex-row justify-between ">
-                    <a href="/math1">
+                    <a href="/">
                       <Button label="Back" backgroundColor="purple"></Button>
                     </a>
                     ``
@@ -304,7 +301,6 @@ export async function getStaticProps({ params }) {
   return {
     props: {
       skill: params.skill,
-      courseId: params.courseId,
     },
   };
 }
