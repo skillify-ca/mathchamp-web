@@ -1,5 +1,5 @@
 import { useState } from "react";
-import BlockComponent from "../../components/alienPathway/block";
+import BlockComponent from "../../components/alienPathway/Block";
 import { Button } from "../../components/ui/Button";
 import { getRndInteger } from "../api/random";
 
@@ -24,7 +24,7 @@ export default function AlienPathwayV2() {
   };
 
   return (
-    <div className="className='flex h-screen justify-center bg-slate-800 p-4 space-y-4">
+    <div className="className='flex justify-center h-screen p-4 space-y-4 bg-slate-800">
       <Button label={"Roll Dice"} onClick={handleOnClick} />
       <p className="text-white">this is the dice roll: {randomNumber}</p>
       <div className="grid grid-cols-7 text-2x`l text-white border-2">
