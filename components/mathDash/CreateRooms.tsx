@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Player } from "../../pages/[courseId]/games/mathDash";
+import { Player } from "../../pages/games/mathDash";
 import { Button } from "../ui/Button";
 import CoopNarrative from "./coop/CoopNarrative";
 
