@@ -62,7 +62,7 @@ export default function PracticePreview({ skills, courseId }) {
                       .sort((a, b) => a.unit.level - b.unit.level)
                       .map((skill, i) => (
                         <div key={i} className="p-2">
-                          <SkillCard skill={skill} courseId={courseId} />
+                          <SkillCard skill={skill} />
                         </div>
                       ))}
                   </div>

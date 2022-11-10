@@ -55,6 +55,12 @@ export async function getServerSideProps({ params }) {
         "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80",
     },
     {
+      title: "Food Truck",
+      link: "/games/foodtruck",
+      image:
+        "https://images.unsplash.com/photo-1605333409672-4f7db57ba3a2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Zm9vZHRydWNrfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=1000&q=60",
+    },
+    {
       title: "Fraction Bakery",
       link: "/games/ConnectFour",
       image:
