@@ -25,22 +25,7 @@ export default function AlienPathwayV2() {
   const sampleGrid = createGrid();
 
   const [randomNumber, setRandomNumber] = useState(0);
-
-  // The following code was an attempt at using a hashmap to store dice roll frequency
-  // Blocked on how to store frequency data in a hashmap, and how to +1 to values
-  // Currently the hashmap resets to 0 every time the button is pressed
-
-  // const [playerProgress, setPlayerProgress] = useState([0, 0, 0, 0, 0, 0]);
-  // let userProgressHashMap = new Map();
-  // userProgressHashMap
-  //   .set(1, 0)
-  //   .set(2, 0)
-  //   .set(3, 0)
-  //   .set(4, 0)
-  //   .set(5, 0)
-  //   .set(6, 0);
-
-  // // handle on click sets dice roll, and updates userProgressFunction
+  const [userIndex, setUserIndex] = useState(-1);
 
   const handleOnClick = () => {
     let diceRoll = getRndInteger(1, 7);
@@ -52,10 +37,11 @@ export default function AlienPathwayV2() {
       }
       console.log(userProgressList[index]);
     }
-    // console.log(userProgressList);
+    // define row and column number for readability
     let rowNumber = diceRoll - 1;
     let colNumber = userProgressList[diceRoll - 1];
     let index = rowNumber * 7 + colNumber[1] - 1;
+    setUserIndex(index);
     console.log(index);
   };
 
@@ -70,9 +56,9 @@ export default function AlienPathwayV2() {
         {sampleGrid.map((gridData) => (
           <div className="h-8 border-b-2 border-r-2 md:h-8 sm:h-8">
             <BlockComponent
-              index={1}
+              index={userIndex}
               rollDisplay={"hello"}
-              currentRoll={1}
+              currentRoll={0}
               blockNumber={gridData.id}
               newGame={0}
               answer={""}

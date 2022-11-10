@@ -97,15 +97,6 @@ export const BlockComponent: FC<BlockProps> = ({
         placeholder={problem}
         disabled={disableInput}
       ></input>
-      {/* remove button, onBlur is enough? Any way to use onKeyPress to use enter */}
-      {/* <button
-        hidden={disableInput}
-        type="submit"
-        className="text-xs"
-        onClick={() => onSubmit(guess)}
-      >
-        ▢
-      </button> */}
     </div>
   );
 };
