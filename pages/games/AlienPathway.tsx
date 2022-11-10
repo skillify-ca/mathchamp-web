@@ -23,24 +23,32 @@ export default function AlienPathwayV2() {
     setRandomNumber(getRndInteger(1, 7));
   };
 
-  return (
-    <div className="className='flex justify-center h-screen p-4 space-y-4 bg-slate-800">
-      <Button label={"Roll Dice"} onClick={handleOnClick} />
-      <p className="text-white">this is the dice roll: {randomNumber}</p>
-      <div className="grid grid-cols-7 text-2x`l text-white border-2">
-        {sampleGrid.map((gridData) => (
-          <div className="h-8 border-b-2 border-r-2 md:h-8 sm:h-8">
-            <BlockComponent
-              index={1}
-              rollDisplay={"hello"}
-              currentRoll={1}
-              blockNumber={gridData.id}
-              newGame={0}
-              answer={""}
-            />
-          </div>
-        ))}
+  // Represents Number of Dice Rolls
+  let userProgressHashMap = new Map([[one, 0]]);
+
+  let firstRow = userProgressHashMap.get(1);
+  console.log(firstRow);
+  if (randomNumber)
+    return (
+      <div className="className='flex justify-center h-screen p-4 space-y-4 bg-slate-800">
+        <Button label={"Roll Dice"} onClick={handleOnClick} />
+        <p className="text-white">this is the dice roll: {randomNumber}</p>
+        test to track user progress
+        <p>{firstRow}</p>
+        <div className="grid grid-cols-7 text-2x`l text-white border-2">
+          {sampleGrid.map((gridData) => (
+            <div className="h-8 border-b-2 border-r-2 md:h-8 sm:h-8">
+              <BlockComponent
+                index={1}
+                rollDisplay={"hello"}
+                currentRoll={1}
+                blockNumber={gridData.id}
+                newGame={0}
+                answer={""}
+              />
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
-  );
+    );
 }
