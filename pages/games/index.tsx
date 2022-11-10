@@ -65,19 +65,27 @@ export async function getServerSideProps({ params }) {
       multiplayer: true,
     },
     {
-      title: "War Game",
-      link: "/games/LongestStreakGame",
-      image:
-        "https://images.unsplash.com/photo-1494972688394-4cc796f9e4c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80",
-      multiplayer: true,
-    },
-    {
       title: "Math Dash",
       link: "/games/mathDash",
       image:
         "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80",
       multiplayer: true,
     },
+    {
+      title: "Alien Pathways",
+      link: "/games/AlienPathway",
+      image:
+        "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80",
+      multiplayer: true,
+    },
+    {
+      title: "War Game",
+      link: "/games/LongestStreakGame",
+      image:
+        "https://images.unsplash.com/photo-1494972688394-4cc796f9e4c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80",
+      multiplayer: true,
+    },
+
     {
       title: "Food Truck",
       link: "/games/foodtruck",
