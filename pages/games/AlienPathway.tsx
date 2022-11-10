@@ -46,15 +46,17 @@ export default function AlienPathwayV2() {
     let diceRoll = getRndInteger(1, 7);
     setRandomNumber(diceRoll);
     for (let index = 0; index < userProgressList.length; index++) {
-      // print the key for the progress list
-      console.log(userProgressList[index][0]);
       // mutate the value of the progress list, based on the diceroll
       if (diceRoll == userProgressList[index][0]) {
         userProgressList[index][1] += 1;
       }
-      console.log(userProgressList[index][1]);
+      console.log(userProgressList[index]);
     }
     // console.log(userProgressList);
+    let rowNumber = diceRoll - 1;
+    let colNumber = userProgressList[diceRoll - 1];
+    let index = rowNumber * 7 + colNumber[1] - 1;
+    console.log(index);
   };
 
   // let firstRow = userProgressHashMap.get(1);
