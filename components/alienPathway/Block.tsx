@@ -51,10 +51,7 @@ export const BlockComponent: FC<BlockProps> = ({
 
     setGuess("");
   };
-  // Why doesnt this code correctly increment index?
-  if (blockCorrect) {
-    index = index + 1;
-  }
+
   useEffect(() => {
     setDisableInput(blockNumber != index);
   });
