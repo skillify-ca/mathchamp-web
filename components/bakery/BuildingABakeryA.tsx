@@ -45,6 +45,20 @@ const BuildingABakeryA = ({
   q4Correct,
   setQ4Correct,
 }: BuildingABakeryAProps) => {
+  useEffect(() => {
+    numeratorQ3 / denominatorQ3 === 0.1
+      ? setQ3Correct("Correct")
+      : setQ3Correct("");
+  }, [numeratorQ3, denominatorQ3]);
+
+  useEffect(() => {
+    {
+      numeratorQ4 === "5" && denominatorQ4 == "9"
+        ? setQ4Correct("Correct")
+        : setQ4Correct("");
+    }
+  }, [numeratorQ4, denominatorQ4]);
+
   const validateQ1 = (newMonthlyRentQ1: string) => {
     if (newMonthlyRentQ1 === "250") {
       setQ1Correct("Correct");
@@ -156,18 +170,14 @@ const BuildingABakeryA = ({
         <div className={"flex justify-center border-4 border-red-200 ml-16"}>
           <div>
             <div className={"flex flex-wrap px-4 justify-center"}>
-              There is an ice cream & candy shop next door that is the same size
-              as your bakery. How many 30ths of the space does it take up?
+              There is an ice cream and candy shop next door that is the same
+              size as your bakery. How many 30ths of the space does it take up?
               (think Equivalent Fractions)
             </div>
             <div className={"grid grid-col-3 gap-4 mt-4 mb-4 mx-4 "}>
               <div className={" col-span-2 "}> Equation:</div>
-              <div className={"col-start-3  "}>
-                {" "}
+              <div className="col-start-3 ">
                 Answer:
-                {numeratorQ3 / denominatorQ3 === 0.1
-                  ? setQ3Correct("Correct")
-                  : setQ3Correct("")}{" "}
                 {q3Correct}
               </div>
               <input
@@ -221,9 +231,6 @@ const BuildingABakeryA = ({
               <div className={"col-start-3  "}>
                 {" "}
                 Answer:
-                {numeratorQ4 === "5" && denominatorQ4 == "9"
-                  ? setQ4Correct("Correct")
-                  : setQ4Correct("")}
                 {q4Correct}
               </div>
               <input
