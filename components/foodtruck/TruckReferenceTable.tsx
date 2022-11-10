@@ -1,5 +1,5 @@
 import React from "react";
-import { allTrucks } from "../../pages/api/foodtruck/food";
+import { allTrucks } from "../../pages/api/games/foodtruck/food";
 
 const TruckReferenceTable = () => {
   return (

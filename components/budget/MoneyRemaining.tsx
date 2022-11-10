@@ -1,7 +1,3 @@
-import { useState } from "@storybook/client-api";
-import FinanceProfile from "../../pages/finance-profile";
-import IncomeTable from "./IncomeTable";
-
 export interface MoneyRemainingTableProps {
   totalMonthlySection7: string;
   setTotalMonthlySection7: (totalMonthlySection7: string) => void;
@@ -51,20 +47,20 @@ const MoneyRemainingTable = ({
     newTotalMonthlySection7 === ""
       ? setMonthlyIncomeValidation("")
       : totalMonthlyIncome === newTotalMonthlySection7
-        ? setMonthlyIncomeValidation("Correct")
-        : setMonthlyIncomeValidation("Wrong");
+      ? setMonthlyIncomeValidation("Correct")
+      : setMonthlyIncomeValidation("Wrong");
   };
   const validateTotalExpenses = (newTotalExpensesSection7) => {
     newTotalExpensesSection7 === ""
       ? setTotalExpenseValidation("")
       : totalExpenses === newTotalExpensesSection7
-        ? setTotalExpenseValidation("Correct")
-        : setTotalExpenseValidation("Wrong");
+      ? setTotalExpenseValidation("Correct")
+      : setTotalExpenseValidation("Wrong");
   };
 
   return (
     <div>
-      <h1 className="sticky top-0 font-bold p-4 bg-green-300 text-white rounded-xl mb-4">
+      <h1 className="sticky top-0 p-4 mb-4 font-bold text-white bg-green-300 rounded-xl">
         Section 7: Money remaining after expenses are paid
       </h1>
 
@@ -96,10 +92,10 @@ const MoneyRemainingTable = ({
                     monthlyIncomeValidation === ""
                       ? "bg-white"
                       : monthlyIncomeValidation === "Correct"
-                        ? "bg-green-200"
-                        : monthlyIncomeValidation === "Wrong"
-                          ? "bg-red-200"
-                          : "bg-white"
+                      ? "bg-green-200"
+                      : monthlyIncomeValidation === "Wrong"
+                      ? "bg-red-200"
+                      : "bg-white"
                   }
                 ></input>
               </div>
@@ -125,10 +121,10 @@ const MoneyRemainingTable = ({
                     totalExpenseValidation === ""
                       ? "bg-white"
                       : totalExpenseValidation === "Correct"
-                        ? "bg-green-200"
-                        : totalExpenseValidation === "Wrong"
-                          ? "bg-red-200"
-                          : "bg-white"
+                      ? "bg-green-200"
+                      : totalExpenseValidation === "Wrong"
+                      ? "bg-red-200"
+                      : "bg-white"
                   }
                 ></input>
               </div>
@@ -164,10 +160,10 @@ const MoneyRemainingTable = ({
                     moneyRemValidation === ""
                       ? "bg-white"
                       : moneyRemValidation === "Correct"
-                        ? "bg-green-200"
-                        : moneyRemValidation === "Wrong"
-                          ? "bg-red-200"
-                          : "bg-white"
+                      ? "bg-green-200"
+                      : moneyRemValidation === "Wrong"
+                      ? "bg-red-200"
+                      : "bg-white"
                   }
                 ></input>
               </div>

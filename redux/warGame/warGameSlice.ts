@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction, Slice } from "@reduxjs/toolkit";
-import { RootState } from "./rootReducer";
+import { RootState } from "../rootReducer";
 
 export type ExpressionCard = {
   question: String; // 2^2 - 16

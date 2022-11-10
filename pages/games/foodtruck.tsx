@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { EndSession } from "../../components/budget/EndSession";
 import ChooseFoodType from "../../components/foodtruck/ChooseFoodType";
 import ChooseNumWorkers from "../../components/foodtruck/ChooseNumWorkers";
 import ChooseTruckType from "../../components/foodtruck/ChooseTruckType";

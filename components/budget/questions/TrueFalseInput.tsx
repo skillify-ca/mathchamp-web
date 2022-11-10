@@ -1,6 +1,4 @@
-import { StringNullableChain } from "lodash";
-import { ReactNode } from "react";
-import { MaritalStatus } from "../../pages/api/finance/profile";
+import { MaritalStatus } from "../../../pages/api/games/budget/profile";
 
 export interface TrueFalseProps {
   option1: string; // Yes, True or Optional

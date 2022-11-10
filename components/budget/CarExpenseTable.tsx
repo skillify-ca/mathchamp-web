@@ -1,8 +1,3 @@
-import { sum } from "lodash";
-import { ReactNode, useState } from "react";
-import StatementRow from "../stories/StatementRow";
-import { Input } from "../ui/Input";
-
 export interface CarExpenseTableProps {
   carPayment1: string;
   setCarPayment1: (carPayment1: string) => void; //Line I
@@ -46,10 +41,10 @@ const CarExpenseTable = ({
   return (
     <div>
       {" "}
-      <h1 className="sticky top-0 font-bold p-4 bg-green-300 text-white rounded-xl mb-4">
+      <h1 className="sticky top-0 p-4 mb-4 font-bold text-white bg-green-300 rounded-xl">
         Section 4: Car Expenses
       </h1>
-      <table className="table-fixed border-collapse w-1/3">
+      <table className="w-1/3 border-collapse table-fixed">
         <thead>
           <tr>
             <th className="w-1/4"></th>
@@ -92,14 +87,14 @@ const CarExpenseTable = ({
       <p className={"mt-6 mb-6"}>
         Add up your expenses in this section and put the total in Box M.
       </p>
-      <table className="table-fixed w-auto border-collapse">
+      <table className="w-auto border-collapse table-fixed">
         <thead>
           <tr>
             <th className="w-1/2 font-bold text-center bg-green-300 border border-black">
               {" "}
               Expense
             </th>
-            <th className="w-1/2 font-bold text-cetner bg-green-300 border border-black">
+            <th className="w-1/2 font-bold bg-green-300 border border-black text-cetner">
               {" "}
               Cost Per Month
             </th>
@@ -111,7 +106,7 @@ const CarExpenseTable = ({
               {" "}
               <p className={"mx-2"}> Car Payment #1</p>{" "}
             </td>
-            <td className="border border-black flex flex-nowrap">
+            <td className="flex border border-black flex-nowrap">
               <p className={"mx-2"}> I. </p>
               <div className={"ml-2"}>
                 <input
@@ -127,7 +122,7 @@ const CarExpenseTable = ({
               {" "}
               <p className={"mx-2"}>Car Payment #2</p>
             </td>
-            <td className="border border-black flex flex-nowrap">
+            <td className="flex border border-black flex-nowrap">
               <p className={"mx-2"}> J. </p>{" "}
               <div className={"ml-2"}>
                 <input
@@ -143,7 +138,7 @@ const CarExpenseTable = ({
               {" "}
               <p className={"mx-2"}>Insurance</p>
             </td>
-            <td className="border border-black flex flex-wrap">
+            <td className="flex flex-wrap border border-black">
               <p className={"mx-2"}>K.</p>
               <div className={"ml-2"}>
                 <input
@@ -159,7 +154,7 @@ const CarExpenseTable = ({
               {" "}
               <p className={"mx-2"}>Gasoline</p>
             </td>
-            <td className="border border-black flex flex-wrap">
+            <td className="flex flex-wrap border border-black">
               <p className={"mx-2"}>L.</p>
               <div className={"ml-2"}>
                 <input
@@ -171,10 +166,10 @@ const CarExpenseTable = ({
             </td>
           </tr>
           <tr>
-            <td className="border border-black bg-green-300">
+            <td className="bg-green-300 border border-black">
               <p className={"mx-2 font-bold"}>Total Monthly Income</p>
             </td>
-            <td className="border border-black flex flex-nowrap">
+            <td className="flex border border-black flex-nowrap">
               <p className={"mx-2"}>M.</p>
               <div className={"ml-2"}>
                 <input
