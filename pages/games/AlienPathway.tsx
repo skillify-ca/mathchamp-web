@@ -10,6 +10,16 @@ let userProgressList = [
   [5, 0],
   [6, 0],
 ];
+
+let userProgress = {
+  1: 0,
+  2: 0,
+  3: 0,
+  4: 0,
+  5: 0,
+  6: 0,
+};
+
 export default function AlienPathwayV2() {
   // For gameboard component, creates gameboard ID's from 1 to 42
   function createGrid() {
@@ -30,28 +40,17 @@ export default function AlienPathwayV2() {
   const handleOnClick = () => {
     let diceRoll = getRndInteger(1, 7);
     setRandomNumber(diceRoll);
-    for (let index = 0; index < userProgressList.length; index++) {
-      // mutate the value of the progress list, based on the diceroll
-      if (diceRoll == userProgressList[index][0]) {
-        userProgressList[index][1] += 1;
-      }
-      console.log(userProgressList[index]);
-    }
-    // define row and column number for readability
+    userProgress[diceRoll]++;
     let rowNumber = diceRoll - 1;
-    let colNumber = userProgressList[diceRoll - 1];
-    let index = rowNumber * 7 + colNumber[1] - 1;
+    let colNumber = userProgress[diceRoll];
+    let index = rowNumber * 7 + colNumber - 1;
     setUserIndex(index);
-    console.log(index);
   };
 
-  // let firstRow = userProgressHashMap.get(1);
-  // console.log(firstRow);
   return (
     <div className="className='flex justify-center h-screen p-4 space-y-4 bg-slate-800">
-      <Button label={"Roll Dice"} onClick={handleOnClick} />
-      <p className="text-white">this is the dice roll: {randomNumber}</p>
-      test to track user progress
+      <Button label={"Roll Dice"} onClick={handleOnClick} /> {randomNumber}
+      {/* <h1 className="text-white">Dice roll{randomNumber}</h1> */}
       <div className="grid grid-cols-7 text-2x`l text-white border-2">
         {sampleGrid.map((gridData) => (
           <div className="h-8 border-b-2 border-r-2 md:h-8 sm:h-8">
