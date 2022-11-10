@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+// TODO Use a new end session component for foodtruck
 import { EndSession } from "../../components/budget/EndSession";
 import ChooseFoodType from "../../components/foodtruck/ChooseFoodType";
 import ChooseNumWorkers from "../../components/foodtruck/ChooseNumWorkers";
