@@ -99,6 +99,13 @@ export async function getServerSideProps({ params }) {
         "https://images.unsplash.com/photo-1589758438368-0ad531db3366?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2064&q=80",
       multiplayer: false,
     },
+    {
+      title: "Budget Lesson",
+      link: "/games/budget",
+      image:
+        "https://images.unsplash.com/photo-1633158829556-6ea20ad39b4f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80",
+      multiplayer: false,
+    },
   ];
   return {
     props: { gameList: games },
