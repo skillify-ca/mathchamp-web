@@ -10,8 +10,7 @@ function numberGenerator() {
 }
 
 interface BlockProps {
-  invalidate: () => void;
-  validate: () => void;
+  validate: (bool) => void;
   index: number;
   rollDisplay: string;
   currentRoll: number;
@@ -20,7 +19,6 @@ interface BlockProps {
   answer: string;
 }
 export const BlockComponent: FC<BlockProps> = ({
-  invalidate,
   validate,
   index,
   currentRoll,
@@ -47,12 +45,12 @@ export const BlockComponent: FC<BlockProps> = ({
       setBlockAnswered(true);
       setBlockCorrect(true);
       setBlockColor("bg-green-500 border-2");
-      validate();
+      validate(false);
     } else {
       setBlockAnswered(true);
       setBlockCorrect(false);
       setBlockColor("bg-red-500 border-2");
-      invalidate();
+      validate(true);
     }
 
     setGuess("");
@@ -63,7 +61,6 @@ export const BlockComponent: FC<BlockProps> = ({
   });
   useEffect(() => {
     if (blockNumber === index && !blockCorrect) {
-      invalidate();
       setBlockColor("bg-yellow-500 border-2");
     }
   });

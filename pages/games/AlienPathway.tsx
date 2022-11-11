@@ -32,11 +32,9 @@ export default function AlienPathwayV2() {
   const [userIndex, setUserIndex] = useState(-1);
 
   const [validationState, setValidationState] = useState(false);
-  const validateFunction = () => {
-    setValidationState(false);
-  };
-  const invalidateFunction = () => {
-    setValidationState(true);
+  // handler
+  const handleValidateFunction = (bool: boolean) => {
+    setValidationState(bool);
   };
 
   const handleOnClick = () => {
@@ -65,8 +63,7 @@ export default function AlienPathwayV2() {
         {sampleGrid.map((gridData) => (
           <div className="h-8 border-b-2 border-r-2 md:h-8 sm:h-8">
             <BlockComponent
-              invalidate={invalidateFunction}
-              validate={validateFunction}
+              validate={handleValidateFunction}
               index={userIndex}
               rollDisplay={"hello"}
               currentRoll={0}
