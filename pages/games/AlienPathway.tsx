@@ -3,6 +3,14 @@ import BlockComponent from "../../components/alienPathway/Block";
 import { Button } from "../../components/ui/Button";
 import { getRndInteger } from "../api/random";
 
+interface UserProgress {
+  roll1: number;
+  roll2: number;
+  roll3: number;
+  roll4: number;
+  roll5: number;
+  roll6: number;
+}
 let userProgress = {
   1: 0,
   2: 0,
@@ -10,6 +18,16 @@ let userProgress = {
   4: 0,
   5: 0,
   6: 0,
+};
+
+const ScoreBoardFunction = (UserObject: UserProgress) => {
+  let score = 0;
+  for (const [key, value] of Object.entries(UserObject)) {
+    if (`${key}` == 6) {
+      score += 1;
+    }
+  }
+  return score;
 };
 
 export default function AlienPathwayV2() {
@@ -48,7 +66,6 @@ export default function AlienPathwayV2() {
     let index = rowNumber * 7 + colNumber - 1;
     setUserIndex(index);
   };
-
   return (
     <div className="className='flex justify-center h-screen p-4 space-y-4 bg-slate-800">
       {/* We want button to be enabled only when the game starts or if the current block is validated */}
