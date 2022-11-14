@@ -89,10 +89,11 @@ export default function AlienPathwayV2() {
     let colNumber = userProgress[diceRoll];
     let index = rowNumber * 6 + colNumber - 1;
     setUserIndex(index);
+    //add second user index
   };
   return (
     <div className="className='flex justify-center h-screen p-4 space-y-4 bg-slate-800">
-      <p>{userScore}</p>
+      <p>User's score is {userScore}</p>
       <Button
         disabled={validationState}
         label={"Roll Dice"}
@@ -100,6 +101,23 @@ export default function AlienPathwayV2() {
       />{" "}
       {randomNumber}
       {/* <h1 className="text-white">Dice roll{randomNumber}</h1> */}
+      <div className="grid grid-cols-6 text-2x`l text-white border-2">
+        {sampleGrid.map((gridData) => (
+          <div className="h-8 border-b-2 border-r-2 md:h-8 sm:h-8">
+            <BlockComponent
+              trackUserProgress={userProgress}
+              score={hanldeUserScore}
+              validate={handleValidateFunction}
+              index={userIndex}
+              rollDisplay={"hello"}
+              currentRoll={0}
+              blockNumber={gridData.id}
+              newGame={0}
+              answer={""}
+            />
+          </div>
+        ))}
+      </div>
       <div className="grid grid-cols-6 text-2x`l text-white border-2">
         {sampleGrid.map((gridData) => (
           <div className="h-8 border-b-2 border-r-2 md:h-8 sm:h-8">

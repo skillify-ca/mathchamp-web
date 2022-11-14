@@ -63,7 +63,7 @@ export const BlockComponent: FC<BlockProps> = ({
       setBlockColor("bg-yellow-500 border-2");
       validate(true);
     }
-  });
+  }, [index]);
   // This useEffect disables the input to all problems except the selected problem
   useEffect(() => {
     setDisableInput(blockNumber != index);
@@ -110,7 +110,7 @@ export const BlockComponent: FC<BlockProps> = ({
         id="input"
         type="number"
         value={guess}
-        className="text-sm text-white place-content-center bg-inherit w-12 placeholder:text-inherit text-center"
+        className="text-la text-white place-content-center bg-inherit w-20 placeholder:text-inherit text-center"
         onChange={(e) => setGuess(e.target.value)}
         placeholder={problem}
         disabled={disableInput}
