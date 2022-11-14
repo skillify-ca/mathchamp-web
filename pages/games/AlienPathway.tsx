@@ -4,12 +4,12 @@ import { Button } from "../../components/ui/Button";
 import { getRndInteger } from "../api/random";
 
 interface UserProgress {
-  roll1: number;
-  roll2: number;
-  roll3: number;
-  roll4: number;
-  roll5: number;
-  roll6: number;
+  1: number;
+  2: number;
+  3: number;
+  4: number;
+  5: number;
+  6: number;
 }
 let userProgress = {
   1: 0,
@@ -20,15 +20,28 @@ let userProgress = {
   6: 0,
 };
 
-// const ScoreBoardFunction = (UserObject: UserProgress) => {
-//   let score = 0;
-//   for (const [key, value] of Object.entries(UserObject)) {
-//     if (`${key}` == 6) {
-//       score += 1;
-//     }
-//   }
-//   return score;
-// };
+const ScoreBoardFunction = (UserObject: UserProgress) => {
+  let score = 0;
+  if (UserObject[1] == 6) {
+    score += 1;
+  }
+  if (UserObject[2] == 6) {
+    score += 1;
+  }
+  if (UserObject[3] == 6) {
+    score += 1;
+  }
+  if (UserObject[4] == 6) {
+    score += 1;
+  }
+  if (UserObject[5] == 6) {
+    score += 1;
+  }
+  if (UserObject[6] == 6) {
+    score += 1;
+  }
+  return score;
+};
 
 export default function AlienPathwayV2() {
   // For gameboard component, creates gameboard ID's from 1 to 42
@@ -46,9 +59,16 @@ export default function AlienPathwayV2() {
 
   // randomNumber represents the roll of the die
   const [randomNumber, setRandomNumber] = useState(0);
+
   // userIndex used to determine which block on the gameboard to highlight
   const [userIndex, setUserIndex] = useState(-1);
 
+  // userScore represents rows completed
+  // same as counting how many values are stored as 6 in the user object
+  const [userScore, setUserScore] = useState(0);
+  // sets user score to the number of values equal to 6 in userProgress Object
+  // createsetuserfunction score to prevent render loop
+  setUserScore(ScoreBoardFunction(userProgress));
   const [validationState, setValidationState] = useState(false);
   // handler
   const handleValidateFunction = (bool: boolean) => {
@@ -68,7 +88,7 @@ export default function AlienPathwayV2() {
   };
   return (
     <div className="className='flex justify-center h-screen p-4 space-y-4 bg-slate-800">
-      {/* We want button to be enabled only when the game starts or if the current block is validated */}
+      <p>{userScore}</p>
       <Button
         disabled={validationState}
         label={"Roll Dice"}
