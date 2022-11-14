@@ -20,6 +20,7 @@ let userProgress = {
   6: 0,
 };
 
+// Refactor this code to iterate through userobject instead of checking line by line
 const ScoreBoardFunction = (UserObject: UserProgress) => {
   // this resets the score to zero over and over
   let score = 0;

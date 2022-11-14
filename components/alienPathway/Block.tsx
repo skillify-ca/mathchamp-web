@@ -33,13 +33,10 @@ export const BlockComponent: FC<BlockProps> = ({
   const [randNumb, setRandNumb] = useState(0);
   const [randNumb2, setRandNumb2] = useState(0);
   const [blockColor, setBlockColor] = useState("");
-  const [blockAnswered, setBlockAnswered] = useState(false);
   const [blockCorrect, setBlockCorrect] = useState(false);
   const [dieRoll, setDieRoll] = useState("");
   const [guess, setGuess] = useState("");
-  const [blockDisable, setBlockDisable] = useState(true);
-  const [multproblem, setMultProblem] = useState("");
-  const [indexNumber, setIndexNumber] = useState(0);
+
   const [disableInput, setDisableInput] = useState(true);
   const problem = randNumb.toString() + " x " + randNumb2.toString();
   const product = (randNumb * randNumb2).toString();
@@ -47,12 +44,10 @@ export const BlockComponent: FC<BlockProps> = ({
   const onSubmit = (guess: string) => {
     if (guess === product) {
       score();
-      setBlockAnswered(true);
       setBlockCorrect(true);
       setBlockColor("bg-green-500 border-2");
       validate(false);
     } else {
-      setBlockAnswered(true);
       setBlockCorrect(false);
       setBlockColor("bg-red-500 border-2");
       validate(true);
@@ -61,24 +56,27 @@ export const BlockComponent: FC<BlockProps> = ({
     setGuess("");
   };
 
-  useEffect(() => {
-    setDisableInput(blockNumber != index);
-  });
+  // This useEffect colours the selected problem yellow
+  // Running into issues with this useEffect overwriting above submit guess
   useEffect(() => {
     if (blockNumber === index && !blockCorrect) {
       setBlockColor("bg-yellow-500 border-2");
       validate(true);
     }
   });
+  // This useEffect disables the input to all problems except the selected problem
+  useEffect(() => {
+    setDisableInput(blockNumber != index);
+  });
   // randNumb1 and randNumb2 are written this way to prevent rolling a number
   // which corresponds to a row that is already complete
   useEffect(() => {
     let randNumb1 = numberGenerator();
-    if (trackUserProgress[randNumb1] == 6) {
+    while (trackUserProgress[randNumb1] == 6) {
       let randNumb1 = numberGenerator();
     }
     let randNumb2 = numberGenerator();
-    if (trackUserProgress[randNumb2] == 6) {
+    while (trackUserProgress[randNumb2] == 6) {
       let randNumb2 = numberGenerator();
     }
     setRandNumb(randNumb1);
