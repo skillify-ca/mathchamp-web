@@ -48,7 +48,7 @@ export default function AlienPathwayV2() {
   // For gameboard component, creates gameboard ID's from 1 to 42
   function createGrid() {
     let gridList = [];
-    for (let i = 0; i < 42; i++) {
+    for (let i = 0; i < 36; i++) {
       gridList.push({
         id: i,
       });
@@ -81,13 +81,12 @@ export default function AlienPathwayV2() {
   const handleOnClick = () => {
     // diceRolls is one of 1,2,3,4,5,6
     let diceRoll = getRndInteger(1, 7);
-    hanldeUserScore();
     setRandomNumber(diceRoll);
     // UserProgress tracks frequency of diceRoll to keep track of blocks on the gameboard
     userProgress[diceRoll]++;
     let rowNumber = diceRoll - 1;
     let colNumber = userProgress[diceRoll];
-    let index = rowNumber * 7 + colNumber - 1;
+    let index = rowNumber * 6 + colNumber - 1;
     setUserIndex(index);
   };
   return (
@@ -100,10 +99,11 @@ export default function AlienPathwayV2() {
       />{" "}
       {randomNumber}
       {/* <h1 className="text-white">Dice roll{randomNumber}</h1> */}
-      <div className="grid grid-cols-7 text-2x`l text-white border-2">
+      <div className="grid grid-cols-6 text-2x`l text-white border-2">
         {sampleGrid.map((gridData) => (
           <div className="h-8 border-b-2 border-r-2 md:h-8 sm:h-8">
             <BlockComponent
+              score={hanldeUserScore}
               validate={handleValidateFunction}
               index={userIndex}
               rollDisplay={"hello"}

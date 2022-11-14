@@ -10,6 +10,7 @@ function numberGenerator() {
 }
 
 interface BlockProps {
+  score: () => void;
   validate: (bool) => void;
   index: number;
   rollDisplay: string;
@@ -19,6 +20,7 @@ interface BlockProps {
   answer: string;
 }
 export const BlockComponent: FC<BlockProps> = ({
+  score,
   validate,
   index,
   currentRoll,
@@ -42,6 +44,7 @@ export const BlockComponent: FC<BlockProps> = ({
 
   const onSubmit = (guess: string) => {
     if (guess === product) {
+      score();
       setBlockAnswered(true);
       setBlockCorrect(true);
       setBlockColor("bg-green-500 border-2");
