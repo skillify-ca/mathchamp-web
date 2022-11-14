@@ -103,6 +103,7 @@ export default function AlienPathwayV2() {
         {sampleGrid.map((gridData) => (
           <div className="h-8 border-b-2 border-r-2 md:h-8 sm:h-8">
             <BlockComponent
+              trackUserProgress={userProgress}
               score={hanldeUserScore}
               validate={handleValidateFunction}
               index={userIndex}

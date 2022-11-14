@@ -10,6 +10,7 @@ function numberGenerator() {
 }
 
 interface BlockProps {
+  trackUserProgress: object;
   score: () => void;
   validate: (bool) => void;
   index: number;
@@ -20,6 +21,7 @@ interface BlockProps {
   answer: string;
 }
 export const BlockComponent: FC<BlockProps> = ({
+  trackUserProgress,
   score,
   validate,
   index,
@@ -68,9 +70,19 @@ export const BlockComponent: FC<BlockProps> = ({
       validate(true);
     }
   });
+  // randNumb1 and randNumb2 are written this way to prevent rolling a number
+  // which corresponds to a row that is already complete
   useEffect(() => {
-    setRandNumb(numberGenerator());
-    setRandNumb2(numberGenerator());
+    let randNumb1 = numberGenerator();
+    if (trackUserProgress[randNumb1] == 6) {
+      let randNumb1 = numberGenerator();
+    }
+    let randNumb2 = numberGenerator();
+    if (trackUserProgress[randNumb2] == 6) {
+      let randNumb2 = numberGenerator();
+    }
+    setRandNumb(randNumb1);
+    setRandNumb2(randNumb2);
   }, [newGame]);
 
   useEffect(() => {
