@@ -20,15 +20,15 @@ let userProgress = {
   6: 0,
 };
 
-const ScoreBoardFunction = (UserObject: UserProgress) => {
-  let score = 0;
-  for (const [key, value] of Object.entries(UserObject)) {
-    if (`${key}` == 6) {
-      score += 1;
-    }
-  }
-  return score;
-};
+// const ScoreBoardFunction = (UserObject: UserProgress) => {
+//   let score = 0;
+//   for (const [key, value] of Object.entries(UserObject)) {
+//     if (`${key}` == 6) {
+//       score += 1;
+//     }
+//   }
+//   return score;
+// };
 
 export default function AlienPathwayV2() {
   // For gameboard component, creates gameboard ID's from 1 to 42

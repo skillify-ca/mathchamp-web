@@ -62,6 +62,7 @@ export const BlockComponent: FC<BlockProps> = ({
   useEffect(() => {
     if (blockNumber === index && !blockCorrect) {
       setBlockColor("bg-yellow-500 border-2");
+      validate(true);
     }
   });
   useEffect(() => {
