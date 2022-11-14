@@ -107,6 +107,3 @@ export const BlockComponent: FC<BlockProps> = ({
 };
 
 export default BlockComponent;
-function handleSearch(): void {
-  throw new Error("Function not implemented.");
-}

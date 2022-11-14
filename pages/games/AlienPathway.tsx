@@ -21,6 +21,7 @@ let userProgress = {
 };
 
 const ScoreBoardFunction = (UserObject: UserProgress) => {
+  // this resets the score to zero over and over
   let score = 0;
   if (UserObject[1] == 6) {
     score += 1;
@@ -67,10 +68,12 @@ export default function AlienPathwayV2() {
   // same as counting how many values are stored as 6 in the user object
   const [userScore, setUserScore] = useState(0);
   // sets user score to the number of values equal to 6 in userProgress Object
-  // createsetuserfunction score to prevent render loop
-  setUserScore(ScoreBoardFunction(userProgress));
+  // hanlder for score to prevent render loop
+  const hanldeUserScore = () => {
+    setUserScore(ScoreBoardFunction(userProgress));
+  };
   const [validationState, setValidationState] = useState(false);
-  // handler
+  // handler for dice button validation
   const handleValidateFunction = (bool: boolean) => {
     setValidationState(bool);
   };
@@ -78,6 +81,7 @@ export default function AlienPathwayV2() {
   const handleOnClick = () => {
     // diceRolls is one of 1,2,3,4,5,6
     let diceRoll = getRndInteger(1, 7);
+    hanldeUserScore();
     setRandomNumber(diceRoll);
     // UserProgress tracks frequency of diceRoll to keep track of blocks on the gameboard
     userProgress[diceRoll]++;
