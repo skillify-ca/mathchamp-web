@@ -10,6 +10,7 @@ function numberGenerator() {
 }
 
 interface BlockProps {
+  validate: (bool) => void;
   index: number;
   rollDisplay: string;
   currentRoll: number;
@@ -18,6 +19,7 @@ interface BlockProps {
   answer: string;
 }
 export const BlockComponent: FC<BlockProps> = ({
+  validate,
   index,
   currentRoll,
   blockNumber,
@@ -43,18 +45,17 @@ export const BlockComponent: FC<BlockProps> = ({
       setBlockAnswered(true);
       setBlockCorrect(true);
       setBlockColor("bg-green-500 border-2");
+      validate(false);
     } else {
       setBlockAnswered(true);
       setBlockCorrect(false);
       setBlockColor("bg-red-500 border-2");
+      validate(true);
     }
 
     setGuess("");
   };
-  // Why doesnt this code correctly increment index?
-  if (blockCorrect) {
-    index = index + 1;
-  }
+
   useEffect(() => {
     setDisableInput(blockNumber != index);
   });
@@ -100,15 +101,6 @@ export const BlockComponent: FC<BlockProps> = ({
         placeholder={problem}
         disabled={disableInput}
       ></input>
-      {/* remove button, onBlur is enough? Any way to use onKeyPress to use enter */}
-      {/* <button
-        hidden={disableInput}
-        type="submit"
-        className="text-xs"
-        onClick={() => onSubmit(guess)}
-      >
-        ▢
-      </button> */}
     </div>
   );
 };
