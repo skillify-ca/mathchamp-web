@@ -46,6 +46,11 @@ const ScoreBoardFunction = (UserObject: UserProgress) => {
 };
 
 export default function AlienPathwayV2() {
+  function checkForWinner() {
+    if (userScore == 3) {
+      alert("You Won!");
+    }
+  }
   // For gameboard component, creates gameboard ID's from 1 to 42
   function createGrid() {
     let gridList = [];
@@ -78,7 +83,8 @@ export default function AlienPathwayV2() {
   const handleValidateFunction = (bool: boolean) => {
     setValidationState(bool);
   };
-
+  // check for winner
+  checkForWinner();
   const handleOnClick = () => {
     // diceRolls is one of 1,2,3,4,5,6
     let diceRoll = getRndInteger(1, 7);
