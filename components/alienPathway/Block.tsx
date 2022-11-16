@@ -73,6 +73,7 @@ export const BlockComponent: FC<BlockProps> = ({
       setBlockColor("bg-yellow-500 border-2");
       validate(true);
       setDisableInput(false);
+      SetDisableInputAfterGuess(false);
     }
   }, [index]);
   // This useEffect disables the input to all problems except the selected problem
