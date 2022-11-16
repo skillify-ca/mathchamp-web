@@ -40,17 +40,21 @@ export const BlockComponent: FC<BlockProps> = ({
   const [disableInput, setDisableInput] = useState(true);
   const problem = randNumb.toString() + " x " + randNumb2.toString();
   const product = (randNumb * randNumb2).toString();
-
+  const [disableInputAfterGuess, SetDisableInputAfterGuess] = useState(false);
   const onSubmit = (guess: string) => {
     if (guess === product) {
       score();
       setBlockCorrect(true);
       setBlockColor("bg-green-500 border-2");
       validate(false);
+      setDisableInput(false);
+      SetDisableInputAfterGuess(true);
     } else {
       setBlockCorrect(false);
       setBlockColor("bg-red-500 border-2");
       validate(true);
+      setDisableInput(false);
+      SetDisableInputAfterGuess(true);
     }
 
     setGuess("");
@@ -66,7 +70,9 @@ export const BlockComponent: FC<BlockProps> = ({
   }, [index]);
   // This useEffect disables the input to all problems except the selected problem
   useEffect(() => {
-    setDisableInput(blockNumber != index);
+    setDisableInput(
+      (blockNumber != index && !blockCorrect) || disableInputAfterGuess
+    );
   });
   // randNumb1 and randNumb2 are written this way to prevent rolling a number
   // which corresponds to a row that is already complete
@@ -97,15 +103,10 @@ export const BlockComponent: FC<BlockProps> = ({
     };
   }, []);
   ``;
-  // const handleKeyPress = (e) => {
-  //   if (e.charCode === 13) {
-  //     onSubmit(guess);
-  //   }
-  // };
+
   return (
     <div className={blockColor}>
       <input
-        // onKeyPress={(e) => handleKeyPress(e)}
         onBlur={(e) => onSubmit(guess)}
         id="input"
         type="number"
