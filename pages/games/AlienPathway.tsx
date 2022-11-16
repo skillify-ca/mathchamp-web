@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import BlockComponent from "../../components/alienPathway/Block";
 import { Button } from "../../components/ui/Button";
 import { getRndInteger } from "../api/random";
@@ -29,25 +29,26 @@ let userProgress2 = {
 };
 
 // Refactor this code to iterate through userobject instead of checking line by line
-const ScoreBoardFunction = (UserObject: UserProgress) => {
+const generateScore = (userProgress: UserProgress) => {
   // this resets the score to zero over and over
+  // look at this later
   let score = 0;
-  if (UserObject[1] == 6) {
+  if (userProgress[1] == 6) {
     score += 1;
   }
-  if (UserObject[2] == 6) {
+  if (userProgress[2] == 6) {
     score += 1;
   }
-  if (UserObject[3] == 6) {
+  if (userProgress[3] == 6) {
     score += 1;
   }
-  if (UserObject[4] == 6) {
+  if (userProgress[4] == 6) {
     score += 1;
   }
-  if (UserObject[5] == 6) {
+  if (userProgress[5] == 6) {
     score += 1;
   }
-  if (UserObject[6] == 6) {
+  if (userProgress[6] == 6) {
     score += 1;
   }
   return score;
@@ -89,11 +90,12 @@ export default function AlienPathwayV2() {
   const [validationState, setValidationState] = useState(false);
   const [validationState2, setValidationState2] = useState(true);
 
+  //
   const hanldeUserScore = () => {
-    setUserScore(ScoreBoardFunction(userProgress));
+    setUserScore(generateScore(userProgress));
   };
   const hanldeUserScore2 = () => {
-    setUserScore2(ScoreBoardFunction(userProgress2));
+    setUserScore2(generateScore(userProgress2));
   };
   // handler for dice button validation
   const handleValidateFunction = (bool: boolean) => {
@@ -103,11 +105,17 @@ export default function AlienPathwayV2() {
     setValidationState2(bool);
   };
   // check for winner
-  checkForWinner();
+  useEffect(() => {
+    checkForWinner();
+  }, [userScore, userScore2]);
   const handleOnClick = () => {
     // diceRolls is one of 1,2,3,4,5,6
     let diceRoll = getRndInteger(1, 7);
     setRandomNumber(diceRoll);
+    while (userProgress[diceRoll] == 6) {
+      diceRoll = getRndInteger(1, 7);
+      setRandomNumber(diceRoll);
+    }
     // UserProgress tracks frequency of diceRoll to keep track of blocks on the gameboard
     let rowNumber = diceRoll - 1;
     let colNumber = userProgress[diceRoll];
@@ -126,7 +134,11 @@ export default function AlienPathwayV2() {
   const handleOnClick2 = () => {
     // diceRolls is one of 1,2,3,4,5,6
     let diceRoll2 = getRndInteger(1, 7);
-    setRandomNumber2(diceRoll2);
+    setRandomNumber(diceRoll2);
+    while (userProgress2[diceRoll2] == 6) {
+      diceRoll2 = getRndInteger(1, 7);
+      setRandomNumber2(diceRoll2);
+    }
     // UserProgress tracks frequency of diceRoll to keep track of blocks on the gameboard
     let rowNumber = diceRoll2 - 1;
     let colNumber = userProgress2[diceRoll2];
