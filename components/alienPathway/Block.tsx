@@ -96,7 +96,9 @@ export const BlockComponent: FC<BlockProps> = ({
     setRandNumb(randNumb1);
     setRandNumb2(randNumb2);
   }, [newGame]);
-
+  useEffect(() => {
+    score();
+  });
   useEffect(() => {
     const listener = (event) => {
       if (event.code === "Enter" || event.code === "NumpadEnter") {
