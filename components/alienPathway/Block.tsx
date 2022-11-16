@@ -10,9 +10,11 @@ function numberGenerator() {
 }
 
 interface BlockProps {
+  incrementUserProgress: () => void;
   trackUserProgress: object;
   score: () => void;
   validate: (bool) => void;
+  validateOtherPlayer: (bool) => void;
   index: number;
   rollDisplay: string;
   currentRoll: number;
@@ -21,9 +23,11 @@ interface BlockProps {
   answer: string;
 }
 export const BlockComponent: FC<BlockProps> = ({
+  incrementUserProgress,
   trackUserProgress,
   score,
   validate,
+  validateOtherPlayer,
   index,
   currentRoll,
   blockNumber,
@@ -46,15 +50,17 @@ export const BlockComponent: FC<BlockProps> = ({
       score();
       setBlockCorrect(true);
       setBlockColor("bg-green-500 border-2");
-      validate(false);
       setDisableInput(false);
       SetDisableInputAfterGuess(true);
+      validateOtherPlayer(false);
+      incrementUserProgress();
     } else {
       setBlockCorrect(false);
       setBlockColor("bg-red-500 border-2");
       validate(true);
       setDisableInput(false);
       SetDisableInputAfterGuess(true);
+      validateOtherPlayer(false);
     }
 
     setGuess("");
@@ -66,6 +72,7 @@ export const BlockComponent: FC<BlockProps> = ({
     if (blockNumber === index && !blockCorrect) {
       setBlockColor("bg-yellow-500 border-2");
       validate(true);
+      setDisableInput(false);
     }
   }, [index]);
   // This useEffect disables the input to all problems except the selected problem
@@ -78,13 +85,13 @@ export const BlockComponent: FC<BlockProps> = ({
   // which corresponds to a row that is already complete
   useEffect(() => {
     let randNumb1 = numberGenerator();
-    while (trackUserProgress[randNumb1] == 6) {
-      let randNumb1 = numberGenerator();
-    }
+    // while (trackUserProgress[randNumb1] == 6) {
+    //   let randNumb1 = numberGenerator();
+    // }
     let randNumb2 = numberGenerator();
-    while (trackUserProgress[randNumb2] == 6) {
-      let randNumb2 = numberGenerator();
-    }
+    // while (trackUserProgress[randNumb2] == 6) {
+    //   let randNumb2 = numberGenerator();
+    // }
     setRandNumb(randNumb1);
     setRandNumb2(randNumb2);
   }, [newGame]);

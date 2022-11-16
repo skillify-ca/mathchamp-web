@@ -87,13 +87,14 @@ export default function AlienPathwayV2() {
   // sets user score to the number of values equal to 6 in userProgress Object
   // hanlder for score to prevent render loop
   const [validationState, setValidationState] = useState(false);
+  const [validationState2, setValidationState2] = useState(true);
+
   const hanldeUserScore = () => {
     setUserScore(ScoreBoardFunction(userProgress));
   };
   const hanldeUserScore2 = () => {
     setUserScore2(ScoreBoardFunction(userProgress2));
   };
-  const [validationState2, setValidationState2] = useState(false);
   // handler for dice button validation
   const handleValidateFunction = (bool: boolean) => {
     setValidationState(bool);
@@ -108,22 +109,28 @@ export default function AlienPathwayV2() {
     let diceRoll = getRndInteger(1, 7);
     setRandomNumber(diceRoll);
     // UserProgress tracks frequency of diceRoll to keep track of blocks on the gameboard
-    userProgress[diceRoll]++;
     let rowNumber = diceRoll - 1;
     let colNumber = userProgress[diceRoll];
-    let index = rowNumber * 6 + colNumber - 1;
+    let index = rowNumber * 6 + colNumber;
     setUserIndex(index);
     //add second user index
   };
+
+  const incrementUserProgress = () => {
+    userProgress[randomNumber]++;
+  };
+  const incrementUserProgress2 = () => {
+    userProgress2[randomNumber2]++;
+  };
+
   const handleOnClick2 = () => {
     // diceRolls is one of 1,2,3,4,5,6
     let diceRoll2 = getRndInteger(1, 7);
     setRandomNumber2(diceRoll2);
     // UserProgress tracks frequency of diceRoll to keep track of blocks on the gameboard
-    userProgress2[diceRoll2]++;
     let rowNumber = diceRoll2 - 1;
     let colNumber = userProgress2[diceRoll2];
-    let index2 = rowNumber * 6 + colNumber - 1;
+    let index2 = rowNumber * 6 + colNumber;
     setUserIndex2(index2);
     //add second user index
   };
@@ -151,9 +158,11 @@ export default function AlienPathwayV2() {
         {sampleGrid.map((gridData) => (
           <div className="h-8 border-b-2 border-r-2 md:h-8 sm:h-8">
             <BlockComponent
+              incrementUserProgress={incrementUserProgress}
               trackUserProgress={userProgress}
               score={hanldeUserScore}
               validate={handleValidateFunction}
+              validateOtherPlayer={handleValidateFunction2}
               index={userIndex}
               rollDisplay={"hello"}
               currentRoll={0}
@@ -168,9 +177,11 @@ export default function AlienPathwayV2() {
         {sampleGrid.map((gridData) => (
           <div className="h-8 border-b-2 border-r-2 md:h-8 sm:h-8">
             <BlockComponent
+              incrementUserProgress={incrementUserProgress2}
               trackUserProgress={userProgress2}
               score={hanldeUserScore2}
               validate={handleValidateFunction2}
+              validateOtherPlayer={handleValidateFunction}
               index={userIndex2}
               rollDisplay={"hello"}
               currentRoll={0}
