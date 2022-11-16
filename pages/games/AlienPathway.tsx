@@ -134,7 +134,7 @@ export default function AlienPathwayV2() {
   const handleOnClick2 = () => {
     // diceRolls is one of 1,2,3,4,5,6
     let diceRoll2 = getRndInteger(1, 7);
-    setRandomNumber(diceRoll2);
+    setRandomNumber2(diceRoll2);
     while (userProgress2[diceRoll2] == 6) {
       diceRoll2 = getRndInteger(1, 7);
       setRandomNumber2(diceRoll2);
