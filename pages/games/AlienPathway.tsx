@@ -131,6 +131,8 @@ export default function AlienPathwayV2() {
     userProgress2[randomNumber2]++;
   };
 
+  const rowNumbers = [1, 2, 3, 4, 5, 6];
+
   const handleOnClick2 = () => {
     // diceRolls is one of 1,2,3,4,5,6
     let diceRoll2 = getRndInteger(1, 7);
@@ -147,62 +149,78 @@ export default function AlienPathwayV2() {
     //add second user index
   };
   return (
-    <div className="className='flex justify-center h-screen p-4 space-y-4 bg-slate-800">
-      <p>Player 1 Score is {userScore}</p>
-      <p>Player 2 Score is {userScore2}</p>
-      <div className="flex space-x-16">
+    <div
+      className="className='flex justify-center h-screen p-4 space-y-4 object-contain \n
+    bg-[url('https://images.unsplash.com/photo-1446941611757-91d2c3bd3d45?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2002&q=80')]"
+    >
+      <p>Mission Objective: The first player to complete 3 rows wins!</p>
+      <div className="grid grid-cols-2">
+        <p>Player 1 Score is {userScore}</p>
+        <p>Player 2 Score is {userScore2}</p>
+      </div>
+      <div className="grid grid-cols-2">
         <Button
           disabled={validationState}
           label={"Player 1 Dice"}
           onClick={handleOnClick}
         />
-        <p>{randomNumber}</p>
         <Button
           disabled={validationState2}
           label={"Player 2 Dice"}
           onClick={handleOnClick2}
         />
+        <p>{randomNumber}</p>
+
         <p>{randomNumber2}</p>
       </div>
 
       {/* <h1 className="text-white">Dice roll{randomNumber}</h1> */}
-      <div className="grid grid-cols-6 text-2x`l text-white border-2">
-        {sampleGrid.map((gridData) => (
-          <div className="h-8 border-b-2 border-r-2 md:h-8 sm:h-8">
-            <BlockComponent
-              incrementUserProgress={incrementUserProgress}
-              trackUserProgress={userProgress}
-              score={hanldeUserScore}
-              validate={handleValidateFunction}
-              validateOtherPlayer={handleValidateFunction2}
-              index={userIndex}
-              rollDisplay={"hello"}
-              currentRoll={0}
-              blockNumber={gridData.id}
-              newGame={0}
-              answer={""}
-            />
-          </div>
-        ))}
-      </div>
-      <div className="grid grid-cols-6 text-2x`l text-white border-2">
-        {sampleGrid.map((gridData) => (
-          <div className="h-8 border-b-2 border-r-2 md:h-8 sm:h-8">
-            <BlockComponent
-              incrementUserProgress={incrementUserProgress2}
-              trackUserProgress={userProgress2}
-              score={hanldeUserScore2}
-              validate={handleValidateFunction2}
-              validateOtherPlayer={handleValidateFunction}
-              index={userIndex2}
-              rollDisplay={"hello"}
-              currentRoll={0}
-              blockNumber={gridData.id}
-              newGame={0}
-              answer={""}
-            />
-          </div>
-        ))}
+      {/* <p className="">1 2 3 4 5 6</p> */}
+      <div className="grid grid-cols-[50px_1fr_1fr]">
+        <div>
+          <p>Row 1</p>
+          <p>Row 2</p>
+          <p>Row 3</p>
+          <p>Row 4</p>
+        </div>
+        <div className="grid grid-cols-6 text-2x`l text-white border-2">
+          {sampleGrid.map((gridData) => (
+            <div className="h-8 border-b-2 border-r-2 md:h-8 sm:h-8">
+              <BlockComponent
+                incrementUserProgress={incrementUserProgress}
+                trackUserProgress={userProgress}
+                score={hanldeUserScore}
+                validate={handleValidateFunction}
+                validateOtherPlayer={handleValidateFunction2}
+                index={userIndex}
+                rollDisplay={"hello"}
+                currentRoll={0}
+                blockNumber={gridData.id}
+                newGame={0}
+                answer={""}
+              />
+            </div>
+          ))}
+        </div>
+        <div className="grid grid-cols-6 text-2x`l text-white border-2">
+          {sampleGrid.map((gridData) => (
+            <div className="h-8 border-b-2 border-r-2 md:h-8 sm:h-8">
+              <BlockComponent
+                incrementUserProgress={incrementUserProgress2}
+                trackUserProgress={userProgress2}
+                score={hanldeUserScore2}
+                validate={handleValidateFunction2}
+                validateOtherPlayer={handleValidateFunction}
+                index={userIndex2}
+                rollDisplay={"hello"}
+                currentRoll={0}
+                blockNumber={gridData.id}
+                newGame={0}
+                answer={""}
+              />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
