@@ -44,7 +44,7 @@ export const BlockComponent: FC<BlockProps> = ({
     if (guess === product) {
       score();
       setBlockCorrect(true);
-      setBlockColor("bg-green-500 border-2");
+      setBlockColor("bg-green-500 ");
       setDisableInput(false);
       SetDisableInputAfterGuess(true);
       validateOtherPlayer(false);
@@ -52,7 +52,7 @@ export const BlockComponent: FC<BlockProps> = ({
     } else {
       // If they guess incorrectly, then colour red, disable the input and validate the other players dice
       setBlockCorrect(false);
-      setBlockColor("bg-red-600 border-2");
+      setBlockColor("bg-red-600 ");
       validate(true);
       setDisableInput(false);
       SetDisableInputAfterGuess(true);
@@ -66,7 +66,7 @@ export const BlockComponent: FC<BlockProps> = ({
   // Running into issues with this useEffect overwriting above submit guess
   useEffect(() => {
     if (blockNumber === index && !blockCorrect) {
-      setBlockColor("bg-yellow-600 border-2");
+      setBlockColor("bg-yellow-600 ");
       validate(true);
       setDisableInput(false);
       SetDisableInputAfterGuess(false);

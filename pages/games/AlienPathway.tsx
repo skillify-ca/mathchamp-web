@@ -139,14 +139,14 @@ export default function AlienPathwayV2() {
           Mission Objective: Be the FIRST to Solve THREE Rows
         </p>
         <div className="grid grid-rows-2 py-4">
-          <div className="grid py-8 grid-cols-[300px_1fr]">
+          <div className="grid py-8 grid-cols-[200px_1fr]">
             <div className=" grid grid-cols-2">
               <input
                 autoComplete="false"
                 id="input"
                 type="string"
                 placeholder="Enter Player Name"
-                className="w-64 font-bold flex text-center border-2 border-gray-300"
+                className="w-40 font-bold flex text-center border-2 border-gray-300"
               ></input>
             </div>
             <div className="text-2xl grid grid-cols-2">
@@ -198,14 +198,14 @@ export default function AlienPathwayV2() {
             </div>
           </div>
 
-          <div className="grid py-8 grid-cols-[300px_1fr]">
+          <div className="grid py-8 grid-cols-[200px_1fr]">
             <div className="grid grid-cols-2">
               <input
                 autoComplete="false"
                 id="input"
                 type="string"
                 placeholder="Enter Player Name"
-                className="w-64 font-bold flex text-center border-2 border-gray-300"
+                className="w-40 font-bold flex text-center border-2 border-gray-300"
               ></input>
             </div>
             <div className="text-2xl grid grid-cols-2">
