@@ -56,7 +56,7 @@ export const BlockComponent: FC<BlockProps> = ({
       incrementUserProgress();
     } else {
       setBlockCorrect(false);
-      setBlockColor("bg-red-500 border-2");
+      setBlockColor("bg-red-600 border-2");
       validate(true);
       setDisableInput(false);
       SetDisableInputAfterGuess(true);
@@ -70,7 +70,7 @@ export const BlockComponent: FC<BlockProps> = ({
   // Running into issues with this useEffect overwriting above submit guess
   useEffect(() => {
     if (blockNumber === index && !blockCorrect) {
-      setBlockColor("bg-yellow-500 border-2");
+      setBlockColor("bg-yellow-600 border-2");
       validate(true);
       setDisableInput(false);
       SetDisableInputAfterGuess(false);
@@ -121,7 +121,7 @@ export const BlockComponent: FC<BlockProps> = ({
         id="input"
         type="number"
         value={guess}
-        className="text-la text-white place-content-center bg-inherit w-20 placeholder:text-inherit text-center"
+        className="text-xl text-normal text-sky-50 place-content-center bg-inherit w-20 placeholder:text-inherit text-center"
         onChange={(e) => setGuess(e.target.value)}
         placeholder={problem}
         disabled={disableInput}
