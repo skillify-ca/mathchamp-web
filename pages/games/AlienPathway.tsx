@@ -74,8 +74,8 @@ export default function AlienPathwayV2() {
   const sampleGrid = createGrid();
 
   // randomNumber represents the roll of the die
-  const [randomNumber, setRandomNumber] = useState("");
-  const [randomNumber2, setRandomNumber2] = useState("");
+  const [randomNumber, setRandomNumber] = useState(0);
+  const [randomNumber2, setRandomNumber2] = useState(0);
 
   // userIndex used to determine which block on the gameboard to highlight
   const [userIndex, setUserIndex] = useState(-1);
