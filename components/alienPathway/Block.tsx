@@ -33,7 +33,6 @@ export const BlockComponent: FC<BlockProps> = ({
   const [blockColor, setBlockColor] = useState("");
   const [blockCorrect, setBlockCorrect] = useState(false);
   const [guess, setGuess] = useState("");
-
   const [disableInput, setDisableInput] = useState(true);
   const problem = randNumb.toString() + " x " + randNumb2.toString();
   const product = (randNumb * randNumb2).toString();

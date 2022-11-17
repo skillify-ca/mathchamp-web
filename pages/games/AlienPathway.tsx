@@ -31,7 +31,7 @@ let userProgress2 = {
 
 const generateScore = (userProgress: UserProgress) => {
   let score = 0;
-  for (let index = 0; index < 7; index++) {
+  for (let index = 1; index < 7; index++) {
     if (userProgress[index] == 6) {
       score += 1;
     }
@@ -138,110 +138,123 @@ export default function AlienPathwayV2() {
         <p className="text-3xl">
           Mission Objective: Be the FIRST to Solve THREE Rows
         </p>
-        <div className=" grid grid-cols-2">
-          <input
-            autoComplete="false"
-            id="input"
-            type="string"
-            placeholder="Enter Player Name"
-            className="w-64 font-bold flex text-center border-2 border-gray-300"
-          ></input>
-          <input
-            autoComplete="false"
-            id="input"
-            type="string"
-            placeholder="Enter Player Name"
-            className="w-64 font-bold flex text-center border-2 border-gray-300"
-          ></input>
-        </div>
-        <div className="text-2xl grid grid-cols-2">
-          <p>P1 Score: {userScore}</p>
-          <p>P2 Score: {userScore2}</p>
-        </div>
-        <div className="text-2xl grid grid-cols-2">
-          <img
-            width="100"
-            height="100"
-            src="https://cdn.pixabay.com/photo/2016/04/01/12/07/alien-1300539_1280.png"
-          ></img>
-          <img
-            width="100"
-            height="100"
-            src="https://cdn.pixabay.com/photo/2016/04/01/12/07/alien-1300539_1280.png"
-          ></img>
-          <Button
-            disabled={validationState}
-            label={"Player 1 Dice"}
-            onClick={handleOnClick}
-          />
-          <Button
-            disabled={validationState2}
-            label={"Player 2 Dice"}
-            onClick={handleOnClick2}
-          />
-          <p>Row {randomNumber}</p>
+        <div className="grid grid-rows-2 py-4">
+          <div className="grid py-8 grid-cols-[300px_1fr]">
+            <div className=" grid grid-cols-2">
+              <input
+                autoComplete="false"
+                id="input"
+                type="string"
+                placeholder="Enter Player Name"
+                className="w-64 font-bold flex text-center border-2 border-gray-300"
+              ></input>
+            </div>
+            <div className="text-2xl grid grid-cols-2">
+              <p>P1 Score: {userScore}</p>
+            </div>
+            <div className="text-2xl ">
+              <img
+                width="100"
+                height="100"
+                src="https://cdn.pixabay.com/photo/2016/04/01/12/07/alien-1300539_1280.png"
+              ></img>
+              <Button
+                disabled={validationState}
+                label={"Player 1 Dice"}
+                onClick={handleOnClick}
+              />
 
-          <p>Row {randomNumber2}</p>
-        </div>
+              <p>Row {randomNumber}</p>
+            </div>
 
-        {/* <h1 className="text-white">Dice roll{randomNumber}</h1> */}
-        {/* <p className="">1 2 3 4 5 6</p> */}
-        <div className="grid grid-cols-[50px_1fr]">
-          <div className="font-thin grid grid-rows-6">
-            <p>Row 1</p>
-            <p>Row 2</p>
-            <p>Row 3</p>
-            <p>Row 4</p>
-            <p>Row 5</p>
-            <p>Row 6</p>
-          </div>
-          <div className="font-thin grid grid-cols-6 text-lg text-white border-2">
-            {sampleGrid.map((gridData) => (
-              <div className="h-8 border-r-2 md:h-8 sm:h-8">
-                <BlockComponent
-                  incrementUserProgress={incrementUserProgress}
-                  trackUserProgress={userProgress}
-                  score={hanldeUserScore}
-                  validate={handleValidateFunction}
-                  validateOtherPlayer={handleValidateFunction2}
-                  index={userIndex}
-                  rollDisplay={"hello"}
-                  currentRoll={0}
-                  blockNumber={gridData.id}
-                  newGame={0}
-                  answer={""}
-                />
+            <div className="grid grid-cols-[50px_1fr]">
+              <div className="font-thin grid grid-rows-6">
+                <p>Row 1</p>
+                <p>Row 2</p>
+                <p>Row 3</p>
+                <p>Row 4</p>
+                <p>Row 5</p>
+                <p>Row 6</p>
               </div>
-            ))}
-          </div>
-        </div>
-        <div className="grid grid-cols-[50px_1fr]">
-          <div className="font-thin grid grid-rows-6">
-            <p>Row 1</p>
-            <p>Row 2</p>
-            <p>Row 3</p>
-            <p>Row 4</p>
-            <p>Row 5</p>
-            <p>Row 6</p>
-          </div>
-          <div className="font-thin grid grid-cols-6 text-xl text-teal-200 border-2">
-            {sampleGrid.map((gridData) => (
-              <div className="h-8 border-r-2 min-w-64">
-                <BlockComponent
-                  incrementUserProgress={incrementUserProgress2}
-                  trackUserProgress={userProgress2}
-                  score={hanldeUserScore2}
-                  validate={handleValidateFunction2}
-                  validateOtherPlayer={handleValidateFunction}
-                  index={userIndex2}
-                  rollDisplay={"hello"}
-                  currentRoll={0}
-                  blockNumber={gridData.id}
-                  newGame={0}
-                  answer={""}
-                />
+              <div className="font-thin grid grid-cols-6 text-lg text-white border-2">
+                {sampleGrid.map((gridData) => (
+                  <div className="h-8 border-t-2 md:h-8 sm:h-8">
+                    <BlockComponent
+                      incrementUserProgress={incrementUserProgress}
+                      trackUserProgress={userProgress}
+                      score={hanldeUserScore}
+                      validate={handleValidateFunction}
+                      validateOtherPlayer={handleValidateFunction2}
+                      index={userIndex}
+                      rollDisplay={"hello"}
+                      currentRoll={0}
+                      blockNumber={gridData.id}
+                      newGame={0}
+                      answer={""}
+                    />
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
+          </div>
+
+          <div className="grid py-8 grid-cols-[300px_1fr]">
+            <div className="grid grid-cols-2">
+              <input
+                autoComplete="false"
+                id="input"
+                type="string"
+                placeholder="Enter Player Name"
+                className="w-64 font-bold flex text-center border-2 border-gray-300"
+              ></input>
+            </div>
+            <div className="text-2xl grid grid-cols-2">
+              <p>P2 Score: {userScore2}</p>
+            </div>
+            <div className="text-2xl ">
+              <img
+                width="100"
+                height="100"
+                src="https://cdn.pixabay.com/photo/2016/04/01/12/07/alien-1300539_1280.png"
+              ></img>
+
+              <Button
+                disabled={validationState2}
+                label={"Player 2 Dice"}
+                onClick={handleOnClick2}
+              />
+
+              <p>Row {randomNumber2}</p>
+            </div>
+            <div className="grid grid-cols-[50px_1fr]">
+              <div className="font-thin grid grid-rows-6">
+                <p>Row 1</p>
+                <p>Row 2</p>
+                <p>Row 3</p>
+                <p>Row 4</p>
+                <p>Row 5</p>
+                <p>Row 6</p>
+              </div>
+              <div className="font-thin grid grid-cols-6 text-xl text-teal-200 border-2">
+                {sampleGrid.map((gridData) => (
+                  <div className="h-8 border-t-2 min-w-64">
+                    <BlockComponent
+                      incrementUserProgress={incrementUserProgress2}
+                      trackUserProgress={userProgress2}
+                      score={hanldeUserScore2}
+                      validate={handleValidateFunction2}
+                      validateOtherPlayer={handleValidateFunction}
+                      index={userIndex2}
+                      rollDisplay={"hello"}
+                      currentRoll={0}
+                      blockNumber={gridData.id}
+                      newGame={0}
+                      answer={""}
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>
