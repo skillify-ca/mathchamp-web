@@ -1,7 +1,4 @@
 import React, { FC, useEffect, useState } from "react";
-import { type } from "os";
-import input from "postcss/lib/input";
-import { current } from "@reduxjs/toolkit";
 import { getRandomItemFromArray } from "../../pages/api/random";
 
 function numberGenerator() {
@@ -24,28 +21,27 @@ interface BlockProps {
 }
 export const BlockComponent: FC<BlockProps> = ({
   incrementUserProgress,
-  trackUserProgress,
   score,
   validate,
   validateOtherPlayer,
   index,
-  currentRoll,
   blockNumber,
   newGame,
-  answer,
 }) => {
   const [randNumb, setRandNumb] = useState(0);
   const [randNumb2, setRandNumb2] = useState(0);
   const [blockColor, setBlockColor] = useState("");
   const [blockCorrect, setBlockCorrect] = useState(false);
-  const [dieRoll, setDieRoll] = useState("");
   const [guess, setGuess] = useState("");
 
   const [disableInput, setDisableInput] = useState(true);
   const problem = randNumb.toString() + " x " + randNumb2.toString();
   const product = (randNumb * randNumb2).toString();
   const [disableInputAfterGuess, SetDisableInputAfterGuess] = useState(false);
+
+  // This function is triggered when the user answers a question
   const onSubmit = (guess: string) => {
+    // If they guess correctly, then colour green, disable the input and validate the other players dice
     if (guess === product) {
       score();
       setBlockCorrect(true);
@@ -55,6 +51,7 @@ export const BlockComponent: FC<BlockProps> = ({
       validateOtherPlayer(false);
       incrementUserProgress();
     } else {
+      // If they guess incorrectly, then colour red, disable the input and validate the other players dice
       setBlockCorrect(false);
       setBlockColor("bg-red-600 border-2");
       validate(true);
@@ -76,26 +73,23 @@ export const BlockComponent: FC<BlockProps> = ({
       SetDisableInputAfterGuess(false);
     }
   }, [index]);
+
   // This useEffect disables the input to all problems except the selected problem
   useEffect(() => {
     setDisableInput(
       (blockNumber != index && !blockCorrect) || disableInputAfterGuess
     );
   });
-  // randNumb1 and randNumb2 are written this way to prevent rolling a number
-  // which corresponds to a row that is already complete
+
+  // This useEffect generates two random numbers to create a problem
   useEffect(() => {
     let randNumb1 = numberGenerator();
-    // while (trackUserProgress[randNumb1] == 6) {
-    //   let randNumb1 = numberGenerator();
-    // }
     let randNumb2 = numberGenerator();
-    // while (trackUserProgress[randNumb2] == 6) {
-    //   let randNumb2 = numberGenerator();
-    // }
     setRandNumb(randNumb1);
     setRandNumb2(randNumb2);
   }, [newGame]);
+
+  // This useEffect checks and updates the user score
   useEffect(() => {
     score();
   });
@@ -104,7 +98,6 @@ export const BlockComponent: FC<BlockProps> = ({
       if (event.code === "Enter" || event.code === "NumpadEnter") {
         console.log("Enter key was pressed. Run your function.");
         event.preventDefault();
-        // callMyFunction();
       }
     };
     document.addEventListener("keydown", listener);
@@ -117,7 +110,7 @@ export const BlockComponent: FC<BlockProps> = ({
   return (
     <div className={blockColor}>
       <input
-        onBlur={(e) => onSubmit(guess)}
+        onBlur={() => onSubmit(guess)}
         id="input"
         type="number"
         value={guess}

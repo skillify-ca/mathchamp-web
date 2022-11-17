@@ -1,3 +1,4 @@
+import { from } from "@apollo/client";
 import { useEffect, useState } from "react";
 import BlockComponent from "../../components/alienPathway/Block";
 import { Button } from "../../components/ui/Button";
@@ -28,51 +29,17 @@ let userProgress2 = {
   6: 0,
 };
 
-// Refactor this code to iterate through userobject instead of checking line by line
 const generateScore = (userProgress: UserProgress) => {
-  // this resets the score to zero over and over
-  // look at this later
   let score = 0;
-  if (userProgress[1] == 6) {
-    score += 1;
-  }
-  if (userProgress[2] == 6) {
-    score += 1;
-  }
-  if (userProgress[3] == 6) {
-    score += 1;
-  }
-  if (userProgress[4] == 6) {
-    score += 1;
-  }
-  if (userProgress[5] == 6) {
-    score += 1;
-  }
-  if (userProgress[6] == 6) {
-    score += 1;
+  for (let index = 0; index < 7; index++) {
+    if (userProgress[index] == 6) {
+      score += 1;
+    }
   }
   return score;
 };
 
 export default function AlienPathwayV2() {
-  function checkForWinner() {
-    if (userScore == 3) {
-      alert("You Won!");
-    }
-  }
-  // For gameboard component, creates gameboard ID's from 1 to 42
-  function createGrid() {
-    let gridList = [];
-    for (let i = 0; i < 36; i++) {
-      gridList.push({
-        id: i,
-      });
-    }
-    return gridList;
-  }
-
-  const sampleGrid = createGrid();
-
   // randomNumber represents the roll of the die
   const [randomNumber, setRandomNumber] = useState(0);
   const [randomNumber2, setRandomNumber2] = useState(0);
@@ -90,7 +57,23 @@ export default function AlienPathwayV2() {
   const [validationState, setValidationState] = useState(false);
   const [validationState2, setValidationState2] = useState(true);
 
-  //
+  function checkForWinner() {
+    if (userScore == 3) {
+      alert("You Won!");
+    }
+  }
+  // For gameboard component, creates gameboard ID's from 1 to 42
+  function createGrid() {
+    let gridList = [];
+    for (let i = 0; i < 36; i++) {
+      gridList.push({
+        id: i,
+      });
+    }
+    return gridList;
+  }
+
+  const sampleGrid = createGrid();
   const hanldeUserScore = () => {
     setUserScore(generateScore(userProgress));
   };
@@ -104,10 +87,12 @@ export default function AlienPathwayV2() {
   const handleValidateFunction2 = (bool: boolean) => {
     setValidationState2(bool);
   };
-  // check for winner
+
+  // This useEffect checks for the existence of a winner and alerts when someone has won
   useEffect(() => {
     checkForWinner();
   }, [userScore, userScore2]);
+
   const handleOnClick = () => {
     // diceRolls is one of 1,2,3,4,5,6
     let diceRoll = getRndInteger(1, 7);
@@ -127,11 +112,10 @@ export default function AlienPathwayV2() {
   const incrementUserProgress = () => {
     userProgress[randomNumber]++;
   };
+
   const incrementUserProgress2 = () => {
     userProgress2[randomNumber2]++;
   };
-
-  const rowNumbers = [1, 2, 3, 4, 5, 6];
 
   const handleOnClick2 = () => {
     // diceRolls is one of 1,2,3,4,5,6
@@ -150,9 +134,9 @@ export default function AlienPathwayV2() {
   };
   return (
     <div className=" md:px-64 font-extrabold bg-[url('https://images.unsplash.com/photo-1446941611757-91d2c3bd3d45?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2002&q=80')]">
-      <div className="className='flex justify-center h-screen p-4 space-y-4 object-contain">
+      <div className="className='flex justify-center h-screen  object-contain">
         <p className="text-3xl">
-          Mission Objective: Be the FIRST to solve THREE rows
+          Mission Objective: Be the FIRST to Solve THREE Rows
         </p>
         <div className=" grid grid-cols-2">
           <input
