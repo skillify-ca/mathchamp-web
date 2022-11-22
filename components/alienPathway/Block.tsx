@@ -1,10 +1,5 @@
 import React, { FC, useEffect, useState } from "react";
-import { getRandomItemFromArray } from "../../pages/api/random";
-
-function numberGenerator() {
-  const problem = getRandomItemFromArray([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
-  return problem;
-}
+import { getRandomItemFromArray, getRndInteger } from "../../pages/api/random";
 
 interface BlockProps {
   incrementUserProgress: () => void;
@@ -31,30 +26,24 @@ export const BlockComponent: FC<BlockProps> = ({
   const [randNumb, setRandNumb] = useState(0);
   const [randNumb2, setRandNumb2] = useState(0);
   const [blockColor, setBlockColor] = useState("");
-  const [blockCorrect, setBlockCorrect] = useState(false);
   const [guess, setGuess] = useState("");
   const [disableInput, setDisableInput] = useState(true);
+  const [disableInputAfterGuess, SetDisableInputAfterGuess] = useState(false);
   const problem = randNumb.toString() + " x " + randNumb2.toString();
   const product = (randNumb * randNumb2).toString();
-  const [disableInputAfterGuess, SetDisableInputAfterGuess] = useState(false);
-
   // This function is triggered when the user answers a question
   const onSubmit = (guess: string) => {
-    // If they guess correctly, then colour green, disable the input and validate the other players dice
+    // If they guess correctly, set blockcolor to green, disable the input and validate the other players dice
     if (guess === product) {
       score();
-      setBlockCorrect(true);
       setBlockColor("bg-green-500 ");
-      setDisableInput(false);
       SetDisableInputAfterGuess(true);
       validateOtherPlayer(false);
       incrementUserProgress();
     } else {
-      // If they guess incorrectly, then colour red, disable the input and validate the other players dice
-      setBlockCorrect(false);
+      // If they guess incorrectly, set blockcolor to red, disable the input and validate the other players dice
       setBlockColor("bg-red-600 ");
       validate(true);
-      setDisableInput(false);
       SetDisableInputAfterGuess(true);
       validateOtherPlayer(false);
     }
@@ -65,7 +54,7 @@ export const BlockComponent: FC<BlockProps> = ({
   // This useEffect colours the selected problem yellow
   // Running into issues with this useEffect overwriting above submit guess
   useEffect(() => {
-    if (blockNumber === index && !blockCorrect) {
+    if (blockNumber === index) {
       setBlockColor("bg-yellow-600 ");
       validate(true);
       setDisableInput(false);
@@ -75,15 +64,13 @@ export const BlockComponent: FC<BlockProps> = ({
 
   // This useEffect disables the input to all problems except the selected problem
   useEffect(() => {
-    setDisableInput(
-      (blockNumber != index && !blockCorrect) || disableInputAfterGuess
-    );
+    setDisableInput(blockNumber != index || disableInputAfterGuess);
   });
 
   // This useEffect generates two random numbers to create a problem
   useEffect(() => {
-    let randNumb1 = numberGenerator();
-    let randNumb2 = numberGenerator();
+    let randNumb1 = getRndInteger(0, 11);
+    let randNumb2 = getRndInteger(0, 11);
     setRandNumb(randNumb1);
     setRandNumb2(randNumb2);
   }, [newGame]);

@@ -3,15 +3,13 @@ import { useEffect, useState } from "react";
 import BlockComponent from "../../components/alienPathway/Block";
 import { Button } from "../../components/ui/Button";
 import { getRndInteger } from "../api/random";
+import generateScore from "../../components/alienPathway/GenerateScore";
+import checkForWinner from "../../components/alienPathway/CheckForWinner";
+// Functions, hooks, and data structures ending with 2 are made for player two
+// ie. userProgress stores players one's progress and userProgress2 stores players two's progress
 
-interface UserProgress {
-  1: number;
-  2: number;
-  3: number;
-  4: number;
-  5: number;
-  6: number;
-}
+// These userProgress objects are used to store the progress
+// The key represents the row number and the corresponding value stores the number of tiles correctly solved in that row
 let userProgress = {
   1: 0,
   2: 0,
@@ -28,40 +26,25 @@ let userProgress2 = {
   5: 0,
   6: 0,
 };
-
-const generateScore = (userProgress: UserProgress) => {
-  let score = 0;
-  for (let index = 1; index < 7; index++) {
-    if (userProgress[index] == 6) {
-      score += 1;
-    }
-  }
-  return score;
-};
-
 export default function AlienPathwayV2() {
-  // randomNumber represents the roll of the die
+  // randomNumber represents the roll of the players die
   const [randomNumber, setRandomNumber] = useState(0);
   const [randomNumber2, setRandomNumber2] = useState(0);
 
-  // userIndex used to determine which block on the gameboard to highlight
+  // userIndex used to determine which block on the gameboard to highlight yellow after the dice roll
   const [userIndex, setUserIndex] = useState(-1);
   const [userIndex2, setUserIndex2] = useState(-1);
 
-  // userScore represents rows completed
-  // same as counting how many values are stored as 6 in the user object
+  // userScore represents the number of rows completed
+  // This is stored as a value of 6 in the userProgress object
   const [userScore, setUserScore] = useState(0);
   const [userScore2, setUserScore2] = useState(0);
+
   // sets user score to the number of values equal to 6 in userProgress Object
   // hanlder for score to prevent render loop
   const [validationState, setValidationState] = useState(false);
   const [validationState2, setValidationState2] = useState(true);
 
-  function checkForWinner() {
-    if (userScore == 3) {
-      alert("You Won!");
-    }
-  }
   // For gameboard component, creates gameboard ID's from 1 to 42
   function createGrid() {
     let gridList = [];
@@ -74,12 +57,14 @@ export default function AlienPathwayV2() {
   }
 
   const sampleGrid = createGrid();
+  // handler to set UserScore
   const hanldeUserScore = () => {
     setUserScore(generateScore(userProgress));
   };
   const hanldeUserScore2 = () => {
     setUserScore2(generateScore(userProgress2));
   };
+
   // handler for dice button validation
   const handleValidateFunction = (bool: boolean) => {
     setValidationState(bool);
@@ -90,9 +75,12 @@ export default function AlienPathwayV2() {
 
   // This useEffect checks for the existence of a winner and alerts when someone has won
   useEffect(() => {
-    checkForWinner();
+    checkForWinner(userScore);
+    checkForWinner(userScore2);
   }, [userScore, userScore2]);
 
+  // Handler for the dice button
+  // This function is called when the user presses the dice button
   const handleOnClick = () => {
     // diceRolls is one of 1,2,3,4,5,6
     let diceRoll = getRndInteger(1, 7);
@@ -106,7 +94,6 @@ export default function AlienPathwayV2() {
     let colNumber = userProgress[diceRoll];
     let index = rowNumber * 6 + colNumber;
     setUserIndex(index);
-    //add second user index
   };
 
   const incrementUserProgress = () => {
