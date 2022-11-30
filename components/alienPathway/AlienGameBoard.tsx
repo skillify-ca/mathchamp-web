@@ -34,9 +34,6 @@ export const AlienGameBoard: FC<AlienGameBoardProps> = ({
   validateOtherPlayer,
   index,
   currentRoll,
-  blockNumber,
-  newGame,
-  answer,
 }) => {
   const sampleGrid = createGrid();
 
