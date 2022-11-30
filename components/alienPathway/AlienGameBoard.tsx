@@ -1,4 +1,5 @@
-import React from "react";
+import React, { FC } from "react";
+import { BlockComponent } from "./Block";
 // These userProgress objects are used to store the progress
 // The key represents the row number and the corresponding value stores the number of tiles correctly solved in that row
 let userProgress = {
@@ -27,9 +28,34 @@ function createGrid() {
   }
   return gridList;
 }
+type AlienGameBoardProps = {
+  incrementUserProgress: () => void;
+  trackUserProgress: object;
+  score: () => void;
+  validate: (bool) => void;
+  validateOtherPlayer: (bool) => void;
+  index: number;
+  rollDisplay: string;
+  currentRoll: number;
+  blockNumber: number;
+  newGame: number;
+  answer: string;
+};
+export const AlienGameBoard: FC<AlienGameBoardProps> = ({
+  incrementUserProgress,
+  trackUserProgress,
+  score,
+  validate,
+  validateOtherPlayer,
+  index,
+  rollDisplay,
+  currentRoll,
+  blockNumber,
+  newGame,
+  answer,
+}) => {
+  const sampleGrid = createGrid();
 
-const sampleGrid = createGrid();
-const AlienGameBoard = () => {
   return (
     <div className="grid grid-cols-[50px_1fr]">
       <div className="font-thin grid grid-rows-6">
@@ -45,12 +71,16 @@ const AlienGameBoard = () => {
           <div className="h-8 border-t-2 md:h-8 sm:h-8">
             <BlockComponent
               incrementUserProgress={incrementUserProgress}
-              score={hanldeUserScore}
-              validate={handleValidateFunction}
-              validateOtherPlayer={handleValidateFunction2}
-              index={userIndex}
+              score={score}
+              validate={validate}
+              validateOtherPlayer={validateOtherPlayer}
+              index={index}
               blockNumber={gridData.id}
               newGame={0}
+              trackUserProgress={trackUserProgress}
+              rollDisplay={""}
+              currentRoll={currentRoll}
+              answer={""}
             />
           </div>
         ))}

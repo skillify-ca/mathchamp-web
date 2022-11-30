@@ -5,6 +5,9 @@ import { Button } from "../../components/ui/Button";
 import { getRndInteger } from "../api/random";
 import generateScore from "../../components/alienPathway/GenerateScore";
 import checkForWinner from "../../components/alienPathway/CheckForWinner";
+import { GraphQLID, validate } from "graphql";
+import AlienGameBoard from "../../components/alienPathway/AlienGameBoard";
+import { getEnvironmentData } from "worker_threads";
 // Functions, hooks, and data structures ending with 2 are made for player two
 // ie. userProgress stores players one's progress and userProgress2 stores players two's progress
 
@@ -154,35 +157,19 @@ export default function AlienPathwayV2() {
               <p>Row {randomNumber}</p>
             </div>
 
-            <div className="grid grid-cols-[50px_1fr]">
-              <div className="font-thin grid grid-rows-6">
-                <p>Row 1</p>
-                <p>Row 2</p>
-                <p>Row 3</p>
-                <p>Row 4</p>
-                <p>Row 5</p>
-                <p>Row 6</p>
-              </div>
-              <div className="font-thin grid grid-cols-6 text-lg text-white border-2">
-                {sampleGrid.map((gridData) => (
-                  <div className="h-8 border-t-2 md:h-8 sm:h-8">
-                    <BlockComponent
-                      incrementUserProgress={incrementUserProgress}
-                      trackUserProgress={userProgress}
-                      score={handleUserScore}
-                      validate={handleValidateFunction}
-                      validateOtherPlayer={handleValidateFunction2}
-                      index={userIndex}
-                      rollDisplay={"hello"}
-                      currentRoll={0}
-                      blockNumber={gridData.id}
-                      newGame={0}
-                      answer={""}
-                    />
-                  </div>
-                ))}
-              </div>
-            </div>
+            <AlienGameBoard
+              incrementUserProgress={incrementUserProgress}
+              trackUserProgress={userProgress}
+              score={handleUserScore}
+              validate={handleValidateFunction}
+              validateOtherPlayer={handleValidateFunction2}
+              index={userIndex}
+              blockNumber={0}
+              newGame={0}
+              rollDisplay={""}
+              currentRoll={0}
+              answer={""}
+            />
           </div>
 
           <div className="grid py-8 grid-cols-[200px_1fr]">
@@ -213,35 +200,20 @@ export default function AlienPathwayV2() {
 
               <p>Row {randomNumber2}</p>
             </div>
-            <div className="grid grid-cols-[50px_1fr]">
-              <div className="font-thin grid grid-rows-6">
-                <p>Row 1</p>
-                <p>Row 2</p>
-                <p>Row 3</p>
-                <p>Row 4</p>
-                <p>Row 5</p>
-                <p>Row 6</p>
-              </div>
-              <div className="font-thin grid grid-cols-6 text-xl text-teal-200 border-2">
-                {sampleGrid.map((gridData) => (
-                  <div className="h-8 border-t-2 min-w-64">
-                    <BlockComponent
-                      incrementUserProgress={incrementUserProgress2}
-                      trackUserProgress={userProgress2}
-                      score={handleUserScore2}
-                      validate={handleValidateFunction2}
-                      validateOtherPlayer={handleValidateFunction}
-                      index={userIndex2}
-                      rollDisplay={"hello"}
-                      currentRoll={0}
-                      blockNumber={gridData.id}
-                      newGame={0}
-                      answer={""}
-                    />
-                  </div>
-                ))}
-              </div>
-            </div>
+
+            <AlienGameBoard
+              incrementUserProgress={incrementUserProgress2}
+              trackUserProgress={userProgress2}
+              score={handleUserScore2}
+              validate={handleValidateFunction2}
+              validateOtherPlayer={handleValidateFunction}
+              index={userIndex2}
+              blockNumber={0}
+              newGame={0}
+              rollDisplay={""}
+              currentRoll={0}
+              answer={""}
+            />
           </div>
         </div>
       </div>
