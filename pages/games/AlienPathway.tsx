@@ -1,13 +1,9 @@
-import { from } from "@apollo/client";
 import { useEffect, useState } from "react";
-import BlockComponent from "../../components/alienPathway/Block";
 import { Button } from "../../components/ui/Button";
 import { getRndInteger } from "../api/random";
 import generateScore from "../../components/alienPathway/GenerateScore";
 import checkForWinner from "../../components/alienPathway/CheckForWinner";
-import { GraphQLID, validate } from "graphql";
 import AlienGameBoard from "../../components/alienPathway/AlienGameBoard";
-import { getEnvironmentData } from "worker_threads";
 // Functions, hooks, and data structures ending with 2 are made for player two
 // ie. userProgress stores players one's progress and userProgress2 stores players two's progress
 

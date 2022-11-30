@@ -2,22 +2,7 @@ import React, { FC } from "react";
 import { BlockComponent } from "./Block";
 // These userProgress objects are used to store the progress
 // The key represents the row number and the corresponding value stores the number of tiles correctly solved in that row
-let userProgress = {
-  1: 0,
-  2: 0,
-  3: 0,
-  4: 0,
-  5: 0,
-  6: 0,
-};
-let userProgress2 = {
-  1: 0,
-  2: 0,
-  3: 0,
-  4: 0,
-  5: 0,
-  6: 0,
-};
+
 // For gameboard component, creates gameboard ID's from 1 to 42
 function createGrid() {
   let gridList = [];
@@ -48,7 +33,6 @@ export const AlienGameBoard: FC<AlienGameBoardProps> = ({
   validate,
   validateOtherPlayer,
   index,
-  rollDisplay,
   currentRoll,
   blockNumber,
   newGame,
