@@ -1,10 +1,9 @@
-import { from } from "@apollo/client";
 import { useEffect, useState } from "react";
-import BlockComponent from "../../components/alienPathway/Block";
 import { Button } from "../../components/ui/Button";
 import { getRndInteger } from "../api/random";
 import generateScore from "../../components/alienPathway/GenerateScore";
 import checkForWinner from "../../components/alienPathway/CheckForWinner";
+import AlienGameBoard from "../../components/alienPathway/AlienGameBoard";
 // Functions, hooks, and data structures ending with 2 are made for player two
 // ie. userProgress stores players one's progress and userProgress2 stores players two's progress
 
@@ -41,7 +40,7 @@ export default function AlienPathwayV2() {
   const [userScore2, setUserScore2] = useState(0);
 
   // sets user score to the number of values equal to 6 in userProgress Object
-  // hanlder for score to prevent render loop
+  // handler for score to prevent render loop
   const [validationState, setValidationState] = useState(false);
   const [validationState2, setValidationState2] = useState(true);
 
@@ -58,10 +57,10 @@ export default function AlienPathwayV2() {
 
   const sampleGrid = createGrid();
   // handler to set UserScore
-  const hanldeUserScore = () => {
+  const handleUserScore = () => {
     setUserScore(generateScore(userProgress));
   };
-  const hanldeUserScore2 = () => {
+  const handleUserScore2 = () => {
     setUserScore2(generateScore(userProgress2));
   };
 
@@ -120,7 +119,7 @@ export default function AlienPathwayV2() {
     //add second user index
   };
   return (
-    <div className=" md:px-64 font-extrabold bg-[url('https://images.unsplash.com/photo-1446941611757-91d2c3bd3d45?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2002&q=80')]">
+    <div className=" md:px-32 font-extrabold bg-[url('https://images.unsplash.com/photo-1446941611757-91d2c3bd3d45?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2002&q=80')]">
       <div className="className='flex justify-center h-screen  object-contain">
         <p className="text-3xl">
           Mission Objective: Be the FIRST to Solve THREE Rows
@@ -134,7 +133,7 @@ export default function AlienPathwayV2() {
                 type="string"
                 placeholder="Enter Player Name"
                 className="w-40 font-bold flex text-center border-2 border-gray-300"
-              ></input>
+              />
             </div>
             <div className="text-2xl grid grid-cols-2">
               <p>P1 Score: {userScore}</p>
@@ -144,7 +143,7 @@ export default function AlienPathwayV2() {
                 width="100"
                 height="100"
                 src="https://cdn.pixabay.com/photo/2016/04/01/12/07/alien-1300539_1280.png"
-              ></img>
+              />
               <Button
                 disabled={validationState}
                 label={"Player 1 Dice"}
@@ -154,35 +153,19 @@ export default function AlienPathwayV2() {
               <p>Row {randomNumber}</p>
             </div>
 
-            <div className="grid grid-cols-[50px_1fr]">
-              <div className="font-thin grid grid-rows-6">
-                <p>Row 1</p>
-                <p>Row 2</p>
-                <p>Row 3</p>
-                <p>Row 4</p>
-                <p>Row 5</p>
-                <p>Row 6</p>
-              </div>
-              <div className="font-thin grid grid-cols-6 text-lg text-white border-2">
-                {sampleGrid.map((gridData) => (
-                  <div className="h-8 border-t-2 md:h-8 sm:h-8">
-                    <BlockComponent
-                      incrementUserProgress={incrementUserProgress}
-                      trackUserProgress={userProgress}
-                      score={hanldeUserScore}
-                      validate={handleValidateFunction}
-                      validateOtherPlayer={handleValidateFunction2}
-                      index={userIndex}
-                      rollDisplay={"hello"}
-                      currentRoll={0}
-                      blockNumber={gridData.id}
-                      newGame={0}
-                      answer={""}
-                    />
-                  </div>
-                ))}
-              </div>
-            </div>
+            <AlienGameBoard
+              incrementUserProgress={incrementUserProgress}
+              trackUserProgress={userProgress}
+              score={handleUserScore}
+              validate={handleValidateFunction}
+              validateOtherPlayer={handleValidateFunction2}
+              index={userIndex}
+              blockNumber={0}
+              newGame={0}
+              rollDisplay={""}
+              currentRoll={0}
+              answer={""}
+            />
           </div>
 
           <div className="grid py-8 grid-cols-[200px_1fr]">
@@ -193,7 +176,7 @@ export default function AlienPathwayV2() {
                 type="string"
                 placeholder="Enter Player Name"
                 className="w-40 font-bold flex text-center border-2 border-gray-300"
-              ></input>
+              />
             </div>
             <div className="text-2xl grid grid-cols-2">
               <p>P2 Score: {userScore2}</p>
@@ -203,7 +186,7 @@ export default function AlienPathwayV2() {
                 width="100"
                 height="100"
                 src="https://cdn.pixabay.com/photo/2016/04/01/12/07/alien-1300539_1280.png"
-              ></img>
+              />
 
               <Button
                 disabled={validationState2}
@@ -213,35 +196,20 @@ export default function AlienPathwayV2() {
 
               <p>Row {randomNumber2}</p>
             </div>
-            <div className="grid grid-cols-[50px_1fr]">
-              <div className="font-thin grid grid-rows-6">
-                <p>Row 1</p>
-                <p>Row 2</p>
-                <p>Row 3</p>
-                <p>Row 4</p>
-                <p>Row 5</p>
-                <p>Row 6</p>
-              </div>
-              <div className="font-thin grid grid-cols-6 text-xl text-teal-200 border-2">
-                {sampleGrid.map((gridData) => (
-                  <div className="h-8 border-t-2 min-w-64">
-                    <BlockComponent
-                      incrementUserProgress={incrementUserProgress2}
-                      trackUserProgress={userProgress2}
-                      score={hanldeUserScore2}
-                      validate={handleValidateFunction2}
-                      validateOtherPlayer={handleValidateFunction}
-                      index={userIndex2}
-                      rollDisplay={"hello"}
-                      currentRoll={0}
-                      blockNumber={gridData.id}
-                      newGame={0}
-                      answer={""}
-                    />
-                  </div>
-                ))}
-              </div>
-            </div>
+
+            <AlienGameBoard
+              incrementUserProgress={incrementUserProgress2}
+              trackUserProgress={userProgress2}
+              score={handleUserScore2}
+              validate={handleValidateFunction2}
+              validateOtherPlayer={handleValidateFunction}
+              index={userIndex2}
+              blockNumber={0}
+              newGame={0}
+              rollDisplay={""}
+              currentRoll={0}
+              answer={""}
+            />
           </div>
         </div>
       </div>

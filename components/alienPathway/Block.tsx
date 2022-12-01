@@ -16,12 +16,15 @@ interface BlockProps {
 }
 export const BlockComponent: FC<BlockProps> = ({
   incrementUserProgress,
+  trackUserProgress,
   score,
   validate,
   validateOtherPlayer,
   index,
+  rollDisplay,
   blockNumber,
   newGame,
+  answer,
 }) => {
   const [randNumb, setRandNumb] = useState(0);
   const [randNumb2, setRandNumb2] = useState(0);
