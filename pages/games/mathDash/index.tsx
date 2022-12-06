@@ -7,7 +7,7 @@ import CreateRoom from "../../../components/mathDash/CreateRooms";
 import Lobby from "../../../components/mathDash/PlayerLobby";
 import PostGameLobby from "../../../components/mathDash/PostGameLobby";
 import { Question } from "../../api/question";
-import { generateMath1Questions } from "../../api/questionGenerators";
+import { generateMathQuestions } from "../../api/questionGenerators";
 import { QuestionType } from "../../api/questionTypes";
 
 export type Player = {
@@ -143,12 +143,12 @@ const MathBattle = () => {
   });
 
   const onStartGameRequested = () => {
-    const questions: Question[] = generateMath1Questions(1);
+    const questions: Question[] = generateMathQuestions(1);
     room.send("startGameRequested", { questions: questions, players: players });
   };
 
   useEffect(() => {
-    setQuestionData(generateMath1Questions(1));
+    setQuestionData(generateMathQuestions(1));
   }, []);
 
   return (

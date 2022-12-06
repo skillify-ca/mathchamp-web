@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import * as Colyseus from "colyseus.js";
 import ReactCardFlip from "react-card-flip";
 import { Question } from "../../pages/api/question";
-import { generateMath1Questions } from "../../pages/api/questionGenerators";
+import { generateMathQuestions } from "../../pages/api/questionGenerators";
 import { QuestionType } from "../../pages/api/questionTypes";
 import { Skill } from "../../pages/api/skills";
 import { Button } from "../ui/Button";
@@ -82,7 +82,7 @@ const PostGameLobby = ({
       room.send("rematchRequested", playerLength);
       setButtonDisable(true);
     } else {
-      const questions = generateMath1Questions(1);
+      const questions = generateMathQuestions(1);
       setPlayerLength(0);
       room.send("rematchAccepted", questions);
     }
@@ -94,22 +94,22 @@ const PostGameLobby = ({
   players.map((it) => scoreArr.push(it.score));
 
   scoreWin = Math.min(...scoreArr);
-  
-    return (playerLength != length ?
-     <div className="flex flex-col w-screen gap-8 text-center place-items-center">
-        <p className="items-center text-xl font-bold text-center text-blue-400 ">
-          Waiting for All Players
-        </p>
-        <div className="flex items-center justify-center ">
-          <div className="flex p-5 space-x-3 bg-white rounded-full loader">
-            <div className="w-5 h-5 bg-blue-400 rounded-full shadow-sm animate-bounce"></div>
-            <div className="w-5 h-5 bg-blue-400 rounded-full shadow-sm animate-bounce"></div>
-            <div className="w-5 h-5 bg-blue-400 rounded-full shadow-sm animate-bounce"></div>
-          </div>
+
+  return playerLength != length ? (
+    <div className="flex flex-col w-screen gap-8 text-center place-items-center">
+      <p className="items-center text-xl font-bold text-center text-blue-400 ">
+        Waiting for All Players
+      </p>
+      <div className="flex items-center justify-center ">
+        <div className="flex p-5 space-x-3 bg-white rounded-full loader">
+          <div className="w-5 h-5 bg-blue-400 rounded-full shadow-sm animate-bounce"></div>
+          <div className="w-5 h-5 bg-blue-400 rounded-full shadow-sm animate-bounce"></div>
+          <div className="w-5 h-5 bg-blue-400 rounded-full shadow-sm animate-bounce"></div>
         </div>
       </div>
-:   
- <div className="flex flex-col items-center gap-16 justify-items-center">
+    </div>
+  ) : (
+    <div className="flex flex-col items-center gap-16 justify-items-center">
       <div className="flex flex-row items-center gap-4 text-center justify-items-center">
         {players.map((it) => (
           <ReactCardFlip
@@ -177,7 +177,7 @@ const PostGameLobby = ({
         textColor="white"
         onClick={() => window.location.reload()}
       />
-  </div>
-  )
+    </div>
+  );
 };
 export default PostGameLobby;

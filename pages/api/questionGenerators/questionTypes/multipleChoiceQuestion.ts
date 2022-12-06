@@ -1,6 +1,6 @@
-import { QuestionType } from "../questionTypes";
-import { ItemContainerObj, Noun } from "../WordProblemModelObjects";
-import { randomize } from "./binaryQuestionGenerator";
+import { QuestionType } from "../../questionTypes";
+import { ItemContainerObj, Noun } from "../../WordProblemModelObjects";
+import { randomize } from "../binaryQuestionGenerator";
 import { shuffle } from "lodash";
 
 export type MCOption = {

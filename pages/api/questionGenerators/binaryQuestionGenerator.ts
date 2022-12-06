@@ -8,7 +8,7 @@ import {
 } from "../random";
 import { Skill } from "../skills";
 import { generateHorizontalEquationQuestion } from "./questionTypes/horizontalEquationQuestion";
-import { generateMultipleChoiceQuestion } from "./multipleChoiceQuestion";
+import { generateMultipleChoiceQuestion } from "./questionTypes/multipleChoiceQuestion";
 import { getArrayMultiplicationQuestion } from "./questionTypes/multiplication/arrayMultiplicationQuestion";
 import { getMultiplicationEqualGroups } from "./questionTypes/multiplication/equalGroupsQuestion";
 import { generateTrueOrFalseQuestion } from "./questionTypes/trueOrFalseQuestion";

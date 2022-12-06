@@ -1,6 +1,6 @@
 import { AlgebraWordProblem } from "./questionGenerators/algebraQuestionGenerator";
 import { HorizontalEquationQuestion } from "./questionGenerators/questionTypes/horizontalEquationQuestion";
-import { LongDivisionQuestion } from "./questionGenerators/longDivisionQuestion";
+import { LongDivisionQuestion } from "./questionGenerators/questionTypes/longDivisionQuestion";
 import { TrueOrFalseQuestion } from "./questionGenerators/questionTypes/trueOrFalseQuestion";
 
 import { QuestionType } from "./questionTypes";
@@ -8,7 +8,7 @@ import { VerticalEquationQuestion } from "./questionGenerators/questionTypes/ver
 import { VisualDotsQuestion } from "./questionGenerators/questionTypes/visualDotsQuestion";
 import { WordProblemQuestion } from "./questionGenerators/questionTypes/wordProblemQuestion";
 import { FinanceQuestion } from "./questionGenerators/questionTypes/money";
-import { MultipleChoiceQuestion } from "./questionGenerators/multipleChoiceQuestion";
+import { MultipleChoiceQuestion } from "./questionGenerators/questionTypes/multipleChoiceQuestion";
 
 export type Question =
   | VerticalEquationQuestion
