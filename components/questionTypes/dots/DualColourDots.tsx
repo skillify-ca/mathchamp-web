@@ -23,7 +23,7 @@ const Dot = ({ dotType }: DotProps) => {
 
   return (
     <div
-      className={`rounded-full shadow-md h-4 w-4  ${getDisplayColor(
+      className={`rounded-full shadow-md h-6 w-6  ${getDisplayColor(
         dotType
       )} border-black`}
     ></div>
