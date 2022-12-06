@@ -1,8 +1,15 @@
-import { PersonData } from "../../../../components/questionTypes/finance/budget/BalanceBudgetData";
-import { Question } from "../../question";
-import { QuestionType } from "../../questionTypes";
+import { PersonData } from "../../../../../components/questionTypes/finance/budget/BalanceBudgetData";
+import { QuestionType } from "../../../questionTypes";
 
-export function getBalanceBudgetQuestion(person: PersonData): Question {
+export type BudgetBalanceQuestion = {
+  questionType: QuestionType.FINANCE_BALANCE_BUDGET_PROBLEM;
+  personDataModel: PersonData;
+  answer: string;
+};
+
+export function getBalanceBudgetQuestion(
+  person: PersonData
+): BudgetBalanceQuestion {
   let answer = 0;
   person.totalExpenses = 0;
   person.totalIncome = 0;

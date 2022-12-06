@@ -1,6 +1,6 @@
-import { CoinType } from "../../../components/questionTypes/finance/money/Coin";
-import { QuestionType } from "../questionTypes";
-import { randomize } from "./binaryQuestionGenerator";
+import { CoinType } from "../../../../components/questionTypes/finance/money/Coin";
+import { QuestionType } from "../../questionTypes";
+import { randomize } from "../binaryQuestionGenerator";
 
 export type CountingModel = {
   coins: CoinType[];

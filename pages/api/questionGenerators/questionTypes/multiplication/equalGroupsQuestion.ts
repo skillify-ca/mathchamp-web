@@ -1,6 +1,6 @@
-import { Question } from "../../question";
-import { QuestionType } from "../../questionTypes";
-import { getRndInteger } from "../../random";
+import { Question } from "../../../question";
+import { QuestionType } from "../../../questionTypes";
+import { getRndInteger } from "../../../random";
 
 export function getMultiplicationEqualGroups(a: number, b: number): Question {
   let text = `${a} x ${b} =`;
