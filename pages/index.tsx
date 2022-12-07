@@ -29,23 +29,23 @@ export default function MathHomePage({ courseId, skillData }) {
       image: "/images/skills/fractions.jpeg",
     },
     { name: "Decimals", link: "decimals", image: "/images/skills/numbers.png" },
+    // {
+    //   name: "Percent, Ratio, and Proportion",
+    //   link: "percent-ratio-proportion",
+    //   image: "/images/skills/mixed.gif",
+    // },
+    // {
+    //   name: "Measuring and Geometry",
+    //   link: "measuring-geometry",
+    //   image: "/images/skills/shapes.png",
+    // },
+    // {
+    //   name: "Statistics, data analysis, and probability",
+    //   link: "stats-data-probability",
+    //   image: "/images/skills/graph.png",
+    // },
     {
-      name: "Percent, Ratio, and Proportion",
-      link: "percent-ratio-proportion",
-      image: "/images/skills/mixed.gif",
-    },
-    {
-      name: "Measuring and Geometry",
-      link: "measuring-geometry",
-      image: "/images/skills/shapes.png",
-    },
-    {
-      name: "Statistics, data analysis, and probability",
-      link: "stats-data-probability",
-      image: "/images/skills/graph.png",
-    },
-    {
-      name: "Financial Literacy",
+      name: "Money",
       link: "financial-literacy",
       image: "/images/skills/finance.png",
     },
