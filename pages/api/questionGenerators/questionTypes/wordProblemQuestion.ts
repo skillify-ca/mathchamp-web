@@ -1,5 +1,5 @@
-import { name } from "../names";
-import { QuestionType } from "../questionTypes";
+import { name } from "../../names";
+import { QuestionType } from "../../questionTypes";
 import {
   ItemContainerObj,
   Noun,
@@ -7,7 +7,7 @@ import {
   coinsMap,
   fruitsMap,
   map,
-} from "../WordProblemModelObjects";
+} from "../../WordProblemModelObjects";
 
 export type WordProblemQuestion = {
   questionType: QuestionType.BINARY_WORD_PROBLEM;

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { GuessData } from "../../pages/api/guessData";
-import { HorizontalEquationQuestion } from "../../pages/api/questionGenerators/horizontalEquationQuestion";
+import { HorizontalEquationQuestion } from "../../pages/api/questionGenerators/questionTypes/horizontalEquationQuestion";
 import { Button } from "../ui/Button";
 import { Input } from "../ui/Input";
 

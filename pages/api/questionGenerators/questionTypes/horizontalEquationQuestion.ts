@@ -1,5 +1,5 @@
-import { QuestionType } from "../questionTypes";
-import { Skill } from "../skills";
+import { QuestionType } from "../../questionTypes";
+import { Skill } from "../../skills";
 
 export type HorizontalEquationQuestion = {
   questionType: QuestionType.HORIZONTAL_EQUATION;

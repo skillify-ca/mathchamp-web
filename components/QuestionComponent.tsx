@@ -11,6 +11,7 @@ import SimpleInterestQuestion from "./questionTypes/finance/consumer-math/Simple
 import TipQuestion from "./questionTypes/finance/consumer-math/TipQuestion";
 import UnitPriceQuestion from "./questionTypes/finance/consumer-math/UnitPriceQuestion";
 import CountCoinsQuestion from "./questionTypes/finance/money/CountCoinsQuestion";
+
 import { HorizontalEquation } from "./questionTypes/HorizontalEquation";
 import { LongDivision } from "./questionTypes/LongDivision";
 import { MultipleChoice } from "./questionTypes/MultipleChoice";

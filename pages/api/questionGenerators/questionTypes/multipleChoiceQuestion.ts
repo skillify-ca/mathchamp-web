@@ -1,6 +1,6 @@
-import { QuestionType } from "../questionTypes";
-import { ItemContainerObj, Noun } from "../WordProblemModelObjects";
-import { randomize } from "./binaryQuestionGenerator";
+import { QuestionType } from "../../questionTypes";
+import { ItemContainerObj, Noun } from "../../WordProblemModelObjects";
+import { randomize } from "../binaryQuestionGenerator";
 import { shuffle } from "lodash";
 
 export type MCOption = {
@@ -13,19 +13,40 @@ export type MCModel = {
   options: Array<MCOption>;
 };
 
-export type MultipleChoiceQuestion = {
+// TODO is this even used anymore?
+type MutipleChoiceSentenceQuestion = {
+  questionType: QuestionType.MULTIPLE_CHOICE_SENTENCE;
+  multipleChoice: MCModel;
+  answer: string;
+  text: string;
+};
+
+// TODO Is this even used?
+type MultipleChoiceWordQuestion = {
+  questionType: QuestionType.MULTIPLE_CHOICE_WORD;
+  answer: string;
+  multipleChoice: MCModel;
+  text: string;
+};
+
+type MultipleChoiceDefaultQuestion = {
   questionType: QuestionType.MULTIPLE_CHOICE;
   answer: string;
   multipleChoice: MCModel;
   text: string;
 };
 
+export type MultipleChoiceQuestion =
+  | MultipleChoiceDefaultQuestion
+  | MultipleChoiceWordQuestion
+  | MutipleChoiceSentenceQuestion;
+
 export function generateMultipleChoiceQuestion(
   firstNumber: number,
   secondNumber: number,
   operator: string,
   answerFunction: (x: number, y: number) => number
-): MultipleChoiceQuestion {
+): MultipleChoiceDefaultQuestion {
   if (firstNumber < secondNumber) {
     let temp = firstNumber;
     firstNumber = secondNumber;

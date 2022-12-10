@@ -1,10 +1,19 @@
-import { ItemCostModel } from "../../../../components/questionTypes/finance/budget/BalanceBudgetData";
-import { ItemDataTable } from "../../../../components/questionTypes/finance/budget/BudgetTableData";
-import { Question } from "../../question";
-import { QuestionType } from "../../questionTypes";
-import { getRndHundredthsDecimal } from "../../random";
+import { ItemCostModel } from "../../../../../components/questionTypes/finance/budget/BalanceBudgetData";
+import { ItemDataTable } from "../../../../../components/questionTypes/finance/budget/BudgetTableData";
+import { QuestionType } from "../../../questionTypes";
+import { getRndHundredthsDecimal } from "../../../random";
 
-export function getBudgetQuestion(tape: number, bulb: number): Question {
+export type BudgetTableQuestion = {
+  questionType: QuestionType.FINANCE_BUDGET_TABLE_PROBLEM;
+  budgetCostModel: Array<ItemCostModel>;
+  answer: string;
+  text: string;
+};
+
+export function getBudgetQuestion(
+  tape: number,
+  bulb: number
+): BudgetTableQuestion {
   let total = tape + bulb;
   let budget = 5;
   let answer = budget >= total ? "Yes" : "No";

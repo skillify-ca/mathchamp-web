@@ -1,4 +1,4 @@
-import { QuestionType } from "../questionTypes";
+import { QuestionType } from "../../questionTypes";
 
 export type LongDivisionQuestion = {
   questionType: QuestionType.LONG_DIVISION_PROBLEM;

@@ -1,58 +1,19 @@
-import {
-  PersonData,
-  ItemCostModel,
-} from "../../components/questionTypes/finance/budget/BalanceBudgetData";
-import { CoinType } from "../../components/questionTypes/finance/money/Coin";
 import { AlgebraWordProblem } from "./questionGenerators/algebraQuestionGenerator";
-import { HorizontalEquationQuestion } from "./questionGenerators/horizontalEquationQuestion";
-import { LongDivisionQuestion } from "./questionGenerators/longDivisionQuestion";
-import { TrueOrFalseQuestion } from "./questionGenerators/trueOrFalseQuestion";
-import { VerticalEquationQuestion } from "./questionGenerators/verticalEquationQuestion";
-import { VisualDotsQuestion } from "./questionGenerators/visualDotsQuestion";
-import { WordProblemQuestion } from "./questionGenerators/wordProblemQuestion";
+import { HorizontalEquationQuestion } from "./questionGenerators/questionTypes/horizontalEquationQuestion";
+import { LongDivisionQuestion } from "./questionGenerators/questionTypes/longDivisionQuestion";
+import { TrueOrFalseQuestion } from "./questionGenerators/questionTypes/trueOrFalseQuestion";
+
 import { QuestionType } from "./questionTypes";
-
-export type BudgetBalanceQuestion = {
-  questionType: QuestionType.FINANCE_BALANCE_BUDGET_PROBLEM;
-  personDataModel: PersonData;
-  answer: string;
-};
-
-export type BudgetTableQuestion = {
-  questionType: QuestionType.FINANCE_BUDGET_TABLE_PROBLEM;
-  budgetCostModel: Array<ItemCostModel>;
-  answer: string;
-  text: string;
-};
-
-export type FinanceTipQuestion = {
-  questionType: QuestionType.FINANCE_TIP_PROBLEM;
-  displayNum: number;
-  answer: string;
-  text: string;
-};
+import { VerticalEquationQuestion } from "./questionGenerators/questionTypes/verticalEquationQuestion";
+import { VisualDotsQuestion } from "./questionGenerators/questionTypes/visualDotsQuestion";
+import { WordProblemQuestion } from "./questionGenerators/questionTypes/wordProblemQuestion";
+import { FinanceQuestion } from "./questionGenerators/questionTypes/money";
+import { MultipleChoiceQuestion } from "./questionGenerators/questionTypes/multipleChoiceQuestion";
 
 export type Question =
   | VerticalEquationQuestion
   | HorizontalEquationQuestion
-  | {
-      questionType: QuestionType.MULTIPLE_CHOICE_SENTENCE;
-      multipleChoice: MCModel;
-      answer: string;
-      text: string;
-    }
-  | {
-      questionType: QuestionType.MULTIPLE_CHOICE_WORD;
-      answer: string;
-      multipleChoice: MCModel;
-      text: string;
-    }
-  | {
-      questionType: QuestionType.MULTIPLE_CHOICE;
-      answer: string;
-      multipleChoice: MCModel;
-      text: string;
-    }
+  | MultipleChoiceQuestion
   | WordProblemQuestion
   | VisualDotsQuestion
   | TrueOrFalseQuestion
@@ -63,88 +24,11 @@ export type Question =
       answer: string;
       colour: "red" | "purple" | "blue" | "green" | "yellow";
     }
+  | AlgebraWordProblem
   | {
       questionType: QuestionType.MULTIPLICATION_EQUAL_GROUPS;
       text: string;
       answer: string;
       colour: 0 | 1 | 2 | 3;
     }
-  | FinanceTipQuestion
-  | BudgetBalanceQuestion
-  | BudgetTableQuestion
-  | {
-      questionType: QuestionType.FINANCE_UNIT_PRICE_PROBLEM;
-      unitPriceModel: UnitPriceModel;
-      answer: string;
-      text: string;
-    }
-  | AlgebraWordProblem
-  | {
-      questionType: QuestionType.FINANCE_SALES_TAX_PROBLEM;
-      salesTaxModel: SalesTaxModel;
-      answer: string;
-      text: string;
-    }
-  | {
-      questionType: QuestionType.FINANCE_COMMISSION_PROBLEM;
-      commisionModel: CommissionModel;
-      answer: string;
-      text: string;
-    }
-  | {
-      questionType: QuestionType.FINANCE_SIMPLE_INTEREST_PROBLEM;
-      interestModel: InterestModel;
-      answer: string;
-      text: string;
-    }
-  | {
-      questionType: QuestionType.FINANCE_COUNTING_COINS_BILLS_PROBLEM;
-      countingModel: CountingModel;
-      answer: string;
-      text: string;
-    };
-
-export type MCOption = {
-  id: string;
-  text: string;
-};
-export type MCModel = {
-  title?: string;
-  options: Array<MCOption>;
-};
-
-export type UnitPriceModel = {
-  total: number;
-  numberOfObjects: number;
-  name: string;
-  image: string;
-  singularFruit: string;
-  pluralFruit: string;
-};
-export type SalesTaxModel = {
-  price: number;
-  number: number;
-  taxRate: number;
-  personName: string;
-  image1: string;
-  multipleAnimals: string;
-  numberOfToys: number;
-};
-export type CommissionModel = {
-  personName: string;
-  commission: number;
-  price: number;
-  numberOfSales: number;
-  image1: string;
-};
-export type InterestModel = {
-  personName: string;
-  principalAmount: number;
-  interestRate: number;
-  time: number;
-  image1: string;
-};
-
-export type CountingModel = {
-  coins: CoinType[];
-};
+  | FinanceQuestion;

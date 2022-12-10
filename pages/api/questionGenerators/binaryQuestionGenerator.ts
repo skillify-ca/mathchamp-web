@@ -7,14 +7,15 @@ import {
   getRandomItemFromArray,
 } from "../random";
 import { Skill } from "../skills";
-import { generateHorizontalEquationQuestion } from "./horizontalEquationQuestion";
-import { generateMultipleChoiceQuestion } from "./multipleChoiceQuestion";
-import { getArrayMultiplicationQuestion } from "./multiplication/arrayMultiplicationQuestion";
-import { getMultiplicationEqualGroups } from "./multiplication/equalGroupsQuestion";
-import { generateTrueOrFalseQuestion } from "./trueOrFalseQuestion";
-import { generateVerticalEquationQuestion } from "./verticalEquationQuestion";
-import { generateVisualDotsQuestion } from "./visualDotsQuestion";
-import { generateWordProblemQuestion } from "./wordProblemQuestion";
+import { generateHorizontalEquationQuestion } from "./questionTypes/horizontalEquationQuestion";
+import { generateMultipleChoiceQuestion } from "./questionTypes/multipleChoiceQuestion";
+import { getArrayMultiplicationQuestion } from "./questionTypes/multiplication/arrayMultiplicationQuestion";
+import { getMultiplicationEqualGroups } from "./questionTypes/multiplication/equalGroupsQuestion";
+import { generateTrueOrFalseQuestion } from "./questionTypes/trueOrFalseQuestion";
+import { generateVerticalEquationQuestion } from "./questionTypes/verticalEquationQuestion";
+import { generateWordProblemQuestion } from "./questionTypes/wordProblemQuestion";
+import { generateVisualDotsQuestion } from "./questionTypes/visualDotsQuestion";
+
 //converts number as a string into an array of numbers
 export function randomize(min: number, max: number) {
   return Math.floor(Math.random() * (max - min)) + min;

@@ -1,15 +1,12 @@
 import React, { FC, useEffect, useState } from "react";
-import { type } from "os";
-import input from "postcss/lib/input";
-import { current } from "@reduxjs/toolkit";
-import { getRandomItemFromArray } from "../../pages/api/random";
-
-function numberGenerator() {
-  const problem = getRandomItemFromArray([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
-  return problem;
-}
+import { getRandomItemFromArray, getRndInteger } from "../../pages/api/random";
 
 interface BlockProps {
+  incrementUserProgress: () => void;
+  trackUserProgress: object;
+  score: () => void;
+  validate: (bool) => void;
+  validateOtherPlayer: (bool) => void;
   index: number;
   rollDisplay: string;
   currentRoll: number;
@@ -18,8 +15,13 @@ interface BlockProps {
   answer: string;
 }
 export const BlockComponent: FC<BlockProps> = ({
+  incrementUserProgress,
+  trackUserProgress,
+  score,
+  validate,
+  validateOtherPlayer,
   index,
-  currentRoll,
+  rollDisplay,
   blockNumber,
   newGame,
   answer,
@@ -27,53 +29,64 @@ export const BlockComponent: FC<BlockProps> = ({
   const [randNumb, setRandNumb] = useState(0);
   const [randNumb2, setRandNumb2] = useState(0);
   const [blockColor, setBlockColor] = useState("");
-  const [blockAnswered, setBlockAnswered] = useState(false);
-  const [blockCorrect, setBlockCorrect] = useState(false);
-  const [dieRoll, setDieRoll] = useState("");
   const [guess, setGuess] = useState("");
-  const [blockDisable, setBlockDisable] = useState(true);
-  const [multproblem, setMultProblem] = useState("");
-  const [indexNumber, setIndexNumber] = useState(0);
   const [disableInput, setDisableInput] = useState(true);
+  const [disableInputAfterGuess, SetDisableInputAfterGuess] = useState(false);
   const problem = randNumb.toString() + " x " + randNumb2.toString();
   const product = (randNumb * randNumb2).toString();
-
+  // This function is triggered when the user answers a question
   const onSubmit = (guess: string) => {
+    // If they guess correctly, set blockcolor to green, disable the input and validate the other players dice
     if (guess === product) {
-      setBlockAnswered(true);
-      setBlockCorrect(true);
-      setBlockColor("bg-green-500 border-2");
+      score();
+      setBlockColor("bg-green-500 ");
+      SetDisableInputAfterGuess(true);
+      validateOtherPlayer(false);
+      incrementUserProgress();
     } else {
-      setBlockAnswered(true);
-      setBlockCorrect(false);
-      setBlockColor("bg-red-500 border-2");
+      // If they guess incorrectly, set blockcolor to red, disable the input and validate the other players dice
+      setBlockColor("bg-red-600 ");
+      validate(true);
+      SetDisableInputAfterGuess(true);
+      validateOtherPlayer(false);
     }
 
     setGuess("");
   };
-  // Why doesnt this code correctly increment index?
-  if (blockCorrect) {
-    index = index + 1;
-  }
+
+  // This useEffect colours the selected problem yellow
+  // Running into issues with this useEffect overwriting above submit guess
   useEffect(() => {
-    setDisableInput(blockNumber != index);
-  });
-  useEffect(() => {
-    if (blockNumber === index && !blockCorrect) {
-      setBlockColor("bg-yellow-500 border-2");
+    if (blockNumber === index) {
+      setBlockColor("bg-yellow-600 ");
+      validate(true);
+      setDisableInput(false);
+      SetDisableInputAfterGuess(false);
     }
-  });
+  }, [index]);
+
+  // This useEffect disables the input to all problems except the selected problem
   useEffect(() => {
-    setRandNumb(numberGenerator());
-    setRandNumb2(numberGenerator());
+    setDisableInput(blockNumber != index || disableInputAfterGuess);
+  });
+
+  // This useEffect generates two random numbers to create a problem
+  useEffect(() => {
+    let randNumb1 = getRndInteger(0, 11);
+    let randNumb2 = getRndInteger(0, 11);
+    setRandNumb(randNumb1);
+    setRandNumb2(randNumb2);
   }, [newGame]);
 
+  // This useEffect checks and updates the user score
+  useEffect(() => {
+    score();
+  });
   useEffect(() => {
     const listener = (event) => {
       if (event.code === "Enter" || event.code === "NumpadEnter") {
         console.log("Enter key was pressed. Run your function.");
         event.preventDefault();
-        // callMyFunction();
       }
     };
     document.addEventListener("keydown", listener);
@@ -82,38 +95,21 @@ export const BlockComponent: FC<BlockProps> = ({
     };
   }, []);
   ``;
-  // const handleKeyPress = (e) => {
-  //   if (e.charCode === 13) {
-  //     onSubmit(guess);
-  //   }
-  // };
+
   return (
     <div className={blockColor}>
       <input
-        // onKeyPress={(e) => handleKeyPress(e)}
-        onBlur={(e) => onSubmit(guess)}
+        onBlur={() => onSubmit(guess)}
         id="input"
         type="number"
         value={guess}
-        className="text-sm text-white place-content-center bg-inherit w-12 placeholder:text-inherit text-center"
+        className="text-xl text-normal text-sky-50 place-content-center bg-inherit w-20 placeholder:text-inherit text-center"
         onChange={(e) => setGuess(e.target.value)}
         placeholder={problem}
         disabled={disableInput}
       ></input>
-      {/* remove button, onBlur is enough? Any way to use onKeyPress to use enter */}
-      {/* <button
-        hidden={disableInput}
-        type="submit"
-        className="text-xs"
-        onClick={() => onSubmit(guess)}
-      >
-        ▢
-      </button> */}
     </div>
   );
 };
 
 export default BlockComponent;
-function handleSearch(): void {
-  throw new Error("Function not implemented.");
-}

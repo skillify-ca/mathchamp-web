@@ -2,9 +2,32 @@ import { Question } from "../question";
 import { QuestionType } from "../questionTypes";
 import { getRndInteger, getRandomItemFromArray } from "../random";
 import { Skill } from "../skills";
-import { generateHorizontalEquationQuestion } from "./horizontalEquationQuestion";
-import { generateLongDivisionQuestion } from "./longDivisionQuestion";
-import { generateWordProblemQuestion } from "./wordProblemQuestion";
+import { generateHorizontalEquationQuestion } from "./questionTypes/horizontalEquationQuestion";
+import { generateLongDivisionQuestion } from "./questionTypes/longDivisionQuestion";
+import { generateWordProblemQuestion } from "./questionTypes/wordProblemQuestion";
+
+export function generateBinaryDivisionQuestion(skill: Skill): Question {
+  //All division questions min and maxs are in respect to the dividend
+  // Division skills
+  switch (skill) {
+    case Skill.EQUAL_SHARING_8_ITEMS:
+      return getRandomDivisionQuestion(1, 5, skill);
+    case Skill.DIVIDE_12_EQUALLY:
+      return getRandomDivisionQuestion(1, 6, skill);
+    case Skill.DIVIDE_100:
+      return getRandomDivisionQuestion(1, 11, skill);
+    case Skill.DIVISION_TWO_DIGIT_BY_ONE_DIGIT:
+      return getRandomDivisionQuestion(10, 100, skill);
+    case Skill.DIVISION_THREE_DIGIT_BY_ONE_DIGIT:
+      return getRandomDivisionQuestion(100, 1000, skill);
+    case Skill.DIVISION_THREE_DIGIT_BY_TWO_DIGIT:
+      return getRandomDivisionQuestion(100, 1000, skill);
+    case Skill.DIVISION_THREE_DIGIT_BY_TENTH:
+      return getRandomDivisionQuestion(100, 1000, skill);
+  }
+
+  return null;
+}
 
 export function getRandomDivisionQuestion(
   min: number,

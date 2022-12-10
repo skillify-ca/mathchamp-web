@@ -13,7 +13,7 @@ export default function SignInPage() {
     async function checkAuth() {
       const result = await getRedirectResult(auth);
       if (result) {
-        router.push("/games");
+        router.push("/");
       }
     }
     checkAuth();
@@ -43,7 +43,7 @@ export default function SignInPage() {
           </div>
           <button
             onClick={() => signIn()}
-            className="flex items-center justify-between w-64 p-4 bg-white border border-black shadow-lg rounded-2xl hover:bg-gray-100"
+            className="flex items-center justify-between w-64 p-4 bg-white border border-black shadow-lg text-slate-900 rounded-2xl hover:bg-gray-100"
           >
             Sign in with Google
             <img className="w-8" src="/images/welcome/googleLogo.png" />
