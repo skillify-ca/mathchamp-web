@@ -16,7 +16,7 @@ export default function StrandPage({ skillData, courseId }) {
       <CourseNavbar />
 
       {skillData && (
-        <div className="p-8 bg-slate-200">
+        <div className="sm:p-8 bg-slate-200">
           <PracticePreview skills={skillData.skills} courseId={courseId} />
         </div>
       )}

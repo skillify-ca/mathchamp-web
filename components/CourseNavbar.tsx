@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { useAuth } from "../lib/authContext";
 
 export type NavbarLink = {
@@ -19,7 +20,7 @@ export default function CourseNavbar() {
   return (
     <header className="bg-slate-800">
       <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8" aria-label="Top">
-        <div className="flex items-center justify-between w-full">
+        <div className="flex items-center justify-center w-full sm:justify-between">
           <div className="flex flex-wrap items-center">
             <div className="hidden w-full lg:flex">
               {navbarLinks.map((link) => (
@@ -32,9 +33,14 @@ export default function CourseNavbar() {
                 </div>
               ))}
             </div>
+            <div className="py-4">
+              <Link href="/">
+                <img src="/images/logo.png" className="h-12 cursor-pointer" />
+              </Link>
+            </div>
           </div>
         </div>
-        <div className="flex flex-wrap justify-center py-4 space-x-6 lg:hidden">
+        <div className="flex-wrap justify-center hidden py-4 space-x-6 sm:flex lg:hidden">
           {navbarLinks.map((link) => (
             <a
               key={link.name}

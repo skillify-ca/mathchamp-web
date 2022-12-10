@@ -71,7 +71,7 @@ export default function MathHomePage({ courseId, skillData }) {
           </div>
         </div>
       </div>
-      <div className="grid grid-cols-3 p-4">
+      <div className="grid grid-cols-1 p-4 place-items-center sm:grid-cols-3">
         {strands.map((strand) => (
           <a href={`/strands/${strand.link}`}>
             <div

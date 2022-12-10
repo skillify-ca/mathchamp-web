@@ -28,7 +28,7 @@ export default function PracticePreview({ skills, courseId }) {
 
   return (
     <div className="flex justify-center">
-      <div className="grid items-stretch max-w-4xl grid-cols-1 bg-white shadow-lg rounded-t-xl">
+      <div className="grid items-stretch max-w-4xl grid-cols-1 bg-white shadow-lg sm:rounded-t-xl">
         <div className="p-4 space-y-8 sm:p-8">
           <div className="flex flex-col space-y-4">
             <p className="text-4xl font-bold capitalize text-murkrow">
