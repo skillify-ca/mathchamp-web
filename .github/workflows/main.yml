@@ -3,8 +3,20 @@ name: Run Tests
 on: [push, pull_request]
 
 jobs:
-  test:
+  lint:
+    name: Run ESLint
     runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+          cache: 'yarn'
+      - run: yarn
+      - run: yarn lint:strict
+
+  test:
+    runs-on: windows-latest
     steps:
     - uses: actions/checkout@v2
     - uses: actions/setup-node@v2
