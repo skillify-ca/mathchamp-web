@@ -7,9 +7,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "eslint:github-action": "eslint src/",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook -s public",
-    "test": "jest --config jest.config.ts"
+    "test": "jest"
   },
   "dependencies": {
     "@apollo/client": "^3.7.1",
