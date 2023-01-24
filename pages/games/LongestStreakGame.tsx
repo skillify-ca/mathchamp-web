@@ -2,7 +2,6 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { useMutation, useQuery } from "@apollo/client";
-import MultiplicationBlock from "../../components/longestStreak/MultiplicationBlock";
 import Rules from "../../components/longestStreak/Rules";
 import UserTableStats from "../../components/longestStreak/userTableStats";
 import Winner from "../../components/longestStreak/Winner";
