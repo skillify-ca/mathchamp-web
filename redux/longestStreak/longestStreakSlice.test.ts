@@ -1,13 +1,14 @@
-import { BlockState } from "../components/math/longestStreak/MultiplicationBlock";
-import reducer, {
+import { BlockState } from "../../components/longestStreak/MultiplicationBlock";
+import {
   handlePlayerSelect,
   LongestStreakState,
   STAGE,
-  GameLevel
+  GameLevel,
+  longestStreakReducer,
 } from "./longestStreakSlice";
 
 // Arrange create initialState
-// Act reducer(initialState, action)
+// Act longestStreakReducer(initialState, action)
 // Assert expect()
 
 const initialState: LongestStreakState = {
@@ -41,11 +42,12 @@ const initialState: LongestStreakState = {
   isPlayerSelecting: false,
   reset: false,
   handlePlayerSelect: 0,
-  playerName: "",
 };
 
 test("should return the initial state", () => {
-  expect(reducer(initialState, { type: "no action" })).toEqual(initialState);
+  expect(longestStreakReducer(initialState, { type: "no action" })).toEqual(
+    initialState
+  );
 });
 
 test("test selecting one block", () => {
@@ -87,7 +89,9 @@ test("test selecting one block", () => {
     isPlayerSelecting: true,
     reset: false,
   };
-  expect(reducer(initialState, handlePlayerSelect(1))).toEqual(finalState);
+  expect(longestStreakReducer(initialState, handlePlayerSelect(1))).toEqual(
+    finalState
+  );
 });
 
 test("test selecting two blocks should trigger AI selection", () => {
@@ -128,8 +132,8 @@ test("test selecting two blocks should trigger AI selection", () => {
   };
 
   //Act
-  const firstState = reducer(initialState, handlePlayerSelect(1));
-  const secondState = reducer(firstState, handlePlayerSelect(2));
+  const firstState = longestStreakReducer(initialState, handlePlayerSelect(1));
+  const secondState = longestStreakReducer(firstState, handlePlayerSelect(2));
   // Assert
   expect(secondState).toEqual(finalState);
 });
@@ -171,9 +175,8 @@ test("test selecting invalid blocks", () => {
   };
 
   //Act
-  const firstState = reducer(initialState, handlePlayerSelect(0));
-  const secondState = reducer(firstState, handlePlayerSelect(2));
+  const firstState = longestStreakReducer(initialState, handlePlayerSelect(0));
+  const secondState = longestStreakReducer(firstState, handlePlayerSelect(2));
   // Assert
   expect(secondState).toEqual(finalState);
 });
-
