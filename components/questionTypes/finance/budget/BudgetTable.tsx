@@ -1,6 +1,6 @@
 import React from "react";
 import { GuessData } from "../../../../pages/api/guessData";
-import { BudgetTableQuestion, Question } from "../../../../pages/api/question";
+import { BudgetTableQuestion } from "../../../../pages/api/questionGenerators/questionTypes/money/budgetQuestion";
 import { Button } from "../../../ui/Button";
 
 export interface BudgetItemProps {

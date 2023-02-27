@@ -1,8 +1,8 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react";
 import TipQuestion, { TipQuestionProps } from "./TipQuestion";
-import { FinanceTipQuestion, Question } from "../../../../pages/api/question";
 import { QuestionType } from "../../../../pages/api/questionTypes";
+import { FinanceTipQuestion } from "../../../../pages/api/questionGenerators/questionTypes/money/tipQuestion";
 
 export default {
   title: "finance/Tip Question",

@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import { MCOption } from "../../pages/api/question";
+import { MCOption } from "../../pages/api/questionGenerators/questionTypes/multipleChoiceQuestion";
 import { Button } from "../ui/Button";
 
 export interface MultipleChoiceWordProp {
@@ -29,7 +29,7 @@ export const MultipleChoiceWord: React.FC<MultipleChoiceWordProp> = ({
   return (
     <div className="flex flex-col items-center space-y-16">
       {children}
-      <div className="flex flex-row  item-center space-x-4 ">
+      <div className="flex flex-row space-x-4 item-center ">
         <Button
           label={options[0].text}
           backgroundColor="red"

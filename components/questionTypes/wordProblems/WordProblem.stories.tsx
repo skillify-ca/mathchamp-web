@@ -4,8 +4,8 @@ import { Story, Meta } from "@storybook/react";
 import { WordProblemAdd, WordProblemAddProp } from "./WordProblemAdd";
 import { QuestionType } from "../../../pages/api/questionTypes";
 import Card from "../../ui/Card";
-import { createWordProblemModel } from "../../../pages/api/questionGenerators/wordProblemQuestion";
 import { Skill } from "../../../pages/api/skills";
+import { createWordProblemModel } from "../../../pages/api/questionGenerators/questionTypes/wordProblemQuestion";
 
 export default {
   title: "math/Word Problem Simple",

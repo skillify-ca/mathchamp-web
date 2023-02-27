@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { GuessData } from "../../../../pages/api/guessData";
-import { FinanceTipQuestion, Question } from "../../../../pages/api/question";
+import { FinanceTipQuestion } from "../../../../pages/api/questionGenerators/questionTypes/money/tipQuestion";
 import { Button } from "../../../ui/Button";
 
 export interface TipQuestionProps {
