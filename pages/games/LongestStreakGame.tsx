@@ -145,11 +145,11 @@ export default function LongestStreakGame() {
       ) : stage === STAGE.PLAY_GAME ? (
         <div className="ml-1 md:mx-10">
           <div className="grid md:grid-cols-6 md:grid-rows-7">
-            <div className=" text-center md:pb-4 pb-2 text-md md:text-xl font-bold md:col-start-1  md:col-end-6 flex justify-evenly w-[22rem] md:w-[45rem]">
+            <div className=" text-center md:pb-4 pb-2 text-md md:text-xl font-bold md:col-start-1 md:col-end-6 flex justify-evenly w-[22rem] md:w-[45rem]">
               Welcome, {user.displayName}. Your quest is to battle the computer.
               Let's see how you do!
             </div>
-            <div className="flex flex-rows ml-1.5 md:ml-0 md:pb-8 pb-2  col-start-1 col-end-7 content-between md:justify-evenly md:w-[45rem] w-[22rem]"></div>
+            <div className="flex flex-rows ml-1.5 md:ml-0 md:pb-8 pb-2 col-start-1 col-end-7 content-between md:justify-evenly md:w-[45rem] w-[22rem]"></div>
 
             <div className="flex flex-row">
               {gameState.slice(0, 9).map((item, index) => (
@@ -173,19 +173,19 @@ export default function LongestStreakGame() {
                   ))
                   .reverse()}
               </div>
-              <div className="col-span-7 bg-gradient-to-r from-purple-300 ...">
-                <div className="flex flex-col row-7 ">
-                  <ul className="flex justify-center p-1 text-sm md:p-5 md:text-xl">
-                    My Game Level is....
+              <div className="col-span-7 bg-gradient-to-r from-red-400 ...">
+                <div className="flex flex-col row-7">
+                  <ul className="flex justify-center p-1 text-md font-bold md:p-5 md:text-xl">
+                    Current Game Level:
                     {data && (
                       <span className="font-bold">
                         {" "}
-                        {data.longestStreakUserData[0].currentLevel}
+                         {/* {data.longestStreakUserData[0].currentLevel} */}
                       </span>
                     )}
                   </ul>
                   <ul className="flex justify-center p-2 text-xs md:p-5 md:text-lg">
-                    Number of Open Blocks: {"  "}
+                    Number of Open Blocks:  {"  "}
                     <span className="font-bold">
                       {checkNumberNotSelected(gameState)}
                     </span>
