@@ -1,5 +1,5 @@
 import React from "react";
-import { MCOption } from "../../pages/api/question";
+import { MCOption } from "../../pages/api/questionGenerators/questionTypes/multipleChoiceQuestion";
 import { Button } from "../ui/Button";
 
 export interface MultipleChoiceSentenceProp {

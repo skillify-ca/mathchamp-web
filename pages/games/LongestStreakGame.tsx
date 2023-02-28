@@ -26,11 +26,8 @@ import { UPDATE_GAME_LEVEL } from "../../graphql/longestStreak/updateGameLevel";
 import { UPSERT_GAME_LEVEL } from "../../graphql/longestStreak/upsertGameLevel";
 
 import { useAuth } from "../../lib/authContext";
-import {
-  calculatePlayerScore,
-  checkNumberNotSelected,
-  calculateWin,
-} from "../api/games/longestStreak";
+import { calculatePlayerScore, calculateWin } from "../api/games/longestStreak";
+import GameHUD from "../../components/longestStreak/GameHUD";
 
 export type LongestStreakGameProps = {
   user: any;
@@ -130,29 +127,21 @@ export default function LongestStreakGame() {
     dispatch(setStage(STAGE.PLAY_GAME));
   }
 
-  function handleCalculateWinner() {
-    dispatch(setStage(STAGE.CALCULATE_WINNER));
-  }
-
-  function handleShowStats() {
-    dispatch(setStage(STAGE.SHOW_STATS));
-  }
-
   return (
-    <div>
+    <div className="w-full">
       {stage === STAGE.SET_RULES ? (
         <Rules text={""} onClick={handlePlayGame} />
       ) : stage === STAGE.PLAY_GAME ? (
-        <div className="ml-1 md:mx-10">
-          <div className="grid md:grid-cols-6 md:grid-rows-7">
-            <div className=" text-center md:pb-4 pb-2 text-md md:text-xl font-bold md:col-start-1 md:col-end-6 flex justify-evenly w-[22rem] md:w-[45rem]">
+        <div className="w-[30rem] md:w-full">
+          <div className="flex w-full p-4 text-xl font-bold">
+            <p className="w-full text-center">
               Welcome, {user.displayName}. Your quest is to battle the computer.
               Let's see how you do!
-            </div>
-            <div className="flex flex-rows ml-1.5 md:ml-0 md:pb-8 pb-2 col-start-1 col-end-7 content-between md:justify-evenly md:w-[45rem] w-[22rem]"></div>
-
+            </p>
+          </div>
+          <div className="flex flex-col items-center">
             <div className="flex flex-row">
-              {gameState.slice(0, 9).map((item, index) => (
+              {gameState.slice(0, 12).map((item, index) => (
                 <MultiplicationBlock
                   text={item.text}
                   onClick={() => handleSelect(index)}
@@ -160,83 +149,27 @@ export default function LongestStreakGame() {
                 />
               ))}
             </div>
-            <div className="grid grid-cols-9 col-span-6 w-[22.5rem] md:w-[45rem]">
+            <div className="grid grid-cols-12 w-[30rem] md:w-[60rem]">
               <div className="flex flex-col">
                 {gameState
-                  .slice(29, 40)
+                  .slice(32, 40)
                   .map((item, index) => (
                     <MultiplicationBlock
                       text={item.text}
-                      onClick={() => handleSelect(index + 29)}
+                      onClick={() => handleSelect(index + 32)}
                       blockState={item.state}
                     />
                   ))
                   .reverse()}
               </div>
-              <div className="col-span-7 bg-gradient-to-r from-red-400 ...">
-                <div className="flex flex-col row-7">
-                  <ul className="flex justify-center p-1 text-md font-bold md:p-5 md:text-xl">
-                    Current Game Level:
-                    {data && (
-                      <span className="font-bold">
-                        {" "}
-                         {/* {data.longestStreakUserData[0].currentLevel} */}
-                      </span>
-                    )}
-                  </ul>
-                  <ul className="flex justify-center p-2 text-xs md:p-5 md:text-lg">
-                    Number of Open Blocks:  {"  "}
-                    <span className="font-bold">
-                      {checkNumberNotSelected(gameState)}
-                    </span>
-                  </ul>
-                  <h1 className="flex justify-between p-1 text-xs md:p-5 md:text-xl">
-                    <ul className="px-3 text-center">
-                      {user.Displayname ? true : "Player 1"} Score:{" "}
-                      <span className="font-bold text-center">
-                        {calculatePlayerScore(gameState, 1)}
-                      </span>
-                    </ul>
-                    <ul className="px-3 text-center">
-                      Computer Score:{" "}
-                      <span className="font-bold text-center ">
-                        {calculatePlayerScore(gameState, 2)}
-                      </span>
-                    </ul>
-                  </h1>
-                  <div className="flex md:flex">
-                    <div className="py-4 xs:flex xs:px-10 xs:space-x-2 md:pl-20 md:p-8 md:space-y-8">
-                      <Button
-                        backgroundColor="purple"
-                        label={"Rules"}
-                        onClick={() => dispatch(setStage(STAGE.SET_RULES))}
-                      />
-                      <Button
-                        backgroundColor="purple"
-                        label={"Reset"}
-                        onClick={() => handleResetGame()}
-                      />
-                    </div>
-                    <div className="xs:flex xs:px-10 xs:space-x-2 md:pr-18 md:p-8 md:space-y-8">
-                      <Button
-                        backgroundColor="purple"
-                        label={"Winner"}
-                        onClick={handleCalculateWinner}
-                      />
-                      <Button
-                        backgroundColor="purple"
-                        label={"Stats"}
-                        onClick={handleShowStats}
-                      />
-                    </div>
-                  </div>
-                </div>
+              <div className="col-span-10">
+                <GameHUD data={data} gameState={gameState} user={user} />
               </div>
               <div className="flex flex-col">
-                {gameState.slice(9, 20).map((item, index) => (
+                {gameState.slice(12, 20).map((item, index) => (
                   <MultiplicationBlock
                     text={item.text}
-                    onClick={() => handleSelect(index + 9)}
+                    onClick={() => handleSelect(index + 12)}
                     blockState={item.state}
                   />
                 ))}
@@ -244,7 +177,7 @@ export default function LongestStreakGame() {
             </div>
             <div className="flex flex-row">
               {gameState
-                .slice(20, 29)
+                .slice(20, 32)
                 .map((item, index) => (
                   <MultiplicationBlock
                     text={item.text}

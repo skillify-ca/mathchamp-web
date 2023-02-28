@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import { GuessData } from "../../../../pages/api/guessData";
-import {
-  BudgetBalanceQuestion,
-  Question,
-} from "../../../../pages/api/question";
+import { BudgetBalanceQuestion } from "../../../../pages/api/questionGenerators/questionTypes/money/balanceBudgetQuestion";
+
 import { Button } from "../../../ui/Button";
 
 export interface BalanceBudgetProps {

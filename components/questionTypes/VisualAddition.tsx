@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { GuessData } from "../../pages/api/guessData";
-import { VisualDotsQuestion } from "../../pages/api/questionGenerators/visualDotsQuestion";
+import { VisualDotsQuestion } from "../../pages/api/questionGenerators/questionTypes/visualDotsQuestion";
 
 import { Button } from "../ui/Button";
 import { Input } from "../ui/Input";
