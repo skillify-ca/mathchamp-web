@@ -128,14 +128,14 @@ export default function LongestStreakGame() {
   }
 
   return (
-    <div className="w-full">
+    <div className="w-full h-screen bg-gray-200">
       {stage === STAGE.SET_RULES ? (
         <Rules text={""} onClick={handlePlayGame} />
       ) : stage === STAGE.PLAY_GAME ? (
         <div className="w-[30rem] md:w-full">
           <div className="flex w-full p-4 text-xl font-bold">
             <p className="w-full text-center">
-              Welcome, {user.displayName}. Your quest is to battle the computer.
+              Welcome, <span className="text-red-500 font-extrabold">{user.displayName}</span>. Your quest is to battle the computer.
               Let's see how you do!
             </p>
           </div>
