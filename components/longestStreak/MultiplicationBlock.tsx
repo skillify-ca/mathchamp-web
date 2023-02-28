@@ -23,16 +23,16 @@ export const MultiplicationBlock: React.FC<MultiplicationBlockProps> = ({
     <div className="cursor-pointer">
       <div
 
-        className={`md:w-20 md:h-20 w-10 h-10 flex justify-center items-center md:border-2 bg-gradient-to-b hover:bg-purple-900 text-white md:px-3 px-2 md:pt-0 pt-2 text-justify md:font-bold text-sm md:text-xl md:border-b-4 border-b-2 rounded-lg active:border-b-2 cursor-pointer float-left
+        className={`md:w-20 md:h-20 w-10 h-10 flex justify-center items-center md:border-2 bg-gradient-to-b hover:bg-red-400 text-white md:px-3 px-2 md:pt-0 pt-2 text-justify md:font-bold text-sm md:text-xl md:border-b-4 border-b-2 rounded-lg active:border-b-2 cursor-pointer float-left
 
         ${
           blockState === BlockState.PLAYER_ONE_SELECTED
-            ? "bg-[#16acea]"
+            ? "bg-red-500 animate-pulse"
             : blockState === BlockState.PLAYER_TWO_SELECTED
-            ? "bg-[#4203c9]"
+            ? "bg-zinc-400 line-through"
             : blockState === BlockState.HIGHLIGHTED
-            ? "bg-[#320d3e] border-[#F4FFFDFF] border-width-5fr drop-shadow-2xl"
-            : "bg-purple-500"
+            ? "bg-gray-900 animate-bounce"
+            : "bg-slate-600"
         }
         `}
         onClick={onClick}
